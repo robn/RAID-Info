@@ -1,0 +1,36 @@
+  # Enc# Slot#   ModelName                        Capacity  Usage
+===============================================================================
+  1  01  Slot#1  N.A.                                0.0GB  N.A.      
+  2  01  Slot#2  N.A.                                0.0GB  N.A.      
+  3  01  Slot#3  N.A.                                0.0GB  N.A.      
+  4  01  Slot#4  N.A.                                0.0GB  N.A.      
+  5  01  Slot#5  N.A.                                0.0GB  N.A.      
+  6  01  Slot#6  N.A.                                0.0GB  N.A.      
+  7  01  Slot#7  N.A.                                0.0GB  N.A.      
+  8  01  Slot#8  N.A.                                0.0GB  N.A.      
+  9  02  Slot00  WDC WD4002FYYZ-01B7CB0           4000.8GB  i21r1           
+ 10  02  Slot01  WDC WD4002FYYZ-01B7CB0           4000.8GB  i21r1           
+ 11  02  Slot02  WDC WD4002FYYZ-01B7CB0           4000.8GB  i21r1           
+ 12  02  Slot03  WDC WD4002FYYZ-01B7CB0           4000.8GB  i21r1           
+ 13  02  Slot04  WDC WD4002FYYZ-01B7CB0           4000.8GB  i21r1           
+ 14  02  Slot05  WDC WD4002FYYZ-01B7CB0           4000.8GB  i21r1           
+ 15  02  Slot06  WDC WD4002FYYZ-01B7CB0           4000.8GB  i21r1           
+ 16  02  Slot07  WDC WD4002FYYZ-01B7CB0           4000.8GB  i21r1           
+ 17  02  Slot08  WDC WD4002FYYZ-01B7CB0           4000.8GB  i21r1           
+ 18  02  Slot09  WDC WD4002FYYZ-01B7CB0           4000.8GB  i21r1           
+ 19  02  Slot10  WDC WD4002FYYZ-01B7CB0           4000.8GB  i21r1           
+ 20  02  Slot11  WDC WD4002FYYZ-01B7CB0           4000.8GB  i21r1           
+ 21  02  Slot12  WDC WD4002FYYZ-01B7CB0           4000.8GB  i21r2           
+ 22  02  Slot13  WDC WD4002FYYZ-01B7CB0           4000.8GB  i21r2           
+ 23  02  Slot14  WDC WD4002FYYZ-01B7CB0           4000.8GB  i21r2           
+ 24  02  Slot15  WDC WD4002FYYZ-01B7CB0           4000.8GB  i21r2           
+ 25  02  Slot16  WDC WD4002FYYZ-01B7CB0           4000.8GB  i21r2           
+ 26  02  Slot17  WDC WD4002FYYZ-01B7CB0           4000.8GB  i21r2           
+ 27  02  Slot18  WDC WD4002FYYZ-01B7CB0           4000.8GB  i21r2           
+ 28  02  Slot19  WDC WD4002FYYZ-01B7CB0           4000.8GB  i21r2           
+ 29  02  Slot20  WDC WD4002FYYZ-01B7CB0           4000.8GB  i21r2           
+ 30  02  Slot21  WDC WD4002FYYZ-01B7CB0           4000.8GB  i21r2           
+ 31  02  Slot22  WDC WD4002FYYZ-01B7CB0           4000.8GB  i21r2           
+ 32  02  Slot23  WDC WD4002FYYZ-01B7CB0           4000.8GB  i21r2           
+===============================================================================
+GuiErrMsg<0x00>: Success.

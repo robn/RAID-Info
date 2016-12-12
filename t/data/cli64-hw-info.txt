@@ -1,0 +1,23 @@
+The Hardware Monitor Information
+=====================================================
+[Controller H/W Monitor]
+  CPU Temperature  : 70 C
+  Controller Temp. : 46 C
+  CPU Fan          : 5818 RPM
+  12V              : 11.977 V
+  5V               : 5.053 V
+  3.3V             : 3.280 V
+  IO Voltage +1.8V : 1.840 V
+  DDR3       +1.5V : 1.536 V
+  CPU VCore  +0.9V : 0.896 V
+  Ethernet   +1.2V : 1.216 V
+  DDR3      +0.75V : 0.752 V
+  Battery Status   : 100%
+[Enclosure#1 : SAS     RAID Adapter    V2.0]
+[Enclosure#2 : LSI     SAS3x40         0601]
+  5V               : 5.040 V
+  12V              : 11.820 V
+  BackPlaneLM75    : 33 C
+  ChipDie          : 66 C
+=====================================================
+GuiErrMsg<0x00>: Success.
