@@ -1,0 +1,209 @@
+Avago Technologies SAS3 IR Configuration Utility.
+Version 09.00.00.00 (2015.02.03) 
+Copyright (c) 2009-2015 Avago Technologies. All rights reserved. 
+
+Read configuration has been initiated for controller 0
+------------------------------------------------------------------------
+Controller information
+------------------------------------------------------------------------
+  Controller type                         : SAS3008
+  BIOS version                            : 8.07.00.00
+  Firmware version                        : 3.00.06.00
+  Channel description                     : 1 Serial Attached SCSI
+  Initiator ID                            : 0
+  Maximum physical devices                : 1023
+  Concurrent commands supported           : 10240
+  Slot                                    : 4
+  Segment                                 : 0
+  Bus                                     : 130
+  Device                                  : 0
+  Function                                : 0
+  RAID Support                            : No
+------------------------------------------------------------------------
+IR Volume information
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+Physical device information
+------------------------------------------------------------------------
+Initiator at ID #0
+
+Device is a Hard disk
+  Enclosure #                             : 2
+  Slot #                                  : 0
+  SAS Address                             : 5003048-0-1eed-2b00
+  State                                   : Ready (RDY)
+  Size (in MB)/(in sectors)               : 1907729/3907029167
+  Manufacturer                            : ATA     
+  Model Number                            : WDC WD2003FYYS-0
+  Firmware Revision                       : 1D02
+  Serial No                               : WDWMAY04628275
+  GUID                                    : 50014ee2b17fae0a
+  Protocol                                : SATA
+  Drive Type                              : SATA_HDD
+
+Device is a Hard disk
+  Enclosure #                             : 2
+  Slot #                                  : 2
+  SAS Address                             : 5003048-0-1eed-2b02
+  State                                   : Ready (RDY)
+  Size (in MB)/(in sectors)               : 763097/1562824367
+  Manufacturer                            : ATA     
+  Model Number                            : INTEL SSDSC2BA80
+  Firmware Revision                       : 0150
+  Serial No                               : BTHV6224052B800OGN
+  GUID                                    : 55cd2e404c2559ac
+  Protocol                                : SATA
+  Drive Type                              : SATA_SSD
+
+Device is a Hard disk
+  Enclosure #                             : 2
+  Slot #                                  : 3
+  SAS Address                             : 5003048-0-1eed-2b03
+  State                                   : Ready (RDY)
+  Size (in MB)/(in sectors)               : 3815447/7814037167
+  Manufacturer                            : ATA     
+  Model Number                            : WDC WD4002FYYZ-0
+  Firmware Revision                       : 1M02
+  Serial No                               : N8G6911Y
+  GUID                                    : 5000cca244c2dc23
+  Protocol                                : SATA
+  Drive Type                              : SATA_HDD
+
+Device is a Hard disk
+  Enclosure #                             : 2
+  Slot #                                  : 4
+  SAS Address                             : 5003048-0-1eed-2b04
+  State                                   : Ready (RDY)
+  Size (in MB)/(in sectors)               : 3815447/7814037167
+  Manufacturer                            : ATA     
+  Model Number                            : WDC WD4002FYYZ-0
+  Firmware Revision                       : 1M02
+  Serial No                               : N8G6AA8Y
+  GUID                                    : 5000cca244c2e102
+  Protocol                                : SATA
+  Drive Type                              : SATA_HDD
+
+Device is a Hard disk
+  Enclosure #                             : 2
+  Slot #                                  : 5
+  SAS Address                             : 5003048-0-1eed-2b05
+  State                                   : Ready (RDY)
+  Size (in MB)/(in sectors)               : 763097/1562824367
+  Manufacturer                            : ATA     
+  Model Number                            : INTEL SSDSC2BA80
+  Firmware Revision                       : 0150
+  Serial No                               : BTHV6225017T800OGN
+  GUID                                    : 55cd2e404c25616c
+  Protocol                                : SATA
+  Drive Type                              : SATA_SSD
+
+Device is a Hard disk
+  Enclosure #                             : 2
+  Slot #                                  : 6
+  SAS Address                             : 5003048-0-1eed-2b06
+  State                                   : Ready (RDY)
+  Size (in MB)/(in sectors)               : 3815447/7814037167
+  Manufacturer                            : ATA     
+  Model Number                            : WDC WD4002FYYZ-0
+  Firmware Revision                       : 1M02
+  Serial No                               : N8G6DP4Y
+  GUID                                    : 5000cca244c2e9d5
+  Protocol                                : SATA
+  Drive Type                              : SATA_HDD
+
+Device is a Hard disk
+  Enclosure #                             : 2
+  Slot #                                  : 7
+  SAS Address                             : 5003048-0-1eed-2b07
+  State                                   : Ready (RDY)
+  Size (in MB)/(in sectors)               : 3815447/7814037167
+  Manufacturer                            : ATA     
+  Model Number                            : WDC WD4002FYYZ-0
+  Firmware Revision                       : 1M02
+  Serial No                               : N8G6DGYY
+  GUID                                    : 5000cca244c2e915
+  Protocol                                : SATA
+  Drive Type                              : SATA_HDD
+
+Device is a Hard disk
+  Enclosure #                             : 2
+  Slot #                                  : 8
+  SAS Address                             : 5003048-0-1eed-2b08
+  State                                   : Ready (RDY)
+  Size (in MB)/(in sectors)               : 763097/1562824367
+  Manufacturer                            : ATA     
+  Model Number                            : INTEL SSDSC2BA80
+  Firmware Revision                       : 0150
+  Serial No                               : BTHV6224056Z800OGN
+  GUID                                    : 55cd2e404c255a4a
+  Protocol                                : SATA
+  Drive Type                              : SATA_SSD
+
+Device is a Hard disk
+  Enclosure #                             : 2
+  Slot #                                  : 9
+  SAS Address                             : 5003048-0-1eed-2b09
+  State                                   : Ready (RDY)
+  Size (in MB)/(in sectors)               : 3815447/7814037167
+  Manufacturer                            : ATA     
+  Model Number                            : WDC WD4002FYYZ-0
+  Firmware Revision                       : 1M02
+  Serial No                               : N8G63R1Y
+  GUID                                    : 5000cca244c2c828
+  Protocol                                : SATA
+  Drive Type                              : SATA_HDD
+
+Device is a Hard disk
+  Enclosure #                             : 2
+  Slot #                                  : 10
+  SAS Address                             : 5003048-0-1eed-2b0a
+  State                                   : Ready (RDY)
+  Size (in MB)/(in sectors)               : 3815447/7814037167
+  Manufacturer                            : ATA     
+  Model Number                            : WDC WD4002FYYZ-0
+  Firmware Revision                       : 1M02
+  Serial No                               : N8G6DPMY
+  GUID                                    : 5000cca244c2e9e4
+  Protocol                                : SATA
+  Drive Type                              : SATA_HDD
+
+Device is a Hard disk
+  Enclosure #                             : 2
+  Slot #                                  : 11
+  SAS Address                             : 5003048-0-1eed-2b0b
+  State                                   : Ready (RDY)
+  Size (in MB)/(in sectors)               : 763097/1562824367
+  Manufacturer                            : ATA     
+  Model Number                            : INTEL SSDSC2BA80
+  Firmware Revision                       : 0150
+  Serial No                               : BTHV6225008R800OGN
+  GUID                                    : 55cd2e404c255d0a
+  Protocol                                : SATA
+  Drive Type                              : SATA_SSD
+
+Device is a Enclosure services device
+  Enclosure #                             : 2
+  Slot #                                  : 12
+  SAS Address                             : 5003048-0-1eed-2b3d
+  State                                   : Standby (SBY)
+  Manufacturer                            : LSI     
+  Model Number                            : SAS3x28         
+  Firmware Revision                       : 0601
+  Serial No                               : x2866612
+  GUID                                    : N/A
+  Protocol                                : SAS
+  Device Type                             : Enclosure services device
+------------------------------------------------------------------------
+Enclosure information
+------------------------------------------------------------------------
+  Enclosure#                              : 1
+  Logical ID                              : 500605b0:08dceff0
+  Numslots                                : 8
+  StartSlot                               : 0
+  Enclosure#                              : 2
+  Logical ID                              : 50030480:1eed2b3f
+  Numslots                                : 31
+  StartSlot                               : 0
+------------------------------------------------------------------------
+SAS3IRCU: Command DISPLAY Completed Successfully.
+SAS3IRCU: Utility Completed Successfully.
