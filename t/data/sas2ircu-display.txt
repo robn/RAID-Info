@@ -1,0 +1,197 @@
+LSI Corporation SAS2 IR Configuration Utility.
+Version 5.00.00.00 (2010.02.09) 
+Copyright (c) 2009 LSI Corporation. All rights reserved. 
+
+Read configuration has been initiated for controller 0
+------------------------------------------------------------------------
+Controller information
+------------------------------------------------------------------------
+  Controller type                         : SAS2208_8
+  BIOS version                            : 7.29.00.00
+  Firmware version                        : 15.00.00.00
+  Channel description                     : 1 Serial Attached SCSI
+  Initiator ID                            : 0
+  Maximum physical devices                : 1023
+  Concurrent commands supported           : 10240
+  Slot                                    : 3
+  Segment                                 : 0
+  Bus                                     : 4
+  Device                                  : 0
+  Function                                : 0
+  RAID Support                            : No
+------------------------------------------------------------------------
+IR Volume information
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+Physical device information
+------------------------------------------------------------------------
+Initiator at ID #0
+
+Device is a Hard disk
+  Enclosure #                             : 2
+  Slot #                                  : 0
+  State                                   : Ready (RDY)
+  Size (in MB)/(in sectors)               : 476940/976773167
+  Manufacturer                            : ATA     
+  Model Number                            : ST3500630AS     
+  Firmware Revision                       : E   
+  Serial No                               : 5QG0DNDC
+  Protocol                                : SATA
+  Drive Type                              : SATA_HDD
+
+Device is a Enclosure services device
+  Enclosure #                             : 2
+  Slot #                                  : 0
+  State                                   : Standby (SBY)
+  Manufacturer                            : LSI     
+  Model Number                            : SAS2X28         
+  Firmware Revision                       : 0e12
+  Serial No                               : x365514180
+  Protocol                                : SAS
+  Drive Type                              : SAS_HDD
+
+Device is a Hard disk
+  Enclosure #                             : 2
+  Slot #                                  : 1
+  State                                   : Ready (RDY)
+  Size (in MB)/(in sectors)               : 476940/976773167
+  Manufacturer                            : ATA     
+  Model Number                            : ST3500630AS     
+  Firmware Revision                       : E   
+  Serial No                               : 5QG0DESZ
+  Protocol                                : SATA
+  Drive Type                              : SATA_HDD
+
+Device is a Hard disk
+  Enclosure #                             : 2
+  Slot #                                  : 2
+  State                                   : Ready (RDY)
+  Size (in MB)/(in sectors)               : 381554/781422767
+  Manufacturer                            : ATA     
+  Model Number                            : INTEL SSDSC2BA40
+  Firmware Revision                       : 0265
+  Serial No                               : BTTV324005J4400HGN
+  Protocol                                : SATA
+  Drive Type                              : SATA_SSD
+
+Device is a Hard disk
+  Enclosure #                             : 2
+  Slot #                                  : 3
+  State                                   : Ready (RDY)
+  Size (in MB)/(in sectors)               : 1907729/3907029167
+  Manufacturer                            : ATA     
+  Model Number                            : WDC WD2003FYYS-0
+  Firmware Revision                       : 1D01
+  Serial No                               : WDWMAY01962682
+  Protocol                                : SATA
+  Drive Type                              : SATA_HDD
+
+Device is a Hard disk
+  Enclosure #                             : 2
+  Slot #                                  : 4
+  State                                   : Ready (RDY)
+  Size (in MB)/(in sectors)               : 1907729/3907029167
+  Manufacturer                            : ATA     
+  Model Number                            : WDC WD2003FYYS-0
+  Firmware Revision                       : 1D02
+  Serial No                               : WDWMAY04575559
+  Protocol                                : SATA
+  Drive Type                              : SATA_HDD
+
+Device is a Hard disk
+  Enclosure #                             : 2
+  Slot #                                  : 5
+  State                                   : Ready (RDY)
+  Size (in MB)/(in sectors)               : 381554/781422767
+  Manufacturer                            : ATA     
+  Model Number                            : INTEL SSDSC2BA40
+  Firmware Revision                       : 0265
+  Serial No                               : BTTV324100FH400HGN
+  Protocol                                : SATA
+  Drive Type                              : SATA_SSD
+
+Device is a Hard disk
+  Enclosure #                             : 2
+  Slot #                                  : 6
+  State                                   : Ready (RDY)
+  Size (in MB)/(in sectors)               : 1907729/3907029167
+  Manufacturer                            : ATA     
+  Model Number                            : WDC WD2003FYYS-0
+  Firmware Revision                       : 1D01
+  Serial No                               : WDWMAY01678242
+  Protocol                                : SATA
+  Drive Type                              : SATA_HDD
+
+Device is a Hard disk
+  Enclosure #                             : 2
+  Slot #                                  : 7
+  State                                   : Ready (RDY)
+  Size (in MB)/(in sectors)               : 1907729/3907029167
+  Manufacturer                            : ATA     
+  Model Number                            : WDC WD2003FYYS-0
+  Firmware Revision                       : 1D02
+  Serial No                               : WDWMAY04387314
+  Protocol                                : SATA
+  Drive Type                              : SATA_HDD
+
+Device is a Hard disk
+  Enclosure #                             : 2
+  Slot #                                  : 8
+  State                                   : Ready (RDY)
+  Size (in MB)/(in sectors)               : 381554/781422767
+  Manufacturer                            : ATA     
+  Model Number                            : INTEL SSDSC2BA40
+  Firmware Revision                       : 0265
+  Serial No                               : BTTV324100G4400HGN
+  Protocol                                : SATA
+  Drive Type                              : SATA_SSD
+
+Device is a Hard disk
+  Enclosure #                             : 2
+  Slot #                                  : 9
+  State                                   : Ready (RDY)
+  Size (in MB)/(in sectors)               : 1907729/3907029167
+  Manufacturer                            : ATA     
+  Model Number                            : WDC WD2000FYYZ-0
+  Firmware Revision                       : 1K02
+  Serial No                               : WDWCC1P0721244
+  Protocol                                : SATA
+  Drive Type                              : SATA_HDD
+
+Device is a Hard disk
+  Enclosure #                             : 2
+  Slot #                                  : 10
+  State                                   : Ready (RDY)
+  Size (in MB)/(in sectors)               : 1907729/3907029167
+  Manufacturer                            : ATA     
+  Model Number                            : WDC WD2003FYYS-0
+  Firmware Revision                       : 1D02
+  Serial No                               : WDWMAY04598652
+  Protocol                                : SATA
+  Drive Type                              : SATA_HDD
+
+Device is a Hard disk
+  Enclosure #                             : 2
+  Slot #                                  : 11
+  State                                   : Ready (RDY)
+  Size (in MB)/(in sectors)               : 381554/781422767
+  Manufacturer                            : ATA     
+  Model Number                            : INTEL SSDSC2BA40
+  Firmware Revision                       : 0265
+  Serial No                               : BTTV319202JH400HGN
+  Protocol                                : SATA
+  Drive Type                              : SATA_SSD
+------------------------------------------------------------------------
+Enclosure information
+------------------------------------------------------------------------
+  Enclosure#                              : 1
+  Logical ID                              : 500605b0:05d34390
+  Numslots                                : 8
+  StartSlot                               : 0
+  Enclosure#                              : 2
+  Logical ID                              : 50030480:00aa79bf
+  Numslots                                : 13
+  StartSlot                               : 0
+------------------------------------------------------------------------
+SAS2IRCU: Command DISPLAY Completed Successfully.
+SAS2IRCU: Utility Completed Successfully.
