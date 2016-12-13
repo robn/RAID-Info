@@ -1,0 +1,7 @@
+- connect physical disks to virtual
+  - store physical disk assignment to virtual separately on physical disk obj (@79221e2)
+- controller state
+- battery presence/status
+- sas2ir/sas3ir virtual disks (we have none)
+- utils
+  - tree dumper
