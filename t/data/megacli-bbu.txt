@@ -1,0 +1,17 @@
+                                     
+
+BBU Capacity Info for Adapter: 0
+
+  Relative State of Charge: 49 %
+  Absolute State of charge: 43 %
+  Remaining Capacity: 766 mAh
+  Full Charge Capacity: 1574 mAh
+  Run time to empty: Battery is not being charged.  
+  Average time to empty: Battery is not being charged.  
+  Estimated Time to full recharge: Battery is not being charged.  
+  Cycle Count: 50
+Max Error = 2 %
+Remaining Capacity Alarm = 180 mAh
+Remining Time Alarm = 10 Min
+
+Exit Code: 0x00
