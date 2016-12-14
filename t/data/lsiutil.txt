@@ -1,0 +1,82 @@
+
+LSI Logic MPT Configuration Utility, Version 1.62, January 14, 2009
+
+1 MPT Port found
+
+     Port Name         Chip Vendor/Type/Rev    MPT Rev  Firmware Rev  IOC
+ 1.  /proc/mpt/ioc0    LSI Logic SAS1068E B3     105      00192f00     0
+
+Select a device:  [1-1 or 0 to quit] 
+ 1.  Identify firmware, BIOS, and/or FCode
+ 2.  Download firmware (update the FLASH)
+ 4.  Download/erase BIOS and/or FCode (update the FLASH)
+ 8.  Scan for devices
+10.  Change IOC settings (interrupt coalescing)
+13.  Change SAS IO Unit settings
+16.  Display attached devices
+20.  Diagnostics
+21.  RAID actions
+22.  Reset bus
+23.  Reset target
+42.  Display operating system names for devices
+45.  Concatenate SAS firmware and NVDATA files
+59.  Dump PCI config space
+60.  Show non-default settings
+61.  Restore default settings
+66.  Show SAS discovery errors
+69.  Show board manufacturing information
+97.  Reset SAS link, HARD RESET
+98.  Reset SAS link
+99.  Reset port
+ e   Enable expert mode in menus
+ p   Enable paged mode
+ w   Enable logging
+
+Main menu, select an option:  [1-99 or e/p/w or 0 to quit] 
+ 1.  Show volumes
+ 2.  Show physical disks
+ 3.  Get volume state
+ 4.  Wait for volume resync to complete
+23.  Replace physical disk
+26.  Disable drive firmware update mode
+27.  Enable drive firmware update mode
+30.  Create volume
+31.  Delete volume
+32.  Change volume settings
+33.  Change volume name
+50.  Create hot spare
+51.  Delete hot spare
+99.  Reset port
+ e   Enable expert mode in menus
+ p   Enable paged mode
+ w   Enable logging
+
+RAID actions menu, select an option:  [1-99 or e/p/w or 0 to quit] 
+1 volume is active, 2 physical disks are active
+
+Volume 0 is Bus 0 Target 0, Type IM (Integrated Mirroring)
+  Volume Name:                                  
+  Volume WWID:  013a6e3c34019152
+  Volume State:  optimal, enabled
+  Volume Settings:  write caching enabled, auto configure, priority resync
+  Volume draws from Hot Spare Pools:  0
+  Volume Size 237952 MB, 2 Members
+  Primary is PhysDisk 1 (Bus 0 Target 9)
+  Secondary is PhysDisk 0 (Bus 0 Target 1)
+
+RAID actions menu, select an option:  [1-99 or e/p/w or 0 to quit] 
+1 volume is active, 2 physical disks are active
+
+PhysDisk 0 is Bus 0 Target 1
+  PhysDisk State:  online
+  PhysDisk Size 238475 MB, Inquiry Data:  ATA      ST9250610NS      AA0D
+Warning, page length in reply does not match page length in buffer
+  (9 vs. 15)
+
+PhysDisk 1 is Bus 0 Target 9
+  PhysDisk State:  online
+  PhysDisk Size 238475 MB, Inquiry Data:  ATA      ST9250610NS      AA0D
+Warning, page length in reply does not match page length in buffer
+  (9 vs. 15)
+
+RAID actions menu, select an option:  [1-99 or e/p/w or 0 to quit] 
