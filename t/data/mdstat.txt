@@ -1,0 +1,14 @@
+Personalities : [raid1] 
+md3 : active raid1 nvme1n1p2[1] nvme0n1p2[0]
+      390573056 blocks super 1.2 [2/2] [UU]
+      
+md2 : active raid1 nvme1n1p1[1] nvme0n1p1[0]
+      390571008 blocks super 1.2 [2/2] [UU]
+      
+md1 : active raid1 sdb5[0] sda5[1]
+      958198464 blocks super 1.2 [2/2] [UU]
+      
+md0 : active raid1 sdb1[0] sda1[1]
+      16375808 blocks super 1.2 [2/2] [UU]
+      
+unused devices: <none>
