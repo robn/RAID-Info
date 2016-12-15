@@ -80,7 +80,7 @@ sub _build_virtual_disks {
         name     => $name,
         level    => $level,
         capacity => $capacity,
-        state    => $state_map->{$state},
+        state    => $state_map->{$state} // $state,
       )
     }
     else {

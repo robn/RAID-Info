@@ -67,7 +67,7 @@ sub _build_virtual_disks {
       name     => $_,
       level    => $detail->{'Raid Level'},
       capacity => [$detail->{'Array Size'} =~ m/([\d\.]+ .B)/]->[0],
-      state    => $state_map->{$detail->{State}},
+      state    => $state_map->{$detail->{State}} // $detail->{State},
     )
   } $self->_mdstat_raw =~ m/^(md\w+)\s*:/smg;
 
