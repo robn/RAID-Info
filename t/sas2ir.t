@@ -13,18 +13,18 @@ my $c = RAID::Info::SAS2IR->_new_for_test(
 my $physical = $c->physical_disks;
 is scalar @$physical, 12, '12 physical disks';
 is int($physical->[$_]->{capacity}), [
-  465,
-  465,
-  372,
-  1863,
-  1863,
-  372,
-  1863,
-  1863,
-  372,
-  1863,
-  1863,
-  372,
+  476940000000,
+  476940000000,
+  381554000000,
+  1907729000000,
+  1907729000000,
+  381554000000,
+  1907729000000,
+  1907729000000,
+  381554000000,
+  1907729000000,
+  1907729000000,
+  381554000000,
 ]->[$_], "physical disk $_ has correct capacity" for (0..11);
 
 my $virtual = $c->virtual_disks;

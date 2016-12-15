@@ -43,7 +43,7 @@ sub _build_physical_disks {
     my %vars = map { m/:\s/ ? split '\s*:\s+', $_, 2 : () } @lines;
     if (exists $vars{'Device Id'}) {
       my $id = $vars{'Device Id'};
-      my $capacity = [$vars{'Raw Size'} =~ m/^([\d\.]+)/]->[0] * 1024;
+      my $capacity = [$vars{'Raw Size'} =~ m/^([\d\.]+ .B)/]->[0];
       ($id => RAID::Info::PhysicalDisk->new(
         id       => $id,
         slot     => $vars{'Slot Number'},
@@ -76,12 +76,11 @@ sub _build_virtual_disks {
       my %vars = map { m/:\s/ ? split '\s*:\s+', $_, 2 : () } @lines;
       my $name  = $vars{Name} // '';
       my $level = $vars{'RAID Level'};
-      my $capacity = [$vars{'Size'} =~ m/([\d\.]+)/]->[0] * ($vars{'Size'} =~ m/GB/ ? 1 : 1024);
       RAID::Info::VirtualDisk->new(
         id       => $id,
         name     => $name,
         level    => $level,
-        capacity => $capacity,
+        capacity => $vars{'Size'},
         state    => $state_map->{$vars{'State'}},
       )
     }

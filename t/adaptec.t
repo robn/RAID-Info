@@ -14,15 +14,15 @@ my $c = RAID::Info::Adaptec->_new_for_test(
 my $physical = $c->physical_disks;
 is scalar @$physical, 2, '2 physical disks';
 is int($physical->[$_]->{capacity}), [
-  149,
-  149,
+  152627000000,
+  152627000000,
 ]->[$_], "physical disk $_ has correct capacity" for (0..1);
 
 
 my $virtual = $c->virtual_disks;
 is scalar @$virtual, 1, '1 virtual disk';
 is int($virtual->[$_]->{capacity}), [
-  148,
+  152500000000,
 ]->[$_], "virtual disk $_ has correct capacity" for (0);
 
 done_testing;

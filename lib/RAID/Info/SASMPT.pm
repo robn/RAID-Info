@@ -48,7 +48,7 @@ sub _build_physical_disks {
         id       => $id,
         slot     => $id,
         model    => $model,
-        capacity => ($capacity =~ s/ MB//r) / 1000,
+        capacity => $capacity,
       )
     }
     else {
@@ -80,7 +80,7 @@ sub _build_virtual_disks {
         id       => $id,
         name     => $name,
         level    => $level,
-        capacity => ($capacity =~ s/ MB//r) / 1000,
+        capacity => $capacity,
         state    => $state_map->{$state},
       )
     }

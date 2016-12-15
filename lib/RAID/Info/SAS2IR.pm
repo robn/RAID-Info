@@ -43,12 +43,12 @@ sub _build_physical_disks {
     if ($device eq 'Hard disk') {
       my %vars = map { m/:\s/ ? split '\s*:\s+', $_, 2 : () } @lines;
       my $id = "$vars{'Enclosure #'}/$vars{'Slot #'}";
-      my $capacity = [$vars{'Size (in MB)/(in sectors)'} =~ m/^([\d\.]+)/]->[0] / 1024;
+      my $capacity = [$vars{'Size (in MB)/(in sectors)'} =~ m/^([\d\.]+)/]->[0];
       RAID::Info::PhysicalDisk->new(
         id       => $id,
         slot     => $vars{'Slot #'},
         model    => $vars{'Model Number'} =~ s/\s+/ /gr,
-        capacity => $capacity,
+        capacity => "$capacity MB",
       )
     }
     else {

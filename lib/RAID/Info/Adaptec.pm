@@ -44,12 +44,11 @@ sub _build_physical_disks {
     if ($typeline && $typeline =~ m/Device is a Hard drive/) {
       my %vars = map { split '\s+:\s+', $_ } @lines;
       my ($slot) = $vars{'Reported Location'} =~ m/Enclosure \d+, Slot (\d+)/;
-      my ($capacity) = [$vars{'Total Size'} =~ m/(\d+)/]->[0] / 1024;
       RAID::Info::PhysicalDisk->new(
         id       => $id,
         slot     => $slot,
         model    => $vars{'Model'},
-        capacity => $capacity,
+        capacity => $vars{'Total Size'},
       )
     }
     else {
@@ -74,12 +73,11 @@ sub _build_virtual_disks {
     my ($id, @lines) = map { m/^\s*(.+)\s*$/ } split /[\r\n]+/, $_;
     if (defined $id) {
       my %vars = map { split '\s+:\s+', $_ } @lines;
-      my ($capacity) = [$vars{'Size'} =~ m/(\d+)/]->[0] / 1024;
       RAID::Info::VirtualDisk->new(
         id       => $id,
         name     => $vars{'Logical device name'},
         level    => $vars{'RAID level'},
-        capacity => $capacity,
+        capacity => $vars{'Size'},
         state    => $state_map->{$vars{'Status of logical device'}},
       )
     }
