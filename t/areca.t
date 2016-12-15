@@ -14,8 +14,38 @@ my $c = RAID::Info::Areca->_new_for_test(
 
 my $physical = $c->physical_disks;
 is scalar @$physical, 24, '24 physical disks';
+is int($physical->[$_]->{capacity}), [
+  4000,
+  4000,
+  4000,
+  4000,
+  4000,
+  4000,
+  4000,
+  4000,
+  4000,
+  4000,
+  4000,
+  4000,
+  4000,
+  4000,
+  4000,
+  4000,
+  4000,
+  4000,
+  4000,
+  4000,
+  4000,
+  4000,
+  4000,
+  4000,
+]->[$_], "physical disk $_ has correct capacity" for (0..23);
 
 my $virtual = $c->virtual_disks;
 is scalar @$virtual, 2, '2 virtual disks';
+is int($virtual->[$_]->{capacity}), [
+  40000,
+  40000,
+]->[$_], "virtual disk $_ has correct capacity" for (0..1);
 
 done_testing;
