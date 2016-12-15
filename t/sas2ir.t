@@ -12,7 +12,7 @@ my $c = RAID::Info::SAS2IR->_new_for_test(
 
 my $physical = $c->physical_disks;
 is scalar @$physical, 12, '12 physical disks';
-is int($physical->[$_]->{capacity}), [
+is int($physical->[$_]->capacity), [
   476940000000,
   476940000000,
   381554000000,

@@ -16,7 +16,7 @@ use RAID::Info::Areca;
 
   my $physical = $c->physical_disks;
   is scalar @$physical, 24, '24 physical disks';
-  is int($physical->[$_]->{capacity}), [
+  is int($physical->[$_]->capacity), [
     4000800000000,
     4000800000000,
     4000800000000,
@@ -45,7 +45,7 @@ use RAID::Info::Areca;
 
   my $virtual = $c->virtual_disks;
   is scalar @$virtual, 2, '2 virtual disks';
-  is int($virtual->[$_]->{capacity}), [
+  is int($virtual->[$_]->capacity), [
     40000000000000,
     40000000000000,
   ]->[$_], "virtual disk $_ has correct capacity" for (0..1);
@@ -61,7 +61,7 @@ use RAID::Info::Areca;
 
   my $physical = $c->physical_disks;
   is scalar @$physical, 24, '24 physical disks';
-  is int($physical->[$_]->{capacity}), [
+  is int($physical->[$_]->capacity), [
     4000800000000,
     4000800000000,
     4000800000000,
@@ -90,7 +90,7 @@ use RAID::Info::Areca;
 
   my $virtual = $c->virtual_disks;
   is scalar @$virtual, 2, '2 virtual disks';
-  is int($virtual->[$_]->{capacity}), [
+  is int($virtual->[$_]->capacity), [
     40000000000000,
     40000000000000,
   ]->[$_], "virtual disk $_ has correct capacity" for (0..1);

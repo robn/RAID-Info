@@ -12,7 +12,7 @@ my $c = RAID::Info::MegaRAID->_new_for_test(
 
 my $physical = $c->physical_disks;
 is scalar @$physical, 14, '14 physical disks';
-is int($physical->[$_]->{capacity}), [
+is int($physical->[$_]->capacity), [
   1819000000000,
   1819000000000,
   1819000000000,
@@ -31,7 +31,7 @@ is int($physical->[$_]->{capacity}), [
 
 my $virtual = $c->virtual_disks;
 is scalar @$virtual, 4, '4 virtual disks';
-is int($virtual->[$_]->{capacity}), [
+is int($virtual->[$_]->capacity), [
   466000000000,
   1363000000000,
   14550000000000,

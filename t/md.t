@@ -20,7 +20,7 @@ is scalar @$physical, 0, '0 physical disks';
 
 my $virtual = $c->virtual_disks;
 is scalar @$virtual, 4, '4 virtual disks';
-is int($virtual->[$_]->{capacity}), [
+is int($virtual->[$_]->capacity), [
   399950000000,
   399940000000,
   981200000000,
