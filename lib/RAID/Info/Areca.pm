@@ -69,12 +69,14 @@ sub _build_virtual_disks {
   $self->_load_data_from_controller;
 
   state $state_map = {
-    Normal => 'normal',
+    Normal     => 'normal',
+    Rebuilding => 'rebuilding',
   };
 
   my @virtual = map {
     if (my ($id, $name, $raid_name, $level, $capacity, $lun, $state) =
           m{^\s+(\d+)\s+(\S+)\s+(\S+)\s+(\S+)\s+([\d\.]+.B)\s+([\d/]+)\s+(\S+)\s*}) {
+      $state =~ s/\(.*//;
       RAID::Info::VirtualDisk->new(
         id       => $id,
         name     => $name,

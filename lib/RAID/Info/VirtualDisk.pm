@@ -10,9 +10,9 @@ use Type::Utils qw(enum);
 
 with 'RAID::Info::Disk';
 
-has name     => ( is => 'ro', isa => Str,                         required => 1 );
-has level    => ( is => 'ro', isa => Str,                         required => 1 );
-has state    => ( is => 'ro', isa => enum([qw(normal degraded)]), required => 1 );
+has name  => ( is => 'ro', isa => Str,                                    required => 1 );
+has level => ( is => 'ro', isa => Str,                                    required => 1 );
+has state => ( is => 'ro', isa => enum([qw(normal degraded rebuilding)]), required => 1 );
 
 1;
 
