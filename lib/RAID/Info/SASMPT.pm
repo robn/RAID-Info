@@ -49,6 +49,7 @@ sub _build_physical_disks {
         slot     => $id,
         model    => $model,
         capacity => $capacity,
+        state    => $state,
       )
     }
     else {

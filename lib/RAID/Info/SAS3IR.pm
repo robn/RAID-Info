@@ -38,17 +38,23 @@ sub _build_physical_disks {
 
   $self->_load_data_from_controller;
 
+  state $state_map = {
+    RDY => 'online',
+  };
+
   my @disks = map {
     my ($device, @lines) = map { m/^\s*(.+)\s*$/ } split /\n+/, $_;
     if ($device eq 'Hard disk') {
       my %vars = map { m/:\s/ ? split '\s*:\s+', $_, 2 : () } @lines;
       my $id = "$vars{'Enclosure #'}/$vars{'Slot #'}";
       my $capacity = [$vars{'Size (in MB)/(in sectors)'} =~ m/^([\d\.]+)/]->[0];
+      my ($state) = $vars{'State'} =~ m/\(([A-Z]+)\)$/;
       RAID::Info::PhysicalDisk->new(
         id       => $id,
         slot     => $vars{'Slot #'},
         model    => $vars{'Model Number'} =~ s/\s+/ /gr,
         capacity => "$capacity MB",
+        state    => $state_map->{$state} // $state,
       )
     }
     else {

@@ -44,15 +44,26 @@ sub _build_physical_disks {
 
   $self->_load_data_from_controller;
 
+  state $state_map = {
+    Failed => 'failed',
+  };
+
   my @disks = map {
     if (my ($id, $enc, $slot, $model, $capacity, $usage) =
-          m{^\s+(\d+)\s+(\d+)\s+Slot\s*(\d+)\s+(.+?)\s+([\d\.]+.B)\s+(.+)\s*$}) {
-      RAID::Info::PhysicalDisk->new(
-        id       => $id,
-        slot     => $slot =~ s/Slot//r,
-        model    => $model,
-        capacity => $capacity,
-      )
+          m{^\s+(\d+)\s+(\d+)\s+Slot[\s#]*(\d+)\s+(.+?)\s+([\d\.]+.B)\s+(.+?)\s*$}) {
+      if ($usage eq 'N.A.') {
+        ()
+      }
+      else {
+        my $state = $state_map->{$usage} // "online";
+        RAID::Info::PhysicalDisk->new(
+          id       => $id,
+          slot     => $slot,
+          model    => $model,
+          capacity => $capacity,
+          state    => $state,
+        )
+      }
     }
     else {
       ()
