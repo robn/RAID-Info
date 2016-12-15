@@ -46,7 +46,7 @@ sub _build_physical_disks {
 
   my @disks = map {
     if (my ($id, $enc, $slot, $model, $capacity, $usage) =
-          m{^\s+(\d+)\s+(\d+)\s+Slot(\d+)\s+(.+?)\s+([\d\.]+.B)\s+(.+)\s*$}) {
+          m{^\s+(\d+)\s+(\d+)\s+Slot\s*(\d+)\s+(.+?)\s+([\d\.]+.B)\s+(.+)\s*$}) {
       RAID::Info::PhysicalDisk->new(
         id       => $id,
         slot     => $slot =~ s/Slot//r,
@@ -75,7 +75,7 @@ sub _build_virtual_disks {
 
   my @virtual = map {
     if (my ($id, $name, $raid_name, $level, $capacity, $lun, $state) =
-          m{^\s+(\d+)\s+(\S+)\s+(\S+)\s+(\S+)\s+([\d\.]+.B)\s+([\d/]+)\s+(\S+)\s*}) {
+          m{^\s+(\d+)\s+(\S+)\s+(.+)\s+(\S+)\s+([\d\.]+.B)\s+([\d/]+)\s+(\S+)\s*}) {
       $state =~ s/\(.*//;
       RAID::Info::VirtualDisk->new(
         id       => $id,

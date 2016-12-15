@@ -1,0 +1,29 @@
+The Hardware Monitor Information
+=====================================================
+[Controller H/W Monitor]
+  CPU Temperature  : 64 C
+  Controller Temp. : 45 C
+  CPU Fan          : 6026 RPM
+  12V              : 12.403 V
+  5V               : 5.107 V
+  3.3V             : 3.408 V
+  IO Voltage +1.8V : 1.856 V
+  DDR3       +1.5V : 1.568 V
+  CPU VCore  +1.0V : 1.056 V
+  Analog     +1.0V : 1.040 V
+  DDR3      +0.75V : 0.768 V
+  Battery Status   : 100%
+[Enclosure#1 : ARECA   SAS RAID AdapterV1.0]
+[Enclosure#2 : LSI     SAS2X36         0e12]
+  5V               : 5.020 V
+  12V              : 12.050 V
+  Fan1             : 5100 RPM
+  Fan2             : 5400 RPM
+  Fan3             : 5160 RPM
+  JBOD_Fan1        : 0 RPM
+  JBOD_Fan2        : 0 RPM
+  Power Supply 1   : FAILED
+  Power Supply 2   : FAILED
+  Temperature      : 38 C
+=====================================================
+GuiErrMsg<0x00>: Success.

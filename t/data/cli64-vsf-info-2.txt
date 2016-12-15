@@ -1,0 +1,6 @@
+  # Name             Raid Name       Level   Capacity Ch/Id/Lun  State         
+===============================================================================
+  1 si1d1spool       Raid Set # 000  Raid6   40000.0GB 00/00/00   Normal
+  2 si1d2spool       Raid Set # 001  Raid6   40000.0GB 00/00/01   Rebuilding(35.3%)
+===============================================================================
+GuiErrMsg<0x00>: Success.
