@@ -6,11 +6,9 @@ use strict;
 
 use Moo;
 use Type::Params qw(compile);
-use Type::Utils qw(class_type);
 use Types::Standard qw(slurpy ClassName Dict Str ArrayRef);
 
-use RAID::Info::PhysicalDisk;
-use RAID::Info::VirtualDisk;
+with 'RAID::Info::Controller';
 
 has _mdstat_raw => ( is => 'rw', isa => Str );
 has _detail_raw => ( is => 'rw', isa => ArrayRef[Str] );
@@ -35,14 +33,12 @@ sub _new_for_test {
 sub _load_data_from_controller {
 }
 
-has physical_disks => ( is => 'lazy', isa => ArrayRef[class_type('RAID::Info::PhysicalDisk')] );
 sub _build_physical_disks {
   my ($self) = @_;
 
   return [];
 }
 
-has virtual_disks => ( is => 'lazy', isa => ArrayRef[class_type('RAID::Info::VirtualDisk')] );
 sub _build_virtual_disks {
   my ($self) = @_;
 
