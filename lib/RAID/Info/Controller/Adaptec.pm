@@ -5,9 +5,13 @@ use namespace::autoclean;
 
 use Moo;
 use Type::Params qw(compile);
-use Types::Standard qw(slurpy ClassName Dict Str);
+use Types::Standard qw(slurpy ClassName Dict Str Int);
 
 with 'RAID::Info::Controller';
+
+use IPC::System::Simple qw(capturex);
+
+has id => ( is => 'ro', isa => Int, required => 1 );
 
 has _getconfig_raw => ( is => 'rw', isa => Str );
 
@@ -20,13 +24,18 @@ sub _new_for_test {
   );
   my ($class, $args) = $check->(@_);
 
-  my $self = $class->new;
+  my $self = $class->new(id => 1);
   $self->_getconfig_raw($args->{getconfig});
 
   return $self;
 }
 
 sub _load_data_from_controller {
+  my ($self) = @_;
+  return if defined $self->_getconfig_raw;
+
+  my $raw = capturex(qw(arcconf getconfig), $self->id);
+  $self->_getconfig_raw($raw);
 }
 
 sub _build_physical_disks {
