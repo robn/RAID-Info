@@ -32,5 +32,11 @@ is $virtual->[$_]->level, [qw(
   raid1
   raid1
 )]->[$_], "virtual disk $_ has correct raid level" for (0..3);
+is $virtual->[$_]->state, [qw(
+  normal
+  normal
+  normal
+  normal
+)]->[$_], "virtual disk $_ has correct state" for (0..3);
 
 done_testing;

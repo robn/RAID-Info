@@ -26,6 +26,20 @@ is int($physical->[$_]->capacity), [
   1907729000000,
   381554000000,
 ]->[$_], "physical disk $_ has correct capacity" for (0..11);
+is $physical->[$_]->state, [qw(
+  online
+  online
+  online
+  online
+  online
+  online
+  online
+  online
+  online
+  online
+  online
+  online
+)]->[$_], "physical disk $_ has correct state" for (0..11);
 
 my $virtual = $c->virtual_disks;
 is scalar @$virtual, 0, '0 virtual disks';

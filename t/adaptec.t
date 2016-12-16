@@ -17,6 +17,10 @@ is int($physical->[$_]->capacity), [
   152627000000,
   152627000000,
 ]->[$_], "physical disk $_ has correct capacity" for (0..1);
+is $physical->[$_]->state, [qw(
+  online
+  online
+)]->[$_], "physical disk $_ has correct state" for (0..1);
 
 
 my $virtual = $c->virtual_disks;
@@ -27,5 +31,8 @@ is int($virtual->[$_]->capacity), [
 is $virtual->[$_]->level, [qw(
   raid1
 )]->[$_], "virtual disk $_ has correct raid level" for (0);
+is $virtual->[$_]->state, [qw(
+  normal
+)]->[$_], "virtual disk $_ has correct state" for (0);
 
 done_testing;

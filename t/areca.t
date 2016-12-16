@@ -42,6 +42,32 @@ use RAID::Info::Controller::Areca;
     4000800000000,
     4000800000000,
   ]->[$_], "physical disk $_ has correct capacity" for (0..23);
+  is $physical->[$_]->state, [qw(
+    online
+    online
+    online
+    online
+    online
+    online
+    online
+    online
+    online
+    online
+    online
+    online
+    online
+    online
+    online
+    online
+    online
+    online
+    online
+    online
+    online
+    online
+    online
+    online
+  )]->[$_], "physical disk $_ has correct state" for (0..23);
 
   my $virtual = $c->virtual_disks;
   is scalar @$virtual, 2, '2 virtual disks';
@@ -57,6 +83,10 @@ use RAID::Info::Controller::Areca;
     'i21r1',
     'i21r2',
   ]->[$_], "virtual disk $_ has correct raid name" for (0..1);
+  is $virtual->[$_]->state, [qw(
+    normal
+    normal
+  )]->[$_], "virtual disk $_ has correct state" for (0..1);
 }
 
 # second test set
@@ -95,6 +125,32 @@ use RAID::Info::Controller::Areca;
     4000800000000,
     4000800000000,
   ]->[$_], "physical disk $_ has correct capacity" for (0..23);
+  is $physical->[$_]->state, [qw(
+    online
+    online
+    online
+    online
+    online
+    online
+    online
+    online
+    online
+    online
+    online
+    online
+    online
+    online
+    online
+    online
+    online
+    online
+    online
+    online
+    online
+    online
+    online
+    online
+  )]->[$_], "physical disk $_ has correct state" for (0..23);
 
   my $virtual = $c->virtual_disks;
   is scalar @$virtual, 2, '2 virtual disks';
@@ -110,6 +166,10 @@ use RAID::Info::Controller::Areca;
     'Raid Set # 000',
     'Raid Set # 001',
   ]->[$_], "virtual disk $_ has correct raid name" for (0..1);
+  is $virtual->[$_]->state, [qw(
+    normal
+    rebuilding
+  )]->[$_], "virtual disk $_ has correct state" for (0..1);
 }
 
 done_testing;
