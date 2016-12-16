@@ -75,6 +75,14 @@ sub _build_virtual_disks {
     Optimal => 'normal',
   };
 
+  state $level_map = {
+    'Primary-0, Secondary-0, RAID Level Qualifier-0' => 'raid0',
+    'Primary-1, Secondary-0, RAID Level Qualifier-0' => 'raid1',
+    'Primary-5, Secondary-0, RAID Level Qualifier-3' => 'raid5',
+    'Primary-6, Secondary-0, RAID Level Qualifier-3' => 'raid6',
+    'Primary-1, Secondary-3, RAID Level Qualifier-0' => 'raid10',
+  };
+
   my @virtual = map {
     my ($idline, @lines) = split /\n+/;
     my ($id) = $idline =~ m/^(\d+)/;
@@ -85,7 +93,7 @@ sub _build_virtual_disks {
       RAID::Info::VirtualDisk->new(
         id       => $id,
         name     => $name,
-        level    => $level,
+        level    => $level_map->{$level} // $level,
         capacity => $vars{'Size'},
         state    => $state_map->{$vars{'State'}} // $vars{'State'},
       )

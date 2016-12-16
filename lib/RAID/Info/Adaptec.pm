@@ -79,11 +79,12 @@ sub _build_virtual_disks {
     my ($id, @lines) = map { m/^\s*(.+)\s*$/ } split /[\r\n]+/, $_;
     if (defined $id) {
       my %vars = map { split '\s+:\s+', $_ } @lines;
+      my $level = $vars{'RAID level'},
       my $state = $vars{'Status of logical device'};
       RAID::Info::VirtualDisk->new(
         id       => $id,
         name     => $vars{'Logical device name'},
-        level    => $vars{'RAID level'},
+        level    => "raid$level",
         capacity => $vars{'Size'},
         state    => $state_map->{$state} // $state,
       )

@@ -91,7 +91,7 @@ sub _build_virtual_disks {
       RAID::Info::VirtualDisk->new(
         id       => $id,
         name     => $name,
-        level    => $level,
+        level    => lc $level,
         capacity => $capacity,
         state    => $state_map->{$state} // $state,
       )

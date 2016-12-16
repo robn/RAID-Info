@@ -74,7 +74,7 @@ sub _build_virtual_disks {
     my ($id) = m/^(\d+) is Bus \d+ Target \d+/;
     if (defined $id) {
       my ($name) = m/Volume Name:\s+(.*?)\s*$/m;
-      my $level = m/Type IM/ ? '1' : undef;
+      my $level = m/Type IM/ ? 'raid1' : undef;
       my ($state) = m/Volume State:\s+(.+?)\s*$/m;
       my ($capacity) = m/Volume Size (\d+ MB)/m;
       RAID::Info::VirtualDisk->new(
