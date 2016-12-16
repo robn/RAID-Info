@@ -81,14 +81,15 @@ sub _build_virtual_disks {
 
   my @virtual = map {
     if (my ($id, $name, $raid_name, $level, $capacity, $lun, $state) =
-          m{^\s+(\d+)\s+(\S+)\s+(.+)\s+(\S+)\s+([\d\.]+.B)\s+([\d/]+)\s+(\S+)\s*}) {
+          m{^\s+(\d+)\s+(\S+)\s+(.+?)\s+(\S+)\s+([\d\.]+.B)\s+([\d/]+)\s+(\S+)\s*}) {
       $state =~ s/\(.*//;
-      RAID::Info::VirtualDisk->new(
-        id       => $id,
-        name     => $name,
-        level    => lc $level,
-        capacity => $capacity,
-        state    => $state_map->{$state} // $state,
+      RAID::Info::Controller::Areca::VirtualDisk->new(
+        id        => $id,
+        name      => $name,
+        raid_name => $raid_name,
+        level     => lc $level,
+        capacity  => $capacity,
+        state     => $state_map->{$state} // $state,
       )
     }
     else {
@@ -98,5 +99,16 @@ sub _build_virtual_disks {
 
   return \@virtual;
 }
+
+package RAID::Info::Controller::Areca::VirtualDisk;
+
+use namespace::autoclean;
+
+use Moo;
+use Types::Standard qw(Str);
+
+extends 'RAID::Info::VirtualDisk';
+
+has raid_name => ( is => 'ro', isa => Str, required => 1 );
 
 1;

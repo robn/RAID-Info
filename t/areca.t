@@ -53,6 +53,10 @@ use RAID::Info::Controller::Areca;
     raid6
     raid6
   )]->[$_], "virtual disk $_ has correct raid level" for (0..1);
+  is $virtual->[$_]->raid_name, [
+    'i21r1',
+    'i21r2',
+  ]->[$_], "virtual disk $_ has correct raid name" for (0..1);
 }
 
 # second test set
@@ -102,6 +106,10 @@ use RAID::Info::Controller::Areca;
     raid6
     raid6
   )]->[$_], "virtual disk $_ has correct raid level" for (0..1);
+  is $virtual->[$_]->raid_name, [
+    'Raid Set # 000',
+    'Raid Set # 001',
+  ]->[$_], "virtual disk $_ has correct raid name" for (0..1);
 }
 
 done_testing;
