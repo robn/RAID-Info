@@ -28,22 +28,22 @@ is int($physical->[$_]->capacity), [
   1819000000000,
   1819000000000,
 ]->[$_], "physical disk $_ has correct capacity" for (0..13);
-is $physical->[$_]->state, [qw(
-  online
-  online
-  online
-  online
-  online
-  online
-  online
-  online
-  online
-  online
-  online
-  online
-  online
-  online
-)]->[$_], "physical disk $_ has correct state" for (0..13);
+is !!$physical->[$_]->state->is_abnormal, !![
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+]->[$_], "physical disk $_ has correct abnormal state" for (0..13);
 
 my $virtual = $c->virtual_disks;
 is scalar @$virtual, 4, '4 virtual disks';

@@ -35,6 +35,10 @@ sub _build_physical_disks {
 
   $self->_load_data_from_controller;
 
+  state $state_map = {
+    online => sub { RAID::Info::PhysicalDisk::State::Online->new },
+  };
+
   my @disks = map {
     my ($id) = m/^(\d+) is Bus \d+ Target \d+/;
     if (defined $id) {
@@ -45,7 +49,7 @@ sub _build_physical_disks {
         slot     => $id,
         model    => $model,
         capacity => $capacity,
-        state    => $state,
+        state    => eval { $state_map->{$state}->() } // $state,
       )
     }
     else {

@@ -43,7 +43,8 @@ sub _build_physical_disks {
   my %virtual_names = map { $_->raid_name => 1 } @{$self->virtual_disks};
 
   state $state_map = {
-    Failed => 'failed',
+    Online => sub { RAID::Info::PhysicalDisk::State::Online->new },
+    Failed => sub { RAID::Info::PhysicalDisk::State::Failed->new },
   };
 
   my @disks = map {
@@ -53,13 +54,13 @@ sub _build_physical_disks {
         ()
       }
       else {
-        my $state = $virtual_names{$usage} ? 'online' : ($state_map->{$usage} // $usage);
+        my $state = $virtual_names{$usage} ? 'Online' : $usage;
         RAID::Info::PhysicalDisk->new(
           id       => $id,
           slot     => $slot,
           model    => $model,
           capacity => $capacity,
-          state    => $state,
+          state    => eval { $state_map->{$state}->() } // $state,
         )
       }
     }

@@ -35,7 +35,7 @@ sub _build_physical_disks {
   $self->_load_data_from_controller;
 
   state $state_map = {
-    'Online, Spun Up' => 'online',
+    'Online, Spun Up' => sub { RAID::Info::PhysicalDisk::State::Online->new },
   };
 
   my %disks = map {
@@ -50,7 +50,7 @@ sub _build_physical_disks {
         slot     => $vars{'Slot Number'},
         model    => $vars{'Inquiry Data'} =~ s/\s+/ /gr,
         capacity => $capacity,
-        state    => $state_map->{$state} // $state,
+        state    => eval { $state_map->{$state}->() } // $state,
       ))
     }
     else {

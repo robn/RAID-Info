@@ -35,7 +35,7 @@ sub _build_physical_disks {
   $self->_load_data_from_controller;
 
   state $state_map = {
-    Online => 'online',
+    Online => sub { RAID::Info::PhysicalDisk::State::Online->new },
   };
 
   my ($physdev) = $self->_getconfig_raw =~ m{Physical Device information\s*\n-+\n\s{6}(.+)}msg;
@@ -50,7 +50,7 @@ sub _build_physical_disks {
         slot     => $slot,
         model    => $vars{'Model'},
         capacity => $vars{'Total Size'},
-        state    => $state_map->{$state} // $state,
+        state    => eval { $state_map->{$state}->() } // $state,
       )
     }
     else {
