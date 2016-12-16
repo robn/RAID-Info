@@ -1,8 +1,7 @@
 package RAID::Info::Controller::SAS2IR;
 
 use 5.014;
-use warnings;
-use strict;
+use namespace::autoclean;
 
 use Moo;
 use Type::Params qw(compile);

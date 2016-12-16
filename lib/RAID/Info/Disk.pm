@@ -1,8 +1,7 @@
 package RAID::Info::Disk;
 
 use 5.014;
-use warnings;
-use strict;
+use namespace::autoclean;
 
 use Moo::Role;
 use Types::Standard qw(Str Num);

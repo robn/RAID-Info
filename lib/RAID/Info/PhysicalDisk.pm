@@ -1,8 +1,7 @@
 package RAID::Info::PhysicalDisk;
 
 use 5.014;
-use warnings;
-use strict;
+use namespace::autoclean;
 
 use Moo;
 use Types::Standard qw(Str Int);

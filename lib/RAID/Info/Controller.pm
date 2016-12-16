@@ -1,8 +1,7 @@
 package RAID::Info::Controller;
 
 use 5.014;
-use warnings;
-use strict;
+use namespace::autoclean;
 
 use Moo::Role;
 use Type::Utils qw(class_type);
