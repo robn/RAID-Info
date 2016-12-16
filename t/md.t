@@ -26,5 +26,11 @@ is int($virtual->[$_]->capacity), [
   981200000000,
   16770000000,
 ]->[$_], "virtual disk $_ has correct capacity" for (0..3);
+is $virtual->[$_]->level, [qw(
+  raid1
+  raid1
+  raid1
+  raid1
+)]->[$_], "virtual disk $_ has correct raid level" for (0..3);
 
 done_testing;

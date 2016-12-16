@@ -49,6 +49,10 @@ use RAID::Info::Areca;
     40000000000000,
     40000000000000,
   ]->[$_], "virtual disk $_ has correct capacity" for (0..1);
+  is $virtual->[$_]->level, [qw(
+    raid6
+    raid6
+  )]->[$_], "virtual disk $_ has correct raid level" for (0..1);
 }
 
 # second test set
@@ -94,6 +98,10 @@ use RAID::Info::Areca;
     40000000000000,
     40000000000000,
   ]->[$_], "virtual disk $_ has correct capacity" for (0..1);
+  is $virtual->[$_]->level, [qw(
+    raid6
+    raid6
+  )]->[$_], "virtual disk $_ has correct raid level" for (0..1);
 }
 
 done_testing;

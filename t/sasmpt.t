@@ -22,5 +22,8 @@ is scalar @$virtual, 1, '1 virtual disks';
 is int($virtual->[$_]->capacity), [
   237952000000,
 ]->[$_], "virtual disk $_ has correct capacity" for (0);
+is $virtual->[$_]->level, [qw(
+  raid1
+)]->[$_], "virtual disk $_ has correct raid level" for (0);
 
 done_testing;
