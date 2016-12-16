@@ -1,0 +1,16 @@
+Personalities : [raid1] 
+md3 : active raid1 nvme1n1p2[1] nvme0n1p2[0]
+      390573056 blocks super 1.2 [2/2] [UU]
+      	resync=DELAYED
+      
+md2 : active raid1 nvme1n1p1[1] nvme0n1p1[0]
+      390571008 blocks super 1.2 [2/2] [UU]
+      [====>................]  resync = 24.2% (94628480/390571008) finish=24.6min speed=200064K/sec
+      
+md1 : active raid1 sda5[0] sdb5[1]
+      958198464 blocks super 1.2 [2/2] [UU]
+      
+md0 : active raid1 sda1[0] sdb1[1]
+      16375808 blocks super 1.2 [2/2] [UU]
+      
+unused devices: <none>

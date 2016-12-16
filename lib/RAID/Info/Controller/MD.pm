@@ -51,18 +51,21 @@ sub _build_virtual_disks {
   } @{$self->_detail_raw};
 
   state $state_map = {
-    clean => sub { RAID::Info::VirtualDisk::State::Normal->new },
+    clean                         => sub { RAID::Info::VirtualDisk::State::Normal->new },
+    'active, resyncing'           => sub { RAID::Info::VirtualDisk::State::Rebuilding->new(progress => shift) },
+    'active, resyncing (DELAYED)' => sub { RAID::Info::VirtualDisk::State::Rebuilding->new(progress => 0) },
   };
 
   my @virtual = map {
     my $detail = $details{$_};
     my $state = $detail->{State};
+    my ($progress) = ($detail->{'Resync Status'} // '') =~ m/^(\d+)\%/;
     RAID::Info::VirtualDisk->new(
       id       => $_,
       name     => $_,
       level    => $detail->{'Raid Level'},
       capacity => [$detail->{'Array Size'} =~ m/([\d\.]+ .B)/]->[0],
-      state    => eval { $state_map->{$state}->() } // $state,
+      state    => eval { $state_map->{$state}->($progress) } // $state,
     )
   } $self->_mdstat_raw =~ m/^(md\w+)\s*:/smg;
 

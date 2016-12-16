@@ -1,0 +1,24 @@
+/dev/md3:
+        Version : 1.2
+  Creation Time : Fri Dec 16 05:14:38 2016
+     Raid Level : raid1
+     Array Size : 390573056 (372.48 GiB 399.95 GB)
+  Used Dev Size : 390573056 (372.48 GiB 399.95 GB)
+   Raid Devices : 2
+  Total Devices : 2
+    Persistence : Superblock is persistent
+
+    Update Time : Fri Dec 16 05:14:53 2016
+          State : active, resyncing (DELAYED) 
+ Active Devices : 2
+Working Devices : 2
+ Failed Devices : 0
+  Spare Devices : 0
+
+           Name : db2:3  (local to host db2)
+           UUID : 8be48f09:8fe0eb52:038aa14c:cd68b8c5
+         Events : 2
+
+    Number   Major   Minor   RaidDevice State
+       0     259        7        0      active sync   /dev/nvme0n1p2
+       1     259        9        1      active sync   /dev/nvme1n1p2
