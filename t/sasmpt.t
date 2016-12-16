@@ -29,8 +29,8 @@ is int($virtual->[$_]->capacity), [
 is $virtual->[$_]->level, [qw(
   raid1
 )]->[$_], "virtual disk $_ has correct raid level" for (0);
-is $virtual->[$_]->state, [qw(
-  normal
-)]->[$_], "virtual disk $_ has correct state" for (0);
+is !!$virtual->[$_]->state->is_abnormal, !![
+  0,
+]->[$_], "virtual disk $_ has correct abnormal state" for (0);
 
 done_testing;

@@ -67,7 +67,7 @@ sub _build_virtual_disks {
   $self->_load_data_from_controller;
 
   state $state_map = {
-    Optimal => 'normal',
+    Optimal => sub { RAID::Info::VirtualDisk::State::Normal->new },
   };
 
   state $level_map = {
@@ -85,12 +85,13 @@ sub _build_virtual_disks {
       my %vars = map { m/:\s/ ? split '\s*:\s+', $_, 2 : () } @lines;
       my $name  = $vars{Name} // '';
       my $level = $vars{'RAID Level'};
+      my $state = $vars{'State'};
       RAID::Info::VirtualDisk->new(
         id       => $id,
         name     => $name,
         level    => $level_map->{$level} // $level,
         capacity => $vars{'Size'},
-        state    => $state_map->{$vars{'State'}} // $vars{'State'},
+        state    => eval { $state_map->{$state}->() } // $state,
       )
     }
     else {

@@ -51,18 +51,18 @@ sub _build_virtual_disks {
   } @{$self->_detail_raw};
 
   state $state_map = {
-    clean => 'normal',
+    clean => sub { RAID::Info::VirtualDisk::State::Normal->new },
   };
 
   my @virtual = map {
     my $detail = $details{$_};
-
+    my $state = $detail->{State};
     RAID::Info::VirtualDisk->new(
       id       => $_,
       name     => $_,
       level    => $detail->{'Raid Level'},
       capacity => [$detail->{'Array Size'} =~ m/([\d\.]+ .B)/]->[0],
-      state    => $state_map->{$detail->{State}} // $detail->{State},
+      state    => eval { $state_map->{$state}->() } // $state,
     )
   } $self->_mdstat_raw =~ m/^(md\w+)\s*:/smg;
 

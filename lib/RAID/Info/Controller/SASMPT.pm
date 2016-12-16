@@ -62,7 +62,7 @@ sub _build_virtual_disks {
   $self->_load_data_from_controller;
 
   state $state_map = {
-    'optimal, enabled' => 'normal',
+    'optimal, enabled' => sub { RAID::Info::VirtualDisk::State::Normal->new },
   };
 
   my @virtual = map {
@@ -77,7 +77,7 @@ sub _build_virtual_disks {
         name     => $name,
         level    => $level,
         capacity => $capacity,
-        state    => $state_map->{$state},
+        state    => eval { $state_map->{$state}->() } // $state,
       )
     }
     else {

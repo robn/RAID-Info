@@ -77,21 +77,20 @@ sub _build_virtual_disks {
   $self->_load_data_from_controller;
 
   state $state_map = {
-    Normal     => 'normal',
-    Rebuilding => 'rebuilding',
+    Normal     => sub { RAID::Info::VirtualDisk::State::Normal->new },
+    Rebuilding => sub { RAID::Info::VirtualDisk::State::Rebuilding->new(progress => shift) },
   };
 
   my @virtual = map {
-    if (my ($id, $name, $raid_name, $level, $capacity, $lun, $state) =
-          m{^\s+(\d+)\s+(\S+)\s+(.+?)\s+(\S+)\s+([\d\.]+.B)\s+([\d/]+)\s+(\S+)\s*}) {
-      $state =~ s/\(.*//;
+    if (my ($id, $name, $raid_name, $level, $capacity, $lun, $state, $progress) =
+          m{^\s+(\d+)\s+(\S+)\s+(.+?)\s+(\S+)\s+([\d\.]+.B)\s+([\d/]+)\s+([^\s\(]+)(?:\(([\d\.]+)\%\))?\s*}) {
       RAID::Info::Controller::Areca::VirtualDisk->new(
         id        => $id,
         name      => $name,
         raid_name => $raid_name,
         level     => lc $level,
         capacity  => $capacity,
-        state     => $state_map->{$state} // $state,
+        state     => eval { $state_map->{$state}->($progress) } // $state,
       )
     }
     else {

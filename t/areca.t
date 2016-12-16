@@ -83,10 +83,10 @@ use RAID::Info::Controller::Areca;
     'i21r1',
     'i21r2',
   ]->[$_], "virtual disk $_ has correct raid name" for (0..1);
-  is $virtual->[$_]->state, [qw(
-    normal
-    normal
-  )]->[$_], "virtual disk $_ has correct state" for (0..1);
+  is !!$virtual->[$_]->state->is_abnormal, !![
+    0,
+    0,
+  ]->[$_], "virtual disk $_ has correct abnormal state" for (0..1);
 }
 
 # second test set
@@ -166,10 +166,11 @@ use RAID::Info::Controller::Areca;
     'Raid Set # 000',
     'Raid Set # 001',
   ]->[$_], "virtual disk $_ has correct raid name" for (0..1);
-  is $virtual->[$_]->state, [qw(
-    normal
-    rebuilding
-  )]->[$_], "virtual disk $_ has correct state" for (0..1);
+  is !!$virtual->[$_]->state->is_abnormal, !![
+    0,
+    1,
+  ]->[$_], "virtual disk $_ has correct abnormal state" for (0..1);
+  is $virtual->[1]->state->progress, 35.3, "virtual disk 1 is in rebuild with correct progress";
 }
 
 done_testing;

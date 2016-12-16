@@ -66,7 +66,7 @@ sub _build_virtual_disks {
   $self->_load_data_from_controller;
 
   state $state_map = {
-    Optimal => 'normal',
+    Optimal => sub { RAID::Info::VirtualDisk::State::Normal->new },
   };
 
   my ($logidev) = $self->_getconfig_raw =~ m{Logical device information\s*\n-+\n(.+?)\n   -+}msg;
@@ -81,7 +81,7 @@ sub _build_virtual_disks {
         name     => $vars{'Logical device name'},
         level    => "raid$level",
         capacity => $vars{'Size'},
-        state    => $state_map->{$state} // $state,
+        state    => eval { $state_map->{$state}->() } // $state,
       )
     }
     else {
