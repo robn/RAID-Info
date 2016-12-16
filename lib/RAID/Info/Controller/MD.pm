@@ -1,4 +1,4 @@
-package RAID::Info::MD;
+package RAID::Info::Controller::MD;
 
 use 5.014;
 use warnings;

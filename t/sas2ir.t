@@ -4,9 +4,9 @@ use warnings;
 use strict;
 use Test::More;
 
-use RAID::Info::SAS2IR;
+use RAID::Info::Controller::SAS2IR;
 
-my $c = RAID::Info::SAS2IR->_new_for_test(
+my $c = RAID::Info::Controller::SAS2IR->_new_for_test(
   display => do { local (@ARGV, $/) = ('t/data/sas2ircu-display.txt'); <> },
 );
 

@@ -5,9 +5,9 @@ use strict;
 use Test::More;
 use Test::Deep;
 
-use RAID::Info::Adaptec;
+use RAID::Info::Controller::Adaptec;
 
-my $c = RAID::Info::Adaptec->_new_for_test(
+my $c = RAID::Info::Controller::Adaptec->_new_for_test(
   getconfig => do { local (@ARGV, $/) = ('t/data/arcconf-getconfig.txt'); <> },
 );
 

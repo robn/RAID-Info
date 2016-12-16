@@ -1,4 +1,4 @@
-package RAID::Info::SAS2IR;
+package RAID::Info::Controller::SAS2IR;
 
 use 5.014;
 use warnings;

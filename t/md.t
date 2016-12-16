@@ -4,9 +4,9 @@ use warnings;
 use strict;
 use Test::More;
 
-use RAID::Info::MD;
+use RAID::Info::Controller::MD;
 
-my $c = RAID::Info::MD->_new_for_test(
+my $c = RAID::Info::Controller::MD->_new_for_test(
   mdstat => do { local (@ARGV, $/) = ('t/data/mdstat.txt'); <> },
   detail => [
     map {

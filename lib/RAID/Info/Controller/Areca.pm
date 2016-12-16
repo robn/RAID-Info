@@ -1,4 +1,4 @@
-package RAID::Info::Areca;
+package RAID::Info::Controller::Areca;
 
 use 5.014;
 use warnings;

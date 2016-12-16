@@ -4,9 +4,9 @@ use warnings;
 use strict;
 use Test::More;
 
-use RAID::Info::SASMPT;
+use RAID::Info::Controller::SASMPT;
 
-my $c = RAID::Info::SASMPT->_new_for_test(
+my $c = RAID::Info::Controller::SASMPT->_new_for_test(
   lsiutil => do { local (@ARGV, $/) = ('t/data/lsiutil.txt'); <> },
 );
 

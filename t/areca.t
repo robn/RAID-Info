@@ -4,11 +4,11 @@ use warnings;
 use strict;
 use Test::More;
 
-use RAID::Info::Areca;
+use RAID::Info::Controller::Areca;
 
 # first test set
 {
-  my $c = RAID::Info::Areca->_new_for_test(
+  my $c = RAID::Info::Controller::Areca->_new_for_test(
     hw   => do { local (@ARGV, $/) = ('t/data/cli64-hw-info.txt'); <> },
     disk => do { local (@ARGV, $/) = ('t/data/cli64-disk-info.txt'); <> },
     vsf  => do { local (@ARGV, $/) = ('t/data/cli64-vsf-info.txt'); <> },
@@ -57,7 +57,7 @@ use RAID::Info::Areca;
 
 # second test set
 {
-  my $c = RAID::Info::Areca->_new_for_test(
+  my $c = RAID::Info::Controller::Areca->_new_for_test(
     hw   => do { local (@ARGV, $/) = ('t/data/cli64-hw-info-2.txt'); <> },
     disk => do { local (@ARGV, $/) = ('t/data/cli64-disk-info-2.txt'); <> },
     vsf  => do { local (@ARGV, $/) = ('t/data/cli64-vsf-info-2.txt'); <> },

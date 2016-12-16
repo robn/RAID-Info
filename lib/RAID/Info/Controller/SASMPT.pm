@@ -1,4 +1,4 @@
-package RAID::Info::SASMPT;
+package RAID::Info::Controller::SASMPT;
 
 use 5.014;
 use warnings;

@@ -1,4 +1,4 @@
-package RAID::Info::Adaptec;
+package RAID::Info::Controller::Adaptec;
 
 use 5.014;
 use warnings;

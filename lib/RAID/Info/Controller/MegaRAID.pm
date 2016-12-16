@@ -1,4 +1,4 @@
-package RAID::Info::MegaRAID;
+package RAID::Info::Controller::MegaRAID;
 
 use 5.014;
 use warnings;

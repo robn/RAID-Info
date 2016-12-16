@@ -4,9 +4,9 @@ use warnings;
 use strict;
 use Test::More;
 
-use RAID::Info::MegaRAID;
+use RAID::Info::Controller::MegaRAID;
 
-my $c = RAID::Info::MegaRAID->_new_for_test(
+my $c = RAID::Info::Controller::MegaRAID->_new_for_test(
   ldpdinfo => do { local (@ARGV, $/) = ('t/data/megacli-ldpdinfo.txt'); <> },
 );
 
