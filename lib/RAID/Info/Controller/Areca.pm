@@ -9,6 +9,8 @@ use Types::Standard qw(slurpy ClassName Dict Str);
 
 with 'RAID::Info::Controller';
 
+use IPC::System::Simple qw(capturex);
+
 has _hw_raw   => ( is => 'rw', isa => Str );
 has _disk_raw => ( is => 'rw', isa => Str );
 has _vsf_raw  => ( is => 'rw', isa => Str );
@@ -33,6 +35,15 @@ sub _new_for_test {
 }
 
 sub _load_data_from_controller {
+  my ($self) = @_;
+  return if defined $self->_hw_raw;
+
+  my $hw_raw   = capturex(qw(cli64 hw info));
+  my $disk_raw = capturex(qw(cli64 disk info));
+  my $vsf_raw  = capturex(qw(cli64 vsf info));
+  $self->_hw_raw($hw_raw);
+  $self->_disk_raw($disk_raw);
+  $self->_vsf_raw($vsf_raw);
 }
 
 sub _build_physical_disks {
