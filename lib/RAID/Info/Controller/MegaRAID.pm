@@ -5,7 +5,7 @@ use namespace::autoclean;
 
 use Moo;
 use Type::Params qw(compile);
-use Types::Standard qw(slurpy ClassName Dict Str Int);
+use Types::Standard qw(slurpy ClassName Dict Optional Str Int);
 
 with 'RAID::Info::Controller';
 
@@ -112,6 +112,20 @@ sub _build_virtual_disks {
 }
 
 sub detect {
+  state $check = compile(
+    ClassName,
+    slurpy Dict[
+      _test => Optional[Str],
+    ],
+  );
+  my ($class, $args) = $check->(@_);
+
+  my $adpallinfo_raw = $args->{_test} // do {
+    1 # megacli -adpallinfo -aall
+  };
+  my @ids = $adpallinfo_raw =~ m/^Adapter\s+#(\d+).+/smg;
+
+  return map { $class->new(id => $_) } @ids;
 }
 
 1;
