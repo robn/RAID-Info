@@ -4,29 +4,13 @@ use 5.014;
 use namespace::autoclean;
 
 use Moo;
-use Type::Params qw(compile);
-use Types::Standard qw(slurpy ClassName Dict Optional Str);
+use Types::Standard qw(Str);
 
 with 'RAID::Info::Controller';
 
 use IPC::Open2;
 
 has _lsiutil_raw => ( is => 'rw', isa => Str );
-
-sub _new_for_test {
-  state $check = compile(
-    ClassName,
-    slurpy Dict[
-      lsiutil => Str,
-    ],
-  );
-  my ($class, $args) = $check->(@_);
-
-  my $self = $class->new;
-  $self->_lsiutil_raw($args->{lsiutil});
-
-  return $self;
-}
 
 sub _load_data_from_controller {
   my ($self) = @_;
@@ -105,15 +89,9 @@ sub _build_virtual_disks {
 }
 
 sub detect {
-  state $check = compile(
-    ClassName,
-    slurpy Dict[
-      _test => Optional[Str],
-    ],
-  );
-  my ($class, $args) = $check->(@_);
+  my ($class) = @_;
 
-  my $lsiutil_raw = $args->{_test} // do {
+  my $lsiutil_raw = do {
     open2(my $out, my $in, 'lsiutil')
       or return ();
 

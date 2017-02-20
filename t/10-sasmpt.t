@@ -6,11 +6,13 @@ use Test::More;
 
 use RAID::Info::Controller::SASMPT;
 
+use FindBin;
+$ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
+
 # disk test
 {
-  my $c = RAID::Info::Controller::SASMPT->_new_for_test(
-    lsiutil => do { local (@ARGV, $/) = ('t/data/lsiutil.txt'); <> },
-  );
+  $ENV{RI_LSIUTIL_DATA_ID} = '1';
+  my $c = RAID::Info::Controller::SASMPT->new;
 
   my $physical = $c->physical_disks;
   is scalar @$physical, 2, '2 physical disks';
@@ -38,9 +40,8 @@ use RAID::Info::Controller::SASMPT;
 
 # detect test
 {
-  my @controllers = RAID::Info::Controller::SASMPT->detect(
-    _test => do { local (@ARGV, $/) = ('t/data/lsiutil-detect.txt'); <> },
-  );
+  $ENV{RI_LSIUTIL_DATA_ID} = '2';
+  my @controllers = RAID::Info::Controller::SASMPT->detect;
   is scalar @controllers, 1, '1 controller';
 }
 
