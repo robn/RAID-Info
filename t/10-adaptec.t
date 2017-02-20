@@ -7,11 +7,12 @@ use Test::Deep;
 
 use RAID::Info::Controller::Adaptec;
 
+use FindBin;
+$ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
+
 # disk test
 {
-  my $c = RAID::Info::Controller::Adaptec->_new_for_test(
-    getconfig => do { local (@ARGV, $/) = ('t/data/arcconf-getconfig.txt'); <> },
-  );
+  my $c = RAID::Info::Controller::Adaptec->new(id => 1);
 
   my $physical = $c->physical_disks;
   is scalar @$physical, 2, '2 physical disks';
@@ -40,9 +41,7 @@ use RAID::Info::Controller::Adaptec;
 
 # detect test
 {
-  my @controllers = RAID::Info::Controller::Adaptec->detect(
-    _test => do { local (@ARGV, $/) = ('t/data/arcconf-getversion.txt'); <> },
-  );
+  my @controllers = RAID::Info::Controller::Adaptec->detect;
   is scalar @controllers, 1, '1 controller';
 }
 

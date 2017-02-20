@@ -4,8 +4,7 @@ use 5.014;
 use namespace::autoclean;
 
 use Moo;
-use Type::Params qw(compile);
-use Types::Standard qw(slurpy ClassName Dict Optional Str Int);
+use Types::Standard qw(Str Int);
 
 with 'RAID::Info::Controller';
 
@@ -14,21 +13,6 @@ use IPC::System::Simple qw(capturex EXIT_ANY);
 has id => ( is => 'ro', isa => Int, required => 1 );
 
 has _getconfig_raw => ( is => 'rw', isa => Str );
-
-sub _new_for_test {
-  state $check = compile(
-    ClassName,
-    slurpy Dict[
-      getconfig => Str,
-    ],
-  );
-  my ($class, $args) = $check->(@_);
-
-  my $self = $class->new(id => 1);
-  $self->_getconfig_raw($args->{getconfig});
-
-  return $self;
-}
 
 sub _load_data_from_controller {
   my ($self) = @_;
@@ -102,15 +86,9 @@ sub _build_virtual_disks {
 }
 
 sub detect {
-  state $check = compile(
-    ClassName,
-    slurpy Dict[
-      _test => Optional[Str],
-    ],
-  );
-  my ($class, $args) = $check->(@_);
+  my ($class) = @_;
 
-  my $version_raw = $args->{_test} // capturex(EXIT_ANY, qw(arcconf getversion));
+  my $version_raw = capturex(EXIT_ANY, qw(arcconf getversion));
   my @ids = $version_raw =~ m/^Controller\s+#(\d+).+/smg;
 
   return map { $class->new(id => $_) } @ids;
