@@ -6,11 +6,12 @@ use Test::More;
 
 use RAID::Info::Controller::MegaRAID;
 
+use FindBin;
+$ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
+
 # first test set
 {
-  my $c = RAID::Info::Controller::MegaRAID->_new_for_test(
-    ldpdinfo => do { local (@ARGV, $/) = ('t/data/megacli-ldpdinfo.txt'); <> },
-  );
+  my $c = RAID::Info::Controller::MegaRAID->new(id => 0);
 
   my $physical = $c->physical_disks;
   is scalar @$physical, 14, '14 physical disks';
@@ -71,9 +72,7 @@ use RAID::Info::Controller::MegaRAID;
 
 # detect test
 {
-  my @controllers = RAID::Info::Controller::MegaRAID->detect(
-    _test => do { local (@ARGV, $/) = ('t/data/megacli-adpallinfo.txt'); <> },
-  );
+  my @controllers = RAID::Info::Controller::MegaRAID->detect;
   is scalar @controllers, 1, '1 controller';
 }
 
