@@ -5,7 +5,7 @@ use namespace::autoclean;
 
 use Moo;
 use Type::Params qw(compile);
-use Types::Standard qw(slurpy ClassName Dict Str);
+use Types::Standard qw(slurpy ClassName Dict Optional Str);
 
 with 'RAID::Info::Controller';
 
@@ -114,6 +114,23 @@ sub _build_virtual_disks {
 }
 
 sub detect {
+  state $check = compile(
+    ClassName,
+    slurpy Dict[
+      _test => Optional[Str],
+    ],
+  );
+  my ($class, $args) = $check->(@_);
+
+  my $main_raw = $args->{_test} // do {
+    1 # cli64 main
+  };
+  my @ids = $main_raw =~ m/^.{3}\s(\d+)\s+/smg;
+
+  die "no support for multiple Areca controllers; please contact the RAID-Info authors"
+    if @ids >= 2;
+
+  return map { $class->new } @ids;
 }
 
 package RAID::Info::Controller::Areca::VirtualDisk;

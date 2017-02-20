@@ -1,0 +1,28 @@
+Copyright (c) 2004-2013 Areca, Inc. All Rights Reserved.
+Areca CLI, Version: 1.12.0, Arclib: 342, Date: Mar 18 2013( Linux )
+
+ S  #   Name       Type             Interface
+==================================================
+[*] 1   ARC-1882   Raid Controller  PCI
+==================================================
+
+CMD     Description
+==========================================================
+main    Show Command Categories.
+set     General Settings.
+rsf     RaidSet Functions.
+vsf     VolumeSet Functions.
+disk    Physical Drive Functions.
+sys     System Functions.
+adsys   Advanced System Functions.
+hddpwr  Hdd Power Management.
+net     Ethernet Functions.
+event   Event Functions.
+hw      Hardware Monitor Functions.
+mail    Mail Notification Functions.
+snmp    SNMP Functions.
+ntp     NTP Functions.
+exit  Exit CLI.
+==========================================================
+Command Format: <CMD> [Sub-Command] [Parameters].
+Note: Use <CMD> -h or -help to get details.

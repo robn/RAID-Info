@@ -232,4 +232,12 @@ use RAID::Info::Controller::Areca;
   ]->[$_], "virtual disk $_ has correct abnormal state" for (0..1);
 }
 
+# detect test
+{
+  my @controllers = RAID::Info::Controller::Areca->detect(
+    _test => do { local (@ARGV, $/) = ('t/data/cli64-main.txt'); <> },
+  );
+  is scalar @controllers, 1, '1 controller';
+}
+
 done_testing;
