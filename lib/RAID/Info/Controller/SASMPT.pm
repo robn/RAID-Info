@@ -9,6 +9,8 @@ use Types::Standard qw(slurpy ClassName Dict Str);
 
 with 'RAID::Info::Controller';
 
+use IPC::Open2;
+
 has _lsiutil_raw => ( is => 'rw', isa => Str );
 
 sub _new_for_test {
@@ -27,7 +29,17 @@ sub _new_for_test {
 }
 
 sub _load_data_from_controller {
-  # echo -e '1\n21\n1\n2' | lsiutil
+  my ($self) = @_;
+  return if defined $self->_lsiutil_raw;
+
+  open2(my $out, my $in, 'lsiutil')
+    or die "couldn't run 'lsiutil': $!";
+  print $in "1\n21\n1\n2\n";
+  close $in;
+  my $raw = do { local $/; <$out> };
+  close $out;
+
+  $self->_lsiutil_raw($raw);
 }
 
 sub _build_physical_disks {
