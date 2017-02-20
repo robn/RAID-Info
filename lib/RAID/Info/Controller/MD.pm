@@ -9,6 +9,8 @@ use Types::Standard qw(slurpy ClassName Dict Str ArrayRef);
 
 with 'RAID::Info::Controller';
 
+use IPC::System::Simple qw(capturex);
+
 has _mdstat_raw => ( is => 'rw', isa => Str );
 has _detail_raw => ( is => 'rw', isa => ArrayRef[Str] );
 
@@ -30,6 +32,18 @@ sub _new_for_test {
 }
 
 sub _load_data_from_controller {
+  my ($self) = @_;
+  return if defined $self->_mdstat_raw;
+
+  my $mdstat_raw = do { local (@ARGV, $/) = ('/proc/mdstat.txt'); <> };
+  my $detail_raw = [
+    map {
+      scalar capturex(qw(mdadm --detail), "/dev/$_")
+    } ($mdstat_raw =~ m/^(md\w+)\s+:.+?/mg)
+  ];
+
+  $self->_mdstat_raw($mdstat_raw);
+  $self->_detail_raw($detail_raw);
 }
 
 sub _build_physical_disks {
