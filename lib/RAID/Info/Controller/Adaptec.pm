@@ -101,4 +101,7 @@ sub _build_virtual_disks {
   return \@virtual;
 }
 
+sub detect {
+}
+
 1;

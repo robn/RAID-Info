@@ -68,4 +68,7 @@ sub _build_virtual_disks {
   return [];
 }
 
+sub detect {
+}
+
 1;

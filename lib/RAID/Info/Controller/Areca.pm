@@ -113,6 +113,9 @@ sub _build_virtual_disks {
   return \@virtual;
 }
 
+sub detect {
+}
+
 package RAID::Info::Controller::Areca::VirtualDisk;
 
 use namespace::autoclean;
