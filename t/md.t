@@ -80,4 +80,21 @@ use RAID::Info::Controller::MD;
   is $virtual->[1]->state->progress, 35, "virtual disk 1 is in rebuild with correct progress";
 }
 
+# detect test
+{
+  my @controllers = RAID::Info::Controller::MD->detect(
+    _test => do { local (@ARGV, $/) = ('t/data/mdstat.txt'); <> },
+  );
+  is scalar @controllers, 1, '1 controller';
+}
+
+# detect test 2, no devices
+{
+  my @controllers = RAID::Info::Controller::MD->detect(
+    _test => do { local (@ARGV, $/) = ('t/data/mdstat-empty.txt'); <> },
+  );
+  is scalar @controllers, 0, '0 controllers';
+}
+
+
 done_testing;

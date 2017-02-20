@@ -5,7 +5,7 @@ use namespace::autoclean;
 
 use Moo;
 use Type::Params qw(compile);
-use Types::Standard qw(slurpy ClassName Dict Str ArrayRef);
+use Types::Standard qw(slurpy ClassName Dict Optional Str ArrayRef);
 
 with 'RAID::Info::Controller';
 
@@ -88,6 +88,20 @@ sub _build_virtual_disks {
 }
 
 sub detect {
+  state $check = compile(
+    ClassName,
+    slurpy Dict[
+      _test => Optional[Str],
+    ],
+  );
+  my ($class, $args) = $check->(@_);
+
+  my $mdstat_raw = $args->{_test} // do {
+    1 # cat /proc/mdstat
+  };
+  my $absent = $mdstat_raw =~ m/^Personalities\s+:\s*$/m;
+
+  return $absent ? () : ($class->new);
 }
 
 1;
