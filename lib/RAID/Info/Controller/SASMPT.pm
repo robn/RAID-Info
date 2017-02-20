@@ -114,8 +114,17 @@ sub detect {
   my ($class, $args) = $check->(@_);
 
   my $lsiutil_raw = $args->{_test} // do {
-    1 # lsiutil
+    open2(my $out, my $in, 'lsiutil')
+      or return ();
+
+    print $in "1\n21\n1\n2\n";
+    close $in;
+    my $raw = do { local $/; <$out> };
+    close $out;
+
+    $raw;
   };
+
   my @ids = $lsiutil_raw =~ m/^\s+(\d+)\.\s+\/.+/smg;
 
   die "no support for multiple SAS-MPT controllers; please contact the RAID-Info authors"

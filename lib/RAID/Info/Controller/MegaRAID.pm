@@ -9,7 +9,7 @@ use Types::Standard qw(slurpy ClassName Dict Optional Str Int);
 
 with 'RAID::Info::Controller';
 
-use IPC::System::Simple qw(capturex);
+use IPC::System::Simple qw(capturex EXIT_ANY);
 
 has id => ( is => 'ro', isa => Int, required => 1 );
 
@@ -120,9 +120,7 @@ sub detect {
   );
   my ($class, $args) = $check->(@_);
 
-  my $adpallinfo_raw = $args->{_test} // do {
-    1 # megacli -adpallinfo -aall
-  };
+  my $adpallinfo_raw = $args->{_test} // capturex(EXIT_ANY, qw(megacli -adpallinfo -aall));
   my @ids = $adpallinfo_raw =~ m/^Adapter\s+#(\d+).+/smg;
 
   return map { $class->new(id => $_) } @ids;

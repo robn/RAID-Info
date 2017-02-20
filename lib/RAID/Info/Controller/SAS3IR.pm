@@ -7,7 +7,7 @@ use Moo;
 
 with 'RAID::Info::Controller::SASxIR';
 
-use IPC::System::Simple qw(capturex);
+use IPC::System::Simple qw(capturex EXIT_ANY);
 
 sub _load_data_from_controller {
   my ($self) = @_;
@@ -18,6 +18,7 @@ sub _load_data_from_controller {
 }
 
 sub _get_controller_list_raw {
+  return scalar capturex(EXIT_ANY, qw(sas3ircu list));
   # XXX sas3ircu list
 }
 

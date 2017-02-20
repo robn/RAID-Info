@@ -9,7 +9,7 @@ use Types::Standard qw(slurpy ClassName Dict Optional Str);
 
 with 'RAID::Info::Controller';
 
-use IPC::System::Simple qw(capturex);
+use IPC::System::Simple qw(capturex EXIT_ANY);
 
 has _hw_raw   => ( is => 'rw', isa => Str );
 has _disk_raw => ( is => 'rw', isa => Str );
@@ -122,9 +122,7 @@ sub detect {
   );
   my ($class, $args) = $check->(@_);
 
-  my $main_raw = $args->{_test} // do {
-    1 # cli64 main
-  };
+  my $main_raw = $args->{_test} // capturex(EXIT_ANY, qw(cli64 main));
   my @ids = $main_raw =~ m/^.{3}\s(\d+)\s+/smg;
 
   die "no support for multiple Areca controllers; please contact the RAID-Info authors"
