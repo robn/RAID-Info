@@ -60,7 +60,7 @@ sub _build_physical_disks {
 
   my @disks = map {
     if (my ($id, $enc, $slot, $model, $capacity, $usage) =
-          m{^\s+(\d+)\s+(\d+)\s+Slot[\s#]*(\d+)\s+(.+?)\s+([\d\.]+.B)\s+(.+?)\s*$}) {
+          m{^\s+(\d+)\s+(\d+)\s+(?i:slot)[\s#]*(\d+)\s+(.+?)\s+([\d\.]+.B)\s+(.+?)\s*$}) {
       if ($usage eq 'N.A.') {
         ()
       }

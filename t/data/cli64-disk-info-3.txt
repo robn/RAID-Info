@@ -1,0 +1,36 @@
+  # Enc# Slot#   ModelName                        Capacity  Usage
+===============================================================================
+  1  01  Slot#1  N.A.                                0.0GB  N.A.      
+  2  01  Slot#2  N.A.                                0.0GB  N.A.      
+  3  01  Slot#3  N.A.                                0.0GB  N.A.      
+  4  01  Slot#4  N.A.                                0.0GB  N.A.      
+  5  01  Slot#5  N.A.                                0.0GB  N.A.      
+  6  01  Slot#6  N.A.                                0.0GB  N.A.      
+  7  01  Slot#7  N.A.                                0.0GB  N.A.      
+  8  01  Slot#8  N.A.                                0.0GB  N.A.      
+  9  02  SLOT 01 N.A.                                0.0GB  N.A.      
+ 10  02  SLOT 02 N.A.                                0.0GB  N.A.      
+ 11  02  SLOT 03 N.A.                                0.0GB  N.A.      
+ 12  02  SLOT 04 N.A.                                0.0GB  N.A.      
+ 13  02  SLOT 05 N.A.                                0.0GB  N.A.      
+ 14  02  SLOT 06 N.A.                                0.0GB  N.A.      
+ 15  02  SLOT 07 N.A.                                0.0GB  N.A.      
+ 16  02  SLOT 08 N.A.                                0.0GB  N.A.      
+ 17  02  SLOT 09 N.A.                                0.0GB  N.A.      
+ 18  02  SLOT 10 N.A.                                0.0GB  N.A.      
+ 19  02  SLOT 11 N.A.                                0.0GB  N.A.      
+ 20  02  SLOT 12 N.A.                                0.0GB  N.A.      
+ 21  03  SLOT 001 WDC WD2003FYYS-02W0B0            2000.4GB  Raid Set # 000  
+ 22  03  SLOT 002 WDC WD2003FYYS-02W0B1            2000.4GB  Raid Set # 000  
+ 23  03  SLOT 003 WDC WD2003FYYS-02W0B0            2000.4GB  Raid Set # 000  
+ 24  03  SLOT 004 WDC WD2000FYYZ-01UL1B0           2000.4GB  Raid Set # 000  
+ 25  03  SLOT 005 WDC WD2003FYYS-02W0B0            2000.4GB  Raid Set # 000  
+ 26  03  SLOT 006 WDC WD2002FYPS-02W3B0            2000.4GB  Raid Set # 000  
+ 27  03  SLOT 007 WDC WD2003FYYS-02W0B0            2000.4GB  Raid Set # 000  
+ 28  03  SLOT 008 WDC WD2003FYYS-02W0B0            2000.4GB  Raid Set # 000  
+ 29  03  SLOT 009 WDC WD2003FYYS-02W0B0            2000.4GB  Raid Set # 000  
+ 30  03  SLOT 010 WDC WD2002FYPS-01U1B0            2000.4GB  Raid Set # 000  
+ 31  03  SLOT 011 WDC WD2003FYYS-02W0B0            2000.4GB  Raid Set # 000  
+ 32  03  SLOT 012 WDC WD2003FYYS-02W0B0            2000.4GB  Raid Set # 000  
+===============================================================================
+GuiErrMsg<0x00>: Success.
