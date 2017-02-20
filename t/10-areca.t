@@ -6,13 +6,13 @@ use Test::More;
 
 use RAID::Info::Controller::Areca;
 
+use FindBin;
+$ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
+
 # first test set
 {
-  my $c = RAID::Info::Controller::Areca->_new_for_test(
-    hw   => do { local (@ARGV, $/) = ('t/data/cli64-hw-info.txt'); <> },
-    disk => do { local (@ARGV, $/) = ('t/data/cli64-disk-info.txt'); <> },
-    vsf  => do { local (@ARGV, $/) = ('t/data/cli64-vsf-info.txt'); <> },
-  );
+  $ENV{RI_CLI64_DATA_ID} = '1';
+  my $c = RAID::Info::Controller::Areca->new;
 
   my $physical = $c->physical_disks;
   is scalar @$physical, 24, '24 physical disks';
@@ -91,11 +91,8 @@ use RAID::Info::Controller::Areca;
 
 # second test set
 {
-  my $c = RAID::Info::Controller::Areca->_new_for_test(
-    hw   => do { local (@ARGV, $/) = ('t/data/cli64-hw-info-2.txt'); <> },
-    disk => do { local (@ARGV, $/) = ('t/data/cli64-disk-info-2.txt'); <> },
-    vsf  => do { local (@ARGV, $/) = ('t/data/cli64-vsf-info-2.txt'); <> },
-  );
+  $ENV{RI_CLI64_DATA_ID} = '2';
+  my $c = RAID::Info::Controller::Areca->new;
 
   my $physical = $c->physical_disks;
   is scalar @$physical, 24, '24 physical disks';
@@ -175,11 +172,8 @@ use RAID::Info::Controller::Areca;
 
 # third test set
 {
-  my $c = RAID::Info::Controller::Areca->_new_for_test(
-    hw   => do { local (@ARGV, $/) = ('t/data/cli64-hw-info-3.txt'); <> },
-    disk => do { local (@ARGV, $/) = ('t/data/cli64-disk-info-3.txt'); <> },
-    vsf  => do { local (@ARGV, $/) = ('t/data/cli64-vsf-info-3.txt'); <> },
-  );
+  $ENV{RI_CLI64_DATA_ID} = '3';
+  my $c = RAID::Info::Controller::Areca->new;
 
   my $physical = $c->physical_disks;
   is scalar @$physical, 12, '24 physical disks';
@@ -234,9 +228,8 @@ use RAID::Info::Controller::Areca;
 
 # detect test
 {
-  my @controllers = RAID::Info::Controller::Areca->detect(
-    _test => do { local (@ARGV, $/) = ('t/data/cli64-main.txt'); <> },
-  );
+  $ENV{RI_CLI64_DATA_ID} = '1';
+  my @controllers = RAID::Info::Controller::Areca->detect;
   is scalar @controllers, 1, '1 controller';
 }
 

@@ -4,8 +4,7 @@ use 5.014;
 use namespace::autoclean;
 
 use Moo;
-use Type::Params qw(compile);
-use Types::Standard qw(slurpy ClassName Dict Optional Str);
+use Types::Standard qw(Str);
 
 with 'RAID::Info::Controller';
 
@@ -14,25 +13,6 @@ use IPC::System::Simple qw(capturex EXIT_ANY);
 has _hw_raw   => ( is => 'rw', isa => Str );
 has _disk_raw => ( is => 'rw', isa => Str );
 has _vsf_raw  => ( is => 'rw', isa => Str );
-
-sub _new_for_test {
-  state $check = compile(
-    ClassName,
-    slurpy Dict[
-      hw   => Str,
-      disk => Str,
-      vsf  => Str,
-    ],
-  );
-  my ($class, $args) = $check->(@_);
-
-  my $self = $class->new;
-  $self->_hw_raw($args->{hw});
-  $self->_disk_raw($args->{disk});
-  $self->_vsf_raw($args->{vsf});
-
-  return $self;
-}
 
 sub _load_data_from_controller {
   my ($self) = @_;
@@ -114,15 +94,9 @@ sub _build_virtual_disks {
 }
 
 sub detect {
-  state $check = compile(
-    ClassName,
-    slurpy Dict[
-      _test => Optional[Str],
-    ],
-  );
-  my ($class, $args) = $check->(@_);
+  my ($class) = @_;
 
-  my $main_raw = $args->{_test} // capturex(EXIT_ANY, qw(cli64 main));
+  my $main_raw = capturex(EXIT_ANY, qw(cli64 main));
   my @ids = $main_raw =~ m/^.{3}\s(\d+)\s+/smg;
 
   die "no support for multiple Areca controllers; please contact the RAID-Info authors"
