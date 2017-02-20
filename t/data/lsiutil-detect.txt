@@ -1,0 +1,9 @@
+
+LSI Logic MPT Configuration Utility, Version 1.62, January 14, 2009
+
+1 MPT Port found
+
+     Port Name         Chip Vendor/Type/Rev    MPT Rev  Firmware Rev  IOC
+ 1.  /proc/mpt/ioc0    LSI Logic SAS1068E B3     105      00192f00     0
+
+Select a device:  [1-1 or 0 to quit]

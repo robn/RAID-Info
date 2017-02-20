@@ -5,7 +5,7 @@ use namespace::autoclean;
 
 use Moo;
 use Type::Params qw(compile);
-use Types::Standard qw(slurpy ClassName Dict Str);
+use Types::Standard qw(slurpy ClassName Dict Optional Str);
 
 with 'RAID::Info::Controller';
 
@@ -105,6 +105,23 @@ sub _build_virtual_disks {
 }
 
 sub detect {
+  state $check = compile(
+    ClassName,
+    slurpy Dict[
+      _test => Optional[Str],
+    ],
+  );
+  my ($class, $args) = $check->(@_);
+
+  my $lsiutil_raw = $args->{_test} // do {
+    1 # lsiutil
+  };
+  my @ids = $lsiutil_raw =~ m/^\s+(\d+)\.\s+\/.+/smg;
+
+  die "no support for multiple SAS-MPT controllers; please contact the RAID-Info authors"
+    if @ids >= 2;
+
+  return map { $class->new } @ids;
 }
 
 1;
