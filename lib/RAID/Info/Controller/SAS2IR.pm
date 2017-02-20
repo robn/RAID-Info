@@ -17,4 +17,8 @@ sub _load_data_from_controller {
   $self->_display_raw($raw);
 }
 
+sub _get_controller_list_raw {
+  # XXX sas2ircu list
+}
+
 1;

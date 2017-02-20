@@ -1,0 +1,10 @@
+LSI Corporation SAS2 IR Configuration Utility.
+Version 5.00.00.00 (2010.02.09)
+Copyright (c) 2009 LSI Corporation. All rights reserved.
+
+
+         Adapter      Vendor  Device                       SubSys  SubSys
+ Index    Type          ID      ID    Pci Address          Ven ID  Dev ID
+ -----  ------------  ------  ------  -----------------    ------  ------
+   0     SAS2208_8     1000h    87h   00h:04h:00h:00h      1000h   3030h
+SAS2IRCU: Utility Completed Successfully.
