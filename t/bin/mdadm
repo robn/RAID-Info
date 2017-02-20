@@ -1,0 +1,15 @@
+#!/usr/bin/env perl
+
+use warnings;
+use strict;
+
+use FindBin;
+my $DATA = "$FindBin::Bin/../data";
+
+my @flattened = map { ( m{^-+(.+)$}, m{/(\w+)$} ) } @ARGV;
+
+my $file = join '-', 'mdadm', @flattened, $ENV{RI_MDADM_DATA_ID};
+open my $fh, '<', "$DATA/$file.txt";
+print while <$fh>;
+
+exit 0;

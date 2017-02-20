@@ -6,15 +6,14 @@ use Test::More;
 
 use RAID::Info::Controller::MD;
 
+use FindBin;
+$ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
+
 # first test set
 {
-  my $c = RAID::Info::Controller::MD->_new_for_test(
-    mdstat => do { local (@ARGV, $/) = ('t/data/mdstat.txt'); <> },
-    detail => [
-      map {
-        do { local (@ARGV, $/) = ("t/data/mdadm-detail-$_.txt"); <> }
-      } qw(md0 md1 md2 md3)
-    ],
+  $ENV{RI_MDADM_DATA_ID} = '1';
+  my $c = RAID::Info::Controller::MD->new(
+    _mdstat_raw => do { local (@ARGV, $/) = ('t/data/mdstat-1.txt'); <> },
   );
 
   my $physical = $c->physical_disks;
@@ -44,13 +43,9 @@ use RAID::Info::Controller::MD;
 
 # second test set
 {
-  my $c = RAID::Info::Controller::MD->_new_for_test(
-    mdstat => do { local (@ARGV, $/) = ('t/data/mdstat-rebuild.txt'); <> },
-    detail => [
-      map {
-        do { local (@ARGV, $/) = ("t/data/mdadm-detail-$_-rebuild.txt"); <> }
-      } qw(md0 md1 md2 md3)
-    ],
+  $ENV{RI_MDADM_DATA_ID} = '2';
+  my $c = RAID::Info::Controller::MD->new(
+    _mdstat_raw => do { local (@ARGV, $/) = ('t/data/mdstat-2.txt'); <> },
   );
 
   my $physical = $c->physical_disks;
@@ -83,7 +78,7 @@ use RAID::Info::Controller::MD;
 # detect test
 {
   my @controllers = RAID::Info::Controller::MD->detect(
-    _test => do { local (@ARGV, $/) = ('t/data/mdstat.txt'); <> },
+    _mdstat_raw => do { local (@ARGV, $/) = ('t/data/mdstat-1.txt'); <> },
   );
   is scalar @controllers, 1, '1 controller';
 }
@@ -91,7 +86,7 @@ use RAID::Info::Controller::MD;
 # detect test 2, no devices
 {
   my @controllers = RAID::Info::Controller::MD->detect(
-    _test => do { local (@ARGV, $/) = ('t/data/mdstat-empty.txt'); <> },
+    _mdstat_raw => do { local (@ARGV, $/) = ('t/data/mdstat-empty.txt'); <> },
   );
   is scalar @controllers, 0, '0 controllers';
 }

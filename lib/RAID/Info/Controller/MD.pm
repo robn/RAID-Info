@@ -1,7 +1,6 @@
 package RAID::Info::Controller::MD;
 
 use 5.014;
-use namespace::autoclean;
 
 use Moo;
 use Type::Params qw(compile);
@@ -14,35 +13,20 @@ use IPC::System::Simple qw(capturex);
 has _mdstat_raw => ( is => 'rw', isa => Str );
 has _detail_raw => ( is => 'rw', isa => ArrayRef[Str] );
 
-sub _new_for_test {
-  state $check = compile(
-    ClassName,
-    slurpy Dict[
-      mdstat => Str,
-      detail => ArrayRef[Str],
-    ],
-  );
-  my ($class, $args) = $check->(@_);
-
-  my $self = $class->new;
-  $self->_mdstat_raw($args->{mdstat});
-  $self->_detail_raw($args->{detail});
-
-  return $self;
-}
-
 sub _load_data_from_controller {
   my ($self) = @_;
-  return if defined $self->_mdstat_raw;
+  return if defined $self->_detail_raw;
 
-  my $mdstat_raw = do { local (@ARGV, $/) = ('/proc/mdstat.txt'); <> };
+  unless ($self->_mdstat_raw) {
+    my $mdstat_raw = do { local (@ARGV, $/) = ('/proc/mdstat.txt'); <> };
+    $self->_mdstat_raw($mdstat_raw);
+  }
+
   my $detail_raw = [
     map {
       scalar capturex(qw(mdadm --detail), "/dev/$_")
-    } ($mdstat_raw =~ m/^(md\w+)\s+:.+?/mg)
+    } ($self->_mdstat_raw =~ m/^(md\w+)\s+:.+?/mg)
   ];
-
-  $self->_mdstat_raw($mdstat_raw);
   $self->_detail_raw($detail_raw);
 }
 
@@ -88,15 +72,9 @@ sub _build_virtual_disks {
 }
 
 sub detect {
-  state $check = compile(
-    ClassName,
-    slurpy Dict[
-      _test => Optional[Str],
-    ],
-  );
-  my ($class, $args) = $check->(@_);
+  my ($class, %args) = @_;
 
-  my $mdstat_raw = $args->{_test} // do { local (@ARGV, $/) = ('/proc/mdstat'); <> };
+  my $mdstat_raw = $args{_mdstat_raw} // do { local (@ARGV, $/) = ('/proc/mdstat'); <> };
   my $absent = $mdstat_raw =~ m/^Personalities\s+:\s*$/m;
 
   return $absent ? () : ($class->new);
