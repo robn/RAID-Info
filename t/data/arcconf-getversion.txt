@@ -1,0 +1,11 @@
+Controllers found: 1
+Controller #1
+==============
+Firmware           : 5.2-0 (15411)
+Staged Firmware    : 5.2-0 (15411)
+BIOS               : 5.2-0 (15411)
+Driver             : 1.2-1 (41010)
+Boot Flash         : 5.1-0 (15411)
+
+
+Command completed successfully.
