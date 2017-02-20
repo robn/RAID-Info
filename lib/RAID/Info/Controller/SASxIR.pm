@@ -5,9 +5,11 @@ use namespace::autoclean;
 
 use Moo::Role;
 use Type::Params qw(compile);
-use Types::Standard qw(slurpy ClassName Dict Str);
+use Types::Standard qw(slurpy ClassName Dict Str Int);
 
 with 'RAID::Info::Controller';
+
+has id => ( is => 'ro', isa => Int, required => 1 );
 
 has _display_raw => ( is => 'rw', isa => Str );
 
@@ -20,7 +22,7 @@ sub _new_for_test {
   );
   my ($class, $args) = $check->(@_);
 
-  my $self = $class->new;
+  my $self = $class->new(id => 0);
   $self->_display_raw($args->{display});
 
   return $self;
