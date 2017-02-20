@@ -8,8 +8,8 @@
   Total Devices : 2
     Persistence : Superblock is persistent
 
-    Update Time : Sun Dec 11 23:55:40 2016
-          State : clean 
+    Update Time : Sun Feb  5 01:29:43 2017
+          State : active 
  Active Devices : 2
 Working Devices : 2
  Failed Devices : 0
@@ -17,7 +17,7 @@ Working Devices : 2
 
            Name : db1:2  (local to host db1)
            UUID : 6b726b89:d4b6e3d5:c14542f2:df1b530b
-         Events : 20
+         Events : 173
 
     Number   Major   Minor   RaidDevice State
        0     259        2        0      active sync   /dev/nvme0n1p1

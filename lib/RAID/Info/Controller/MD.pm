@@ -65,6 +65,7 @@ sub _build_virtual_disks {
   } @{$self->_detail_raw};
 
   state $state_map = {
+    active                        => sub { RAID::Info::VirtualDisk::State::Normal->new },
     clean                         => sub { RAID::Info::VirtualDisk::State::Normal->new },
     'active, resyncing'           => sub { RAID::Info::VirtualDisk::State::Rebuilding->new(progress => shift) },
     'active, resyncing (DELAYED)' => sub { RAID::Info::VirtualDisk::State::Rebuilding->new(progress => 0) },
