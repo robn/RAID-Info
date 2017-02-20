@@ -6,11 +6,12 @@ use Test::More;
 
 use RAID::Info::Controller::SAS2IR;
 
+use FindBin;
+$ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
+
 # disk test
 {
-  my $c = RAID::Info::Controller::SAS2IR->_new_for_test(
-    display => do { local (@ARGV, $/) = ('t/data/sas2ircu-display.txt'); <> },
-  );
+  my $c = RAID::Info::Controller::SAS2IR->new(id => 0);
 
   my $physical = $c->physical_disks;
   is scalar @$physical, 12, '12 physical disks';
@@ -48,9 +49,7 @@ use RAID::Info::Controller::SAS2IR;
 
 # detect test
 {
-  my @controllers = RAID::Info::Controller::SAS2IR->detect(
-    _test => do { local (@ARGV, $/) = ('t/data/sas2ircu-list.txt'); <> },
-  );
+  my @controllers = RAID::Info::Controller::SAS2IR->detect;
   is scalar @controllers, 1, '1 controller';
 }
 
