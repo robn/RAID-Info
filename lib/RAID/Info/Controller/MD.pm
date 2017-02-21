@@ -75,7 +75,7 @@ sub detect {
   my ($class, %args) = @_;
 
   my $mdstat_raw = $args{_mdstat_raw} // do { local (@ARGV, $/) = ('/proc/mdstat'); <> };
-  my $absent = $mdstat_raw =~ m/^Personalities\s+:\s*$/m;
+  my $absent = $mdstat_raw ? $mdstat_raw =~ m/^Personalities\s+:\s*$/m : 1;
 
   return $absent ? () : ($class->new);
 }
