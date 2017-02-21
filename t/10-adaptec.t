@@ -13,6 +13,7 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
 # disk test
 {
   my $c = RAID::Info::Controller::Adaptec->new(id => 1);
+  is $c->name, "adaptec/1", "controller has correct name";
 
   my $physical = $c->physical_disks;
   is scalar @$physical, 2, '2 physical disks';
@@ -43,6 +44,9 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
 {
   my @controllers = RAID::Info::Controller::Adaptec->detect;
   is scalar @controllers, 1, '1 controller';
+
+  my ($c) = @controllers;
+  is $c->name, "adaptec/1", "controller has correct name";
 }
 
 done_testing;

@@ -15,6 +15,7 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
   my $c = RAID::Info::Controller::MD->new(
     _mdstat_raw => do { local (@ARGV, $/) = ('t/data/mdstat-1.txt'); <> },
   );
+  is $c->name, "md/0", "controller has correct name";
 
   my $physical = $c->physical_disks;
   is scalar @$physical, 0, '0 physical disks';
@@ -47,6 +48,7 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
   my $c = RAID::Info::Controller::MD->new(
     _mdstat_raw => do { local (@ARGV, $/) = ('t/data/mdstat-2.txt'); <> },
   );
+  is $c->name, "md/0", "controller has correct name";
 
   my $physical = $c->physical_disks;
   is scalar @$physical, 0, '0 physical disks';
@@ -81,6 +83,9 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
     _mdstat_raw => do { local (@ARGV, $/) = ('t/data/mdstat-1.txt'); <> },
   );
   is scalar @controllers, 1, '1 controller';
+
+  my ($c) = @controllers;
+  is $c->name, "md/0", "controller has correct name";
 }
 
 # detect test 2, no devices

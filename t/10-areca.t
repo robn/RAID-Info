@@ -13,6 +13,7 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
 {
   $ENV{RI_CLI64_DATA_ID} = '1';
   my $c = RAID::Info::Controller::Areca->new;
+  is $c->name, "areca/0", "controller has correct name";
 
   my $physical = $c->physical_disks;
   is scalar @$physical, 24, '24 physical disks';
@@ -93,6 +94,7 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
 {
   $ENV{RI_CLI64_DATA_ID} = '2';
   my $c = RAID::Info::Controller::Areca->new;
+  is $c->name, "areca/0", "controller has correct name";
 
   my $physical = $c->physical_disks;
   is scalar @$physical, 24, '24 physical disks';
@@ -174,6 +176,7 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
 {
   $ENV{RI_CLI64_DATA_ID} = '3';
   my $c = RAID::Info::Controller::Areca->new;
+  is $c->name, "areca/0", "controller has correct name";
 
   my $physical = $c->physical_disks;
   is scalar @$physical, 12, '24 physical disks';
@@ -231,6 +234,9 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
   $ENV{RI_CLI64_DATA_ID} = '1';
   my @controllers = RAID::Info::Controller::Areca->detect;
   is scalar @controllers, 1, '1 controller';
+
+  my ($c) = @controllers;
+  is $c->name, "areca/0", "controller has correct name";
 }
 
 done_testing;

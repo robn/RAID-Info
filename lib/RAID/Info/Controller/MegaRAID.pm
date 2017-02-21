@@ -22,6 +22,10 @@ sub _load_data_from_controller {
   $self->_ldpdinfo_raw($raw);
 }
 
+sub _build_name {
+  return "megaraid/".shift->id;
+}
+
 sub _build_physical_disks {
   my ($self) = @_;
 

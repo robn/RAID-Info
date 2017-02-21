@@ -30,6 +30,10 @@ sub _load_data_from_controller {
   $self->_detail_raw($detail_raw);
 }
 
+sub _build_name {
+  return "md/0";
+}
+
 sub _build_physical_disks {
   my ($self) = @_;
 

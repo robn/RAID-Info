@@ -13,6 +13,7 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
 {
   $ENV{RI_LSIUTIL_DATA_ID} = '1';
   my $c = RAID::Info::Controller::SASMPT->new;
+  is $c->name, "sasmpt/0", "controller has correct name";
 
   my $physical = $c->physical_disks;
   is scalar @$physical, 2, '2 physical disks';
@@ -43,6 +44,9 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
   $ENV{RI_LSIUTIL_DATA_ID} = '2';
   my @controllers = RAID::Info::Controller::SASMPT->detect;
   is scalar @controllers, 1, '1 controller';
+
+  my ($c) = @controllers;
+  is $c->name, "sasmpt/0", "controller has correct name";
 }
 
 done_testing;

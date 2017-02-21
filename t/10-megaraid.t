@@ -12,6 +12,7 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
 # first test set
 {
   my $c = RAID::Info::Controller::MegaRAID->new(id => 0);
+  is $c->name, "megaraid/0", "controller has correct name";
 
   my $physical = $c->physical_disks;
   is scalar @$physical, 14, '14 physical disks';
@@ -74,6 +75,9 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
 {
   my @controllers = RAID::Info::Controller::MegaRAID->detect;
   is scalar @controllers, 1, '1 controller';
+
+  my ($c) = @controllers;
+  is $c->name, "megaraid/0", "controller has correct name";
 }
 
 done_testing;

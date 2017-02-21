@@ -17,6 +17,10 @@ sub _load_data_from_controller {
   $self->_display_raw($raw);
 }
 
+sub _build_name {
+  return "sas3ir/".shift->id;
+}
+
 sub _get_controller_list_raw {
   return scalar capturex(EXIT_ANY, qw(sas3ircu list));
   # XXX sas3ircu list

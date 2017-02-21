@@ -26,6 +26,10 @@ sub _load_data_from_controller {
   $self->_lsiutil_raw($raw);
 }
 
+sub _build_name {
+  return "sasmpt/0";
+}
+
 sub _build_physical_disks {
   my ($self) = @_;
 
