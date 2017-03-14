@@ -49,4 +49,16 @@ with 'RAID::Info::PhysicalDisk::State';
 sub is_abnormal { 1 };
 }
 
+
+package RAID::Info::PhysicalDisk::State::Rebuilding {
+
+use namespace::autoclean;
+
+use Moo;
+with 'RAID::Info::PhysicalDisk::State';
+with 'RAID::Info::Disk::RebuildProgress';
+
+sub is_abnormal { 1 };
+}
+
 1;
