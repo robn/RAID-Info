@@ -1,0 +1,4 @@
+                                     
+Rebuild Progress on Device at Enclosure 32, Slot 10 Completed 3% in 98 Minutes.
+
+Exit Code: 0x00

@@ -1,0 +1,828 @@
+                                     
+Adapter #0
+
+Number of Virtual Disks: 4
+Virtual Drive: 0 (Target Id: 0)
+Name                :
+RAID Level          : Primary-1, Secondary-0, RAID Level Qualifier-0
+Size                : 415.0 GB
+Sector Size         : 512
+Mirror Data         : 415.0 GB
+State               : Optimal
+Strip Size          : 64 KB
+Number Of Drives    : 2
+Span Depth          : 1
+Default Cache Policy: WriteBack, ReadAhead, Cached, No Write Cache if Bad BBU
+Current Cache Policy: WriteBack, ReadAhead, Cached, No Write Cache if Bad BBU
+Default Access Policy: Read/Write
+Current Access Policy: Read/Write
+Disk Cache Policy   : Disk's Default
+Encryption Type     : None
+Bad Blocks Exist: No
+Is VD Cached: Yes
+Cache Cade Type : Read Only
+Number of Spans: 1
+Span: 0 - Number of PDs: 2
+
+PD: 0 Information
+Enclosure Device ID: 32
+Slot Number: 0
+Drive's position: DiskGroup: 0, Span: 0, Arm: 0
+Enclosure position: N/A
+Device Id: 0
+WWN: 5000c500351f712b
+Sequence Number: 2
+Media Error Count: 0
+Other Error Count: 0
+Predictive Failure Count: 0
+Last Predictive Failure Event Seq Number: 0
+PD Type: SATA
+
+Raw Size: 1.819 TB [0xe8e088b0 Sectors]
+Non Coerced Size: 1.818 TB [0xe8d088b0 Sectors]
+Coerced Size: 1.818 TB [0xe8d00000 Sectors]
+Sector Size:  0
+Firmware state: Online, Spun Up
+Device Firmware Level: KA06
+Shield Counter: 0
+Successful diagnostics completion on :  N/A
+SAS Address(0): 0x500065b36789abe2
+Connected Port Number: 0(path0) 
+Inquiry Data:             9WM5PANGST32000644NS                                KA06
+FDE Capable: Not Capable
+FDE Enable: Disable
+Secured: Unsecured
+Locked: Unlocked
+Needs EKM Attention: No
+Foreign State: None 
+Device Speed: 3.0Gb/s 
+Link Speed: 3.0Gb/s 
+Media Type: Hard Disk Device
+Drive Temperature : N/A
+PI Eligibility:  No 
+Drive is formatted for PI information:  No
+PI: No PI
+Port-0 :
+Port status: Active
+Port's Linkspeed: 3.0Gb/s 
+Drive has flagged a S.M.A.R.T alert : No
+
+
+
+
+PD: 1 Information
+Enclosure Device ID: 32
+Slot Number: 1
+Drive's position: DiskGroup: 0, Span: 0, Arm: 1
+Enclosure position: N/A
+Device Id: 1
+WWN: 5000c5003525e5b7
+Sequence Number: 2
+Media Error Count: 0
+Other Error Count: 0
+Predictive Failure Count: 0
+Last Predictive Failure Event Seq Number: 0
+PD Type: SATA
+
+Raw Size: 1.819 TB [0xe8e088b0 Sectors]
+Non Coerced Size: 1.818 TB [0xe8d088b0 Sectors]
+Coerced Size: 1.818 TB [0xe8d00000 Sectors]
+Sector Size:  0
+Firmware state: Online, Spun Up
+Device Firmware Level: KA06
+Shield Counter: 0
+Successful diagnostics completion on :  N/A
+SAS Address(0): 0x500065b36789abe5
+Connected Port Number: 0(path0) 
+Inquiry Data:             9WM5QRBRST32000644NS                                KA06
+FDE Capable: Not Capable
+FDE Enable: Disable
+Secured: Unsecured
+Locked: Unlocked
+Needs EKM Attention: No
+Foreign State: None 
+Device Speed: 3.0Gb/s 
+Link Speed: 3.0Gb/s 
+Media Type: Hard Disk Device
+Drive Temperature : N/A
+PI Eligibility:  No 
+Drive is formatted for PI information:  No
+PI: No PI
+Port-0 :
+Port status: Active
+Port's Linkspeed: 3.0Gb/s 
+Drive has flagged a S.M.A.R.T alert : No
+
+
+
+Virtual Drive: 1 (Target Id: 1)
+Name                :
+RAID Level          : Primary-1, Secondary-0, RAID Level Qualifier-0
+Size                : 1.413 TB
+Sector Size         : 512
+Mirror Data         : 1.413 TB
+State               : Optimal
+Strip Size          : 64 KB
+Number Of Drives    : 2
+Span Depth          : 1
+Default Cache Policy: WriteBack, ReadAhead, Cached, No Write Cache if Bad BBU
+Current Cache Policy: WriteBack, ReadAhead, Cached, No Write Cache if Bad BBU
+Default Access Policy: Read/Write
+Current Access Policy: Read/Write
+Disk Cache Policy   : Disk's Default
+Encryption Type     : None
+Bad Blocks Exist: No
+Is VD Cached: Yes
+Cache Cade Type : Read Only
+Number of Spans: 1
+Span: 0 - Number of PDs: 2
+
+PD: 0 Information
+Enclosure Device ID: 32
+Slot Number: 0
+Drive's position: DiskGroup: 0, Span: 0, Arm: 0
+Enclosure position: N/A
+Device Id: 0
+WWN: 5000c500351f712b
+Sequence Number: 2
+Media Error Count: 0
+Other Error Count: 0
+Predictive Failure Count: 0
+Last Predictive Failure Event Seq Number: 0
+PD Type: SATA
+
+Raw Size: 1.819 TB [0xe8e088b0 Sectors]
+Non Coerced Size: 1.818 TB [0xe8d088b0 Sectors]
+Coerced Size: 1.818 TB [0xe8d00000 Sectors]
+Sector Size:  0
+Firmware state: Online, Spun Up
+Device Firmware Level: KA06
+Shield Counter: 0
+Successful diagnostics completion on :  N/A
+SAS Address(0): 0x500065b36789abe2
+Connected Port Number: 0(path0) 
+Inquiry Data:             9WM5PANGST32000644NS                                KA06
+FDE Capable: Not Capable
+FDE Enable: Disable
+Secured: Unsecured
+Locked: Unlocked
+Needs EKM Attention: No
+Foreign State: None 
+Device Speed: 3.0Gb/s 
+Link Speed: 3.0Gb/s 
+Media Type: Hard Disk Device
+Drive Temperature : N/A
+PI Eligibility:  No 
+Drive is formatted for PI information:  No
+PI: No PI
+Port-0 :
+Port status: Active
+Port's Linkspeed: 3.0Gb/s 
+Drive has flagged a S.M.A.R.T alert : No
+
+
+
+
+PD: 1 Information
+Enclosure Device ID: 32
+Slot Number: 1
+Drive's position: DiskGroup: 0, Span: 0, Arm: 1
+Enclosure position: N/A
+Device Id: 1
+WWN: 5000c5003525e5b7
+Sequence Number: 2
+Media Error Count: 0
+Other Error Count: 0
+Predictive Failure Count: 0
+Last Predictive Failure Event Seq Number: 0
+PD Type: SATA
+
+Raw Size: 1.819 TB [0xe8e088b0 Sectors]
+Non Coerced Size: 1.818 TB [0xe8d088b0 Sectors]
+Coerced Size: 1.818 TB [0xe8d00000 Sectors]
+Sector Size:  0
+Firmware state: Online, Spun Up
+Device Firmware Level: KA06
+Shield Counter: 0
+Successful diagnostics completion on :  N/A
+SAS Address(0): 0x500065b36789abe5
+Connected Port Number: 0(path0) 
+Inquiry Data:             9WM5QRBRST32000644NS                                KA06
+FDE Capable: Not Capable
+FDE Enable: Disable
+Secured: Unsecured
+Locked: Unlocked
+Needs EKM Attention: No
+Foreign State: None 
+Device Speed: 3.0Gb/s 
+Link Speed: 3.0Gb/s 
+Media Type: Hard Disk Device
+Drive Temperature : N/A
+PI Eligibility:  No 
+Drive is formatted for PI information:  No
+PI: No PI
+Port-0 :
+Port status: Active
+Port's Linkspeed: 3.0Gb/s 
+Drive has flagged a S.M.A.R.T alert : No
+
+
+
+Virtual Drive: 2 (Target Id: 2)
+Name                :
+RAID Level          : Primary-6, Secondary-0, RAID Level Qualifier-3
+Size                : 14.550 TB
+Sector Size         : 512
+Parity Size         : 3.637 TB
+State               : Partially Degraded
+Strip Size          : 64 KB
+Number Of Drives    : 10
+Span Depth          : 1
+Default Cache Policy: WriteBack, ReadAhead, Cached, No Write Cache if Bad BBU
+Current Cache Policy: WriteBack, ReadAhead, Cached, No Write Cache if Bad BBU
+Default Access Policy: Read/Write
+Current Access Policy: Read/Write
+Disk Cache Policy   : Disk's Default
+Encryption Type     : None
+Bad Blocks Exist: No
+Is VD Cached: Yes
+Cache Cade Type : Read Only
+Number of Spans: 1
+Span: 0 - Number of PDs: 10
+
+PD: 0 Information
+Enclosure Device ID: 32
+Slot Number: 2
+Drive's position: DiskGroup: 1, Span: 0, Arm: 0
+Enclosure position: N/A
+Device Id: 2
+WWN: 5000c5003526d6af
+Sequence Number: 2
+Media Error Count: 0
+Other Error Count: 0
+Predictive Failure Count: 0
+Last Predictive Failure Event Seq Number: 0
+PD Type: SATA
+
+Raw Size: 1.819 TB [0xe8e088b0 Sectors]
+Non Coerced Size: 1.818 TB [0xe8d088b0 Sectors]
+Coerced Size: 1.818 TB [0xe8d00000 Sectors]
+Sector Size:  0
+Firmware state: Online, Spun Up
+Device Firmware Level: KA06
+Shield Counter: 0
+Successful diagnostics completion on :  N/A
+SAS Address(0): 0x500065b36789abe6
+Connected Port Number: 0(path0) 
+Inquiry Data:             9WM5QYFRST32000644NS                                KA06
+FDE Capable: Not Capable
+FDE Enable: Disable
+Secured: Unsecured
+Locked: Unlocked
+Needs EKM Attention: No
+Foreign State: None 
+Device Speed: 3.0Gb/s 
+Link Speed: 3.0Gb/s 
+Media Type: Hard Disk Device
+Drive Temperature : N/A
+PI Eligibility:  No 
+Drive is formatted for PI information:  No
+PI: No PI
+Port-0 :
+Port status: Active
+Port's Linkspeed: 3.0Gb/s 
+Drive has flagged a S.M.A.R.T alert : No
+
+
+
+
+PD: 1 Information
+Enclosure Device ID: 32
+Slot Number: 3
+Drive's position: DiskGroup: 1, Span: 0, Arm: 1
+Enclosure position: N/A
+Device Id: 3
+WWN: 5000c500352baff6
+Sequence Number: 2
+Media Error Count: 0
+Other Error Count: 0
+Predictive Failure Count: 0
+Last Predictive Failure Event Seq Number: 0
+PD Type: SATA
+
+Raw Size: 1.819 TB [0xe8e088b0 Sectors]
+Non Coerced Size: 1.818 TB [0xe8d088b0 Sectors]
+Coerced Size: 1.818 TB [0xe8d00000 Sectors]
+Sector Size:  0
+Firmware state: Online, Spun Up
+Device Firmware Level: KA06
+Shield Counter: 0
+Successful diagnostics completion on :  N/A
+SAS Address(0): 0x500065b36789abe7
+Connected Port Number: 0(path0) 
+Inquiry Data:             9WM5THW0ST32000644NS                                KA06
+FDE Capable: Not Capable
+FDE Enable: Disable
+Secured: Unsecured
+Locked: Unlocked
+Needs EKM Attention: No
+Foreign State: None 
+Device Speed: 3.0Gb/s 
+Link Speed: 3.0Gb/s 
+Media Type: Hard Disk Device
+Drive Temperature : N/A
+PI Eligibility:  No 
+Drive is formatted for PI information:  No
+PI: No PI
+Port-0 :
+Port status: Active
+Port's Linkspeed: 3.0Gb/s 
+Drive has flagged a S.M.A.R.T alert : No
+
+
+
+
+PD: 2 Information
+Enclosure Device ID: 32
+Slot Number: 4
+Drive's position: DiskGroup: 1, Span: 0, Arm: 2
+Enclosure position: N/A
+Device Id: 4
+WWN: 5000c5003527854b
+Sequence Number: 2
+Media Error Count: 0
+Other Error Count: 0
+Predictive Failure Count: 0
+Last Predictive Failure Event Seq Number: 0
+PD Type: SATA
+
+Raw Size: 1.819 TB [0xe8e088b0 Sectors]
+Non Coerced Size: 1.818 TB [0xe8d088b0 Sectors]
+Coerced Size: 1.818 TB [0xe8d00000 Sectors]
+Sector Size:  0
+Firmware state: Online, Spun Up
+Device Firmware Level: KA06
+Shield Counter: 0
+Successful diagnostics completion on :  N/A
+SAS Address(0): 0x500065b36789abe3
+Connected Port Number: 0(path0) 
+Inquiry Data:             9WM5T2WBST32000644NS                                KA06
+FDE Capable: Not Capable
+FDE Enable: Disable
+Secured: Unsecured
+Locked: Unlocked
+Needs EKM Attention: No
+Foreign State: None 
+Device Speed: 3.0Gb/s 
+Link Speed: 3.0Gb/s 
+Media Type: Hard Disk Device
+Drive Temperature : N/A
+PI Eligibility:  No 
+Drive is formatted for PI information:  No
+PI: No PI
+Port-0 :
+Port status: Active
+Port's Linkspeed: 3.0Gb/s 
+Drive has flagged a S.M.A.R.T alert : No
+
+
+
+
+PD: 3 Information
+Enclosure Device ID: 32
+Slot Number: 5
+Drive's position: DiskGroup: 1, Span: 0, Arm: 3
+Enclosure position: N/A
+Device Id: 5
+WWN: 5000c500351dc3e9
+Sequence Number: 2
+Media Error Count: 0
+Other Error Count: 0
+Predictive Failure Count: 0
+Last Predictive Failure Event Seq Number: 0
+PD Type: SATA
+
+Raw Size: 1.819 TB [0xe8e088b0 Sectors]
+Non Coerced Size: 1.818 TB [0xe8d088b0 Sectors]
+Coerced Size: 1.818 TB [0xe8d00000 Sectors]
+Sector Size:  0
+Firmware state: Online, Spun Up
+Device Firmware Level: KA06
+Shield Counter: 0
+Successful diagnostics completion on :  N/A
+SAS Address(0): 0x500065b36789abe4
+Connected Port Number: 0(path0) 
+Inquiry Data:             9WM5N22GST32000644NS                                KA06
+FDE Capable: Not Capable
+FDE Enable: Disable
+Secured: Unsecured
+Locked: Unlocked
+Needs EKM Attention: No
+Foreign State: None 
+Device Speed: 3.0Gb/s 
+Link Speed: 3.0Gb/s 
+Media Type: Hard Disk Device
+Drive Temperature : N/A
+PI Eligibility:  No 
+Drive is formatted for PI information:  No
+PI: No PI
+Port-0 :
+Port status: Active
+Port's Linkspeed: 3.0Gb/s 
+Drive has flagged a S.M.A.R.T alert : No
+
+
+
+
+PD: 4 Information
+Enclosure Device ID: 32
+Slot Number: 6
+Drive's position: DiskGroup: 1, Span: 0, Arm: 4
+Enclosure position: N/A
+Device Id: 6
+WWN: 5000c500351f7384
+Sequence Number: 2
+Media Error Count: 0
+Other Error Count: 0
+Predictive Failure Count: 0
+Last Predictive Failure Event Seq Number: 0
+PD Type: SATA
+
+Raw Size: 1.819 TB [0xe8e088b0 Sectors]
+Non Coerced Size: 1.818 TB [0xe8d088b0 Sectors]
+Coerced Size: 1.818 TB [0xe8d00000 Sectors]
+Sector Size:  0
+Firmware state: Online, Spun Up
+Device Firmware Level: KA06
+Shield Counter: 0
+Successful diagnostics completion on :  N/A
+SAS Address(0): 0x500065b36789abf0
+Connected Port Number: 0(path0) 
+Inquiry Data:             9WM5PAMFST32000644NS                                KA06
+FDE Capable: Not Capable
+FDE Enable: Disable
+Secured: Unsecured
+Locked: Unlocked
+Needs EKM Attention: No
+Foreign State: None 
+Device Speed: 3.0Gb/s 
+Link Speed: 3.0Gb/s 
+Media Type: Hard Disk Device
+Drive Temperature : N/A
+PI Eligibility:  No 
+Drive is formatted for PI information:  No
+PI: No PI
+Port-0 :
+Port status: Active
+Port's Linkspeed: 3.0Gb/s 
+Drive has flagged a S.M.A.R.T alert : No
+
+
+
+
+PD: 5 Information
+Enclosure Device ID: 32
+Slot Number: 7
+Drive's position: DiskGroup: 1, Span: 0, Arm: 5
+Enclosure position: N/A
+Device Id: 7
+WWN: 5000c50035286004
+Sequence Number: 2
+Media Error Count: 0
+Other Error Count: 0
+Predictive Failure Count: 0
+Last Predictive Failure Event Seq Number: 0
+PD Type: SATA
+
+Raw Size: 1.819 TB [0xe8e088b0 Sectors]
+Non Coerced Size: 1.818 TB [0xe8d088b0 Sectors]
+Coerced Size: 1.818 TB [0xe8d00000 Sectors]
+Sector Size:  0
+Firmware state: Online, Spun Up
+Device Firmware Level: KA06
+Shield Counter: 0
+Successful diagnostics completion on :  N/A
+SAS Address(0): 0x500065b36789abea
+Connected Port Number: 0(path0) 
+Inquiry Data:             9WM5T5N7ST32000644NS                                KA06
+FDE Capable: Not Capable
+FDE Enable: Disable
+Secured: Unsecured
+Locked: Unlocked
+Needs EKM Attention: No
+Foreign State: None 
+Device Speed: 3.0Gb/s 
+Link Speed: 3.0Gb/s 
+Media Type: Hard Disk Device
+Drive Temperature : N/A
+PI Eligibility:  No 
+Drive is formatted for PI information:  No
+PI: No PI
+Port-0 :
+Port status: Active
+Port's Linkspeed: 3.0Gb/s 
+Drive has flagged a S.M.A.R.T alert : No
+
+
+
+
+PD: 6 Information
+Enclosure Device ID: 32
+Slot Number: 8
+Drive's position: DiskGroup: 1, Span: 0, Arm: 6
+Enclosure position: N/A
+Device Id: 8
+WWN: 5000c5003525ddf2
+Sequence Number: 2
+Media Error Count: 0
+Other Error Count: 0
+Predictive Failure Count: 0
+Last Predictive Failure Event Seq Number: 0
+PD Type: SATA
+
+Raw Size: 1.819 TB [0xe8e088b0 Sectors]
+Non Coerced Size: 1.818 TB [0xe8d088b0 Sectors]
+Coerced Size: 1.818 TB [0xe8d00000 Sectors]
+Sector Size:  0
+Firmware state: Online, Spun Up
+Device Firmware Level: KA06
+Shield Counter: 0
+Successful diagnostics completion on :  N/A
+SAS Address(0): 0x500065b36789abeb
+Connected Port Number: 0(path0) 
+Inquiry Data:             9WM5NB1CST32000644NS                                KA06
+FDE Capable: Not Capable
+FDE Enable: Disable
+Secured: Unsecured
+Locked: Unlocked
+Needs EKM Attention: No
+Foreign State: None 
+Device Speed: 3.0Gb/s 
+Link Speed: 3.0Gb/s 
+Media Type: Hard Disk Device
+Drive Temperature : N/A
+PI Eligibility:  No 
+Drive is formatted for PI information:  No
+PI: No PI
+Port-0 :
+Port status: Active
+Port's Linkspeed: 3.0Gb/s 
+Drive has flagged a S.M.A.R.T alert : No
+
+
+
+
+PD: 7 Information
+Enclosure Device ID: 32
+Slot Number: 9
+Drive's position: DiskGroup: 1, Span: 0, Arm: 7
+Enclosure position: N/A
+Device Id: 9
+WWN: 5000c5002e6fffe7
+Sequence Number: 2
+Media Error Count: 0
+Other Error Count: 0
+Predictive Failure Count: 0
+Last Predictive Failure Event Seq Number: 0
+PD Type: SATA
+
+Raw Size: 1.819 TB [0xe8e088b0 Sectors]
+Non Coerced Size: 1.818 TB [0xe8d088b0 Sectors]
+Coerced Size: 1.818 TB [0xe8d00000 Sectors]
+Sector Size:  0
+Firmware state: Online, Spun Up
+Device Firmware Level: KA06
+Shield Counter: 0
+Successful diagnostics completion on :  N/A
+SAS Address(0): 0x500065b36789abf1
+Connected Port Number: 0(path0) 
+Inquiry Data:             9WM5HDN4ST32000644NS                                KA06
+FDE Capable: Not Capable
+FDE Enable: Disable
+Secured: Unsecured
+Locked: Unlocked
+Needs EKM Attention: No
+Foreign State: None 
+Device Speed: 3.0Gb/s 
+Link Speed: 3.0Gb/s 
+Media Type: Hard Disk Device
+Drive Temperature : N/A
+PI Eligibility:  No 
+Drive is formatted for PI information:  No
+PI: No PI
+Port-0 :
+Port status: Active
+Port's Linkspeed: 3.0Gb/s 
+Drive has flagged a S.M.A.R.T alert : No
+
+
+
+
+PD: 8 Information
+Enclosure Device ID: 32
+Slot Number: 10
+Drive's position: DiskGroup: 1, Span: 0, Arm: 8
+Enclosure position: N/A
+Device Id: 10
+WWN: 5000cca221e05982
+Sequence Number: 3
+Media Error Count: 0
+Other Error Count: 0
+Predictive Failure Count: 0
+Last Predictive Failure Event Seq Number: 0
+PD Type: SATA
+
+Raw Size: 1.819 TB [0xe8e088b0 Sectors]
+Non Coerced Size: 1.818 TB [0xe8d088b0 Sectors]
+Coerced Size: 1.818 TB [0xe8d00000 Sectors]
+Sector Size:  0
+Firmware state: Rebuild
+Device Firmware Level: A3EA
+Shield Counter: 0
+Successful diagnostics completion on :  N/A
+SAS Address(0): 0x500065b36789abe8
+Connected Port Number: 0(path0) 
+Inquiry Data:       JK11A1YAJ9537VHitachi HUA722020ALA330                 JKAOA3EA
+FDE Capable: Not Capable
+FDE Enable: Disable
+Secured: Unsecured
+Locked: Unlocked
+Needs EKM Attention: No
+Foreign State: None 
+Device Speed: 3.0Gb/s 
+Link Speed: 3.0Gb/s 
+Media Type: Hard Disk Device
+Drive:  Not Certified
+Drive Temperature : N/A
+PI Eligibility:  No 
+Drive is formatted for PI information:  No
+PI: No PI
+Port-0 :
+Port status: Active
+Port's Linkspeed: 3.0Gb/s 
+Drive has flagged a S.M.A.R.T alert : No
+
+
+
+
+PD: 9 Information
+Enclosure Device ID: 32
+Slot Number: 11
+Drive's position: DiskGroup: 1, Span: 0, Arm: 9
+Enclosure position: N/A
+Device Id: 11
+WWN: 5000c500351fdfd2
+Sequence Number: 2
+Media Error Count: 0
+Other Error Count: 0
+Predictive Failure Count: 0
+Last Predictive Failure Event Seq Number: 0
+PD Type: SATA
+
+Raw Size: 1.819 TB [0xe8e088b0 Sectors]
+Non Coerced Size: 1.818 TB [0xe8d088b0 Sectors]
+Coerced Size: 1.818 TB [0xe8d00000 Sectors]
+Sector Size:  0
+Firmware state: Online, Spun Up
+Device Firmware Level: KA06
+Shield Counter: 0
+Successful diagnostics completion on :  N/A
+SAS Address(0): 0x500065b36789abe9
+Connected Port Number: 0(path0) 
+Inquiry Data:             9WM5P7VVST32000644NS                                KA06
+FDE Capable: Not Capable
+FDE Enable: Disable
+Secured: Unsecured
+Locked: Unlocked
+Needs EKM Attention: No
+Foreign State: None 
+Device Speed: 3.0Gb/s 
+Link Speed: 3.0Gb/s 
+Media Type: Hard Disk Device
+Drive Temperature : N/A
+PI Eligibility:  No 
+Drive is formatted for PI information:  No
+PI: No PI
+Port-0 :
+Port status: Active
+Port's Linkspeed: 3.0Gb/s 
+Drive has flagged a S.M.A.R.T alert : No
+
+
+
+Virtual Drive: 3 (Target Id: 3)
+Name                :
+RAID Level          : Primary-1, Secondary-0, RAID Level Qualifier-0
+Size                : 372.0 GB
+Sector Size         : 512
+Mirror Data         : 372.0 GB
+State               : Optimal
+Strip Size          : 64 KB
+Number Of Drives    : 2
+Span Depth          : 1
+Default Cache Policy: WriteBack, ReadAhead, Cached, No Write Cache if Bad BBU
+Current Cache Policy: WriteBack, ReadAhead, Cached, No Write Cache if Bad BBU
+Default Access Policy: Read/Write
+Current Access Policy: Read/Write
+Disk Cache Policy   : Disk's Default
+Encryption Type     : None
+Bad Blocks Exist: No
+Is VD Cached: No
+Number of Spans: 1
+Span: 0 - Number of PDs: 2
+
+PD: 0 Information
+Enclosure Device ID: 32
+Slot Number: 12
+Drive's position: DiskGroup: 2, Span: 0, Arm: 0
+Enclosure position: N/A
+Device Id: 12
+WWN: 55cd2e404b4334cc
+Sequence Number: 2
+Media Error Count: 0
+Other Error Count: 0
+Predictive Failure Count: 0
+Last Predictive Failure Event Seq Number: 0
+PD Type: SATA
+
+Raw Size: 372.611 GB [0x2e9390b0 Sectors]
+Non Coerced Size: 372.111 GB [0x2e8390b0 Sectors]
+Coerced Size: 372.0 GB [0x2e800000 Sectors]
+Sector Size:  0
+Firmware state: Online, Spun Up
+Device Firmware Level: 0265
+Shield Counter: 0
+Successful diagnostics completion on :  N/A
+SAS Address(0): 0x500065b36789abe1
+Connected Port Number: 0(path0) 
+Inquiry Data: BTTV33230CFP400HGN  INTEL SSDSC2BA400G3                     5DV10265
+FDE Capable: Not Capable
+FDE Enable: Disable
+Secured: Unsecured
+Locked: Unlocked
+Needs EKM Attention: No
+Foreign State: None 
+Device Speed: 6.0Gb/s 
+Link Speed: 6.0Gb/s 
+Media Type: Solid State Device
+Drive:  Not Certified
+Drive Temperature : N/A
+PI Eligibility:  No 
+Drive is formatted for PI information:  No
+PI: No PI
+Port-0 :
+Port status: Active
+Port's Linkspeed: 6.0Gb/s 
+Drive has flagged a S.M.A.R.T alert : No
+
+
+
+
+PD: 1 Information
+Enclosure Device ID: 32
+Slot Number: 13
+Drive's position: DiskGroup: 2, Span: 0, Arm: 1
+Enclosure position: N/A
+Device Id: 13
+WWN: 55cd2e404b431bb9
+Sequence Number: 2
+Media Error Count: 0
+Other Error Count: 0
+Predictive Failure Count: 0
+Last Predictive Failure Event Seq Number: 0
+PD Type: SATA
+
+Raw Size: 372.611 GB [0x2e9390b0 Sectors]
+Non Coerced Size: 372.111 GB [0x2e8390b0 Sectors]
+Coerced Size: 372.0 GB [0x2e800000 Sectors]
+Sector Size:  0
+Firmware state: Online, Spun Up
+Device Firmware Level: 0265
+Shield Counter: 0
+Successful diagnostics completion on :  N/A
+SAS Address(0): 0x500065b36789abe0
+Connected Port Number: 0(path0) 
+Inquiry Data: BTTV33230610400HGN  INTEL SSDSC2BA400G3                     5DV10265
+FDE Capable: Not Capable
+FDE Enable: Disable
+Secured: Unsecured
+Locked: Unlocked
+Needs EKM Attention: No
+Foreign State: None 
+Device Speed: 6.0Gb/s 
+Link Speed: 6.0Gb/s 
+Media Type: Solid State Device
+Drive:  Not Certified
+Drive Temperature : N/A
+PI Eligibility:  No 
+Drive is formatted for PI information:  No
+PI: No PI
+Port-0 :
+Port status: Active
+Port's Linkspeed: 6.0Gb/s 
+Drive has flagged a S.M.A.R.T alert : No
+
+
+
+
+Exit Code: 0x00
