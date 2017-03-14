@@ -18,7 +18,7 @@ sub _load_data_from_controller {
   return if defined $self->_detail_raw;
 
   unless ($self->_mdstat_raw) {
-    my $mdstat_raw = do { local (@ARGV, $/) = ('/proc/mdstat.txt'); <> };
+    my $mdstat_raw = do { local (@ARGV, $/) = ('/proc/mdstat'); <> };
     $self->_mdstat_raw($mdstat_raw);
   }
 
