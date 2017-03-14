@@ -11,6 +11,7 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
 
 # first test set
 {
+  $ENV{RI_MEGACLI_DATA_ID} = "1";
   my $c = RAID::Info::Controller::MegaRAID->new(id => 0);
   is $c->name, "megaraid/0", "controller has correct name";
 
@@ -73,6 +74,7 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
 
 # detect test
 {
+  $ENV{RI_MEGACLI_DATA_ID} = "1";
   my @controllers = RAID::Info::Controller::MegaRAID->detect;
   is scalar @controllers, 1, '1 controller';
 

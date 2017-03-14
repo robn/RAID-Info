@@ -8,7 +8,7 @@ my $DATA = "$FindBin::Bin/../data";
 
 my @deswitched = map { m/^-?(.+)$/ } @ARGV;
 
-my $file = join '-', 'megacli', $deswitched[0];
+my $file = join '-', 'megacli', $deswitched[0], $ENV{RI_MEGACLI_DATA_ID};
 open my $fh, '<', "$DATA/$file.txt";
 print while <$fh>;
 

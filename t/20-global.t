@@ -12,6 +12,7 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
 $ENV{RI_CLI64_DATA_ID} = '1';
 $ENV{RI_MDADM_DATA_ID} = '1';
 $ENV{RI_LSIUTIL_DATA_ID} = '1';
+$ENV{RI_MEGACLI_DATA_ID} = '1';
 
 # detect all controllers
 {
