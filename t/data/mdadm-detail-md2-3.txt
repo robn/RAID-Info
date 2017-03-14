@@ -1,0 +1,30 @@
+/dev/md2:
+        Version : 1.2
+  Creation Time : Mon Jul 28 18:33:55 2014
+     Raid Level : raid10
+     Array Size : 2930074112 (2794.34 GiB 3000.40 GB)
+  Used Dev Size : 1953382912 (1862.89 GiB 2000.26 GB)
+   Raid Devices : 3
+  Total Devices : 3
+    Persistence : Superblock is persistent
+
+    Update Time : Tue Mar 14 01:25:50 2017
+          State : active, degraded, recovering 
+ Active Devices : 2
+Working Devices : 3
+ Failed Devices : 0
+  Spare Devices : 1
+
+         Layout : near=2
+     Chunk Size : 512K
+
+ Rebuild Status : 81% complete
+
+           Name : imap33:2  (local to host imap33)
+           UUID : 4b1a4ab5:e17d81e1:3c41124c:1b88d2ba
+         Events : 1854
+
+    Number   Major   Minor   RaidDevice State
+       0       8       64        0      active sync   /dev/sde
+       1       8       16        1      active sync   /dev/sdb
+       3       8      144        2      spare rebuilding   /dev/sdj

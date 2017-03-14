@@ -1,0 +1,24 @@
+/dev/md0:
+        Version : 1.2
+  Creation Time : Mon Jul 28 18:33:22 2014
+     Raid Level : raid1
+     Array Size : 390580160 (372.49 GiB 399.95 GB)
+  Used Dev Size : 390580160 (372.49 GiB 399.95 GB)
+   Raid Devices : 2
+  Total Devices : 2
+    Persistence : Superblock is persistent
+
+    Update Time : Tue Mar 14 01:27:36 2017
+          State : clean 
+ Active Devices : 2
+Working Devices : 2
+ Failed Devices : 0
+  Spare Devices : 0
+
+           Name : imap33:0  (local to host imap33)
+           UUID : 8281ab28:c2aae40c:e8d4fdfd:64771958
+         Events : 7728
+
+    Number   Major   Minor   RaidDevice State
+       0       8       48        0      active sync   /dev/sdd
+       1       8      112        1      active sync   /dev/sdh
