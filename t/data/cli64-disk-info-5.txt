@@ -1,0 +1,36 @@
+  # Enc# Slot#   ModelName                        Capacity  Usage
+===============================================================================
+  1  01  Slot#1  N.A.                                0.0GB  N.A.      
+  2  01  Slot#2  N.A.                                0.0GB  N.A.      
+  3  01  Slot#3  N.A.                                0.0GB  N.A.      
+  4  01  Slot#4  N.A.                                0.0GB  N.A.      
+  5  01  Slot#5  N.A.                                0.0GB  N.A.      
+  6  01  Slot#6  N.A.                                0.0GB  N.A.      
+  7  01  Slot#7  N.A.                                0.0GB  N.A.      
+  8  01  Slot#8  N.A.                                0.0GB  N.A.      
+  9  02  Slot 01 WDC WD2003FYYS-02W0B0            2000.4GB  i34d1spool      
+ 10  02  Slot 02 WDC WD2003FYYS-02W0B0            2000.4GB  i34d1spool      
+ 11  02  Slot 03 WDC WD2003FYYS-02W0B0            2000.4GB  i34d1spool      
+ 12  02  Slot 04 WDC WD2003FYYS-02W0B0            2000.4GB  i34d1spool      
+ 13  02  Slot 05 WDC WD2003FYYS-02W0B0            2000.4GB  i34d1spool      
+ 14  02  Slot 06 WDC WD2002FYPS-01U1B0            2000.4GB  i34d1spool      
+ 15  02  Slot 07 WDC WD2002FYPS-01U1B0            2000.4GB  i34d1spool      
+ 16  02  Slot 08 WDC WD2002FYPS-01U1B0            2000.4GB  i34d1spool      
+ 17  02  Slot 09 WDC WD2000F9YZ-09N20L0           2000.4GB  i34d1spool      
+ 18  02  Slot 10 WDC WD2002FYPS-01U1B0            2000.4GB  i34d1spool      
+ 19  02  Slot 11 WDC WD2002FYPS-01U1B0            2000.4GB  i34d1spool      
+ 20  02  Slot 12 WDC WD2002FYPS-01U1B0            2000.4GB  i34d1spool      
+ 21  02  Slot 13 SEAGATE ST8000NM0075             8001.6GB  Free      
+ 22  02  Slot 14 SEAGATE ST8000NM0075             8001.6GB  Free      
+ 23  02  Slot 15 SEAGATE ST8000NM0075             8001.6GB  Free      
+ 24  02  Slot 16 SEAGATE ST8000NM0075             8001.6GB  Free      
+ 25  02  Slot 17 SEAGATE ST8000NM0075             8001.6GB  Free      
+ 26  02  Slot 18 SEAGATE ST8000NM0075             8001.6GB  Free      
+ 27  02  Slot 19 SEAGATE ST8000NM0075             8001.6GB  Free      
+ 28  02  Slot 20 SEAGATE ST8000NM0075             8001.6GB  Free      
+ 29  02  Slot 21 SEAGATE ST8000NM0075             8001.6GB  Free      
+ 30  02  Slot 22 SEAGATE ST8000NM0075             8001.6GB  Free      
+ 31  02  Slot 23 SEAGATE ST8000NM0075             8001.6GB  Free      
+ 32  02  Slot 24 SEAGATE ST8000NM0075             8001.6GB  Free      
+===============================================================================
+GuiErrMsg<0x00>: Success.
