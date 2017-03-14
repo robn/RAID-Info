@@ -1,5 +1,7 @@
 package RAID::Info;
 
+# ABSTRACT: See how your RAID controllers/volumes/disks are doing without sacrificing your firstborn 
+
 use strict;
 use warnings;
 
