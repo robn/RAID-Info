@@ -34,6 +34,7 @@ sub _build_physical_disks {
   state $state_map = {
     'Online, Spun Up' => sub { RAID::Info::PhysicalDisk::State::Online->new },
     'Failed'          => sub { RAID::Info::PhysicalDisk::State::Failed->new },
+    'Rebuild'         => sub { RAID::Info::PhysicalDisk::State::Rebuilding->new(progress => shift) },
   };
 
   my %disks = map {
@@ -43,12 +44,20 @@ sub _build_physical_disks {
       my $id = $vars{'Device Id'};
       my $capacity = [$vars{'Raw Size'} =~ m/^([\d\.]+ .B)/]->[0];
       my $state = $vars{'Firmware state'};
+      my $progress;
+      if ($state eq 'Rebuild') {
+        my $enc = $vars{'Enclosure Device ID'};
+        my $slot = $vars{'Slot Number'};
+        # megacli -pdrbld -showprog -physdrv[32:10] -aall
+        my $pdrbld_raw = capturex(EXIT_ANY, qw(megacli -pdrbld -showprog), "-physdrv[$enc:$slot]", qw(-aall));
+        ($progress) = $pdrbld_raw =~ m/Completed (\d+)%/;
+      }
       ($id => RAID::Info::PhysicalDisk->new(
         id       => $id,
         slot     => $vars{'Slot Number'},
         model    => $vars{'Inquiry Data'} =~ s/\s+/ /gr,
         capacity => $capacity,
-        state    => eval { $state_map->{$state}->() } // $state,
+        state    => eval { $state_map->{$state}->($progress) } // $state,
       ))
     }
     else {
