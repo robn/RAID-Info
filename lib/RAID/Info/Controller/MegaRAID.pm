@@ -33,6 +33,7 @@ sub _build_physical_disks {
 
   state $state_map = {
     'Online, Spun Up' => sub { RAID::Info::PhysicalDisk::State::Online->new },
+    'Failed'          => sub { RAID::Info::PhysicalDisk::State::Failed->new },
   };
 
   my %disks = map {
@@ -64,7 +65,8 @@ sub _build_virtual_disks {
   $self->_load_data_from_controller;
 
   state $state_map = {
-    Optimal => sub { RAID::Info::VirtualDisk::State::Normal->new },
+    Optimal              => sub { RAID::Info::VirtualDisk::State::Normal->new },
+    'Partially Degraded' => sub { RAID::Info::VirtualDisk::State::Degraded->new },
   };
 
   state $level_map = {
