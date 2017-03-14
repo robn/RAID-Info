@@ -32,6 +32,14 @@ with 'RAID::Info::PhysicalDisk::State';
 sub is_abnormal { 0 };
 }
 
+package RAID::Info::PhysicalDisk::State::Unallocated {
+
+use Moo;
+with 'RAID::Info::PhysicalDisk::State';
+
+sub is_abnormal { 0 };
+}
+
 
 package RAID::Info::PhysicalDisk::State::Failed {
 

@@ -39,6 +39,7 @@ sub _build_physical_disks {
 
   state $state_map = {
     Online => sub { RAID::Info::PhysicalDisk::State::Online->new },
+    Free   => sub { RAID::Info::PhysicalDisk::State::Unallocated->new },
     Failed => sub { RAID::Info::PhysicalDisk::State::Failed->new },
   };
 
