@@ -1,0 +1,12 @@
+  # Name             Raid Name       Level   Capacity Ch/Id/Lun  State         
+===============================================================================
+  1 qb1              Raid Set # 000  Raid6   32000.0GB 00/00/00   Degraded
+  2 qb2              Raid Set # 001  Raid6   32000.0GB 00/00/01   Normal
+  3 qb3              Raid Set # 002  Raid6   32000.0GB 00/00/02   Normal
+  4 qb4              Raid Set # 003  Raid6   32000.0GB 00/00/03   Degraded
+  5 qb5              Raid Set # 004  Raid6   32000.0GB 00/00/04   Normal
+  6 qb6              Raid Set # 005  Raid6   32000.0GB 00/00/05   Normal
+  7 qb7              Raid Set # 006  Raid6   32000.0GB 00/00/06   Normal
+  8 qb8              Raid Set # 007  Raid6   32000.0GB 00/00/07   Normal
+===============================================================================
+GuiErrMsg<0x00>: Success.

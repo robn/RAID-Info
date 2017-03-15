@@ -1,0 +1,57 @@
+The Hardware Monitor Information
+=====================================================
+[Controller H/W Monitor]
+  CPU Temperature  : 51 C
+  Controller Temp. : 35 C
+  CPU Fan          : 6490 RPM
+  12V              : 12.099 V
+  5V               : 5.026 V
+  3.3V             : 3.280 V
+  IO Voltage +1.8V : 1.824 V
+  DDR3       +1.5V : 1.536 V
+  CPU VCore  +0.9V : 0.896 V
+  Ethernet   +1.2V : 1.216 V
+  DDR3      +0.75V : 0.752 V
+  Battery Status   : 100%
+[Enclosure#1 : SAS     RAID Adapter    V1.0]
+[Enclosure#2 : Proware EP-4806J-S6S6   0025]
+  BP +5V           : 5.120 V
+  BP +3.3V         : 3.330 V
+  BP +12V          : 12.090 V
+  JBOD +5V         : 4.880 V
+  JBOD +3.3V       : 3.380 V
+  JBOD +12V        : 11.890 V
+  MA&MB +5V        : 5.150 V
+  MA&MB +3.3V      : 3.230 V
+  MA&MB +12V       : 12.040 V
+  MC&MD +5V        : 5.070 V
+  TempSense01      : 42 C
+  TempSense02      : 41 C
+  TempSense03      : 33 C
+  TempSense04      : 30 C
+  TempSense05      : 28 C
+  TempSense06      : 38 C
+  TempSense07      : 38 C
+  TempSense08      : 32 C
+  TempSense09      : 30 C
+  TempSense10      : 26 C
+  BACKPLANE        : 40 C
+  JBOD CPU         : 50 C
+  MASTER_A CPU     : 60 C
+  MASTER_B CPU     : 70 C
+  MASTER_C CPU     : 59 C
+  MASTER_D CPU     : 60 C
+  SLAVE_A CPU      : 0 C
+  SLAVE_B CPU      : 0 C
+  SLAVE_C CPU      : 0 C
+  SLAVE_D CPU      : 0 C
+[Enclosure#3 : Proware MA              0025]
+[Enclosure#4 : Proware MC              0025]
+[Enclosure#5 : Proware MB              0025]
+[Enclosure#6 : Proware MD              0025]
+[Enclosure#7 : LSI     SAS2X28         0e12]
+  5V               : 5.060 V
+  12V              : 12.100 V
+  Temperature      : 23 C
+=====================================================
+GuiErrMsg<0x00>: Success.
