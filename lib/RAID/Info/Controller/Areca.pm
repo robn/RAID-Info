@@ -75,6 +75,7 @@ sub _build_virtual_disks {
 
   state $state_map = {
     Normal     => sub { RAID::Info::VirtualDisk::State::Normal->new },
+    Degraded   => sub { RAID::Info::VirtualDisk::State::Degraded->new },
     Rebuilding => sub { RAID::Info::VirtualDisk::State::Rebuilding->new(progress => shift) },
   };
 
