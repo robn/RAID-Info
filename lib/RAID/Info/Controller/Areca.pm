@@ -50,7 +50,7 @@ sub _build_physical_disks {
         ()
       }
       else {
-        my $state = $virtual_names{$usage} ? 'Online' : $usage;
+        my $state = $virtual_names{$usage} ? 'Online' : (exists $state_map->{$usage} ? $usage : 'Free');
         RAID::Info::PhysicalDisk->new(
           id       => $id,
           slot     => $slot,
