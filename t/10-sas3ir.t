@@ -30,17 +30,7 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
     763097000000,
   ]->[$_], "physical disk $_ has correct capacity" for (0..10);
   is !!$physical->[$_]->state->is_abnormal, !![
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
+    (0) x 11,
   ]->[$_], "physical disk $_ has correct abnormal state" for (0..10);
 
   my $virtual = $c->virtual_disks;

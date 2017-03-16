@@ -18,36 +18,12 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
   my $physical = $c->physical_disks;
   is scalar @$physical, 14, '14 physical disks';
   is int($physical->[$_]->capacity), [
-    1819000000000,
-    1819000000000,
-    1819000000000,
-    1819000000000,
-    372611000000,
-    372611000000,
-    1819000000000,
-    1819000000000,
-    1819000000000,
-    1819000000000,
-    1819000000000,
-    1819000000000,
-    1819000000000,
-    1819000000000,
+    (1819000000000) x 4,
+    (372611000000) x 2,
+    (1819000000000) x 8,
   ]->[$_], "physical disk $_ has correct capacity" for (0..13);
   is !!$physical->[$_]->state->is_abnormal, !![
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
+    (0) x 14,
   ]->[$_], "physical disk $_ has correct abnormal state" for (0..13);
 
   my $virtual = $c->virtual_disks;
@@ -82,36 +58,14 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
   my $physical = $c->physical_disks;
   is scalar @$physical, 14, '14 physical disks';
   is int($physical->[$_]->capacity), [
-    1819000000000,
-    1819000000000,
-    1819000000000,
-    1819000000000,
-    372611000000,
-    372611000000,
-    1819000000000,
-    1819000000000,
-    1819000000000,
-    1819000000000,
-    1819000000000,
-    1819000000000,
-    1819000000000,
-    1819000000000,
+    (1819000000000) x 4,
+    (372611000000)  x 2,
+    (1819000000000) x 8,
   ]->[$_], "physical disk $_ has correct capacity" for (0..13);
   is !!$physical->[$_]->state->is_abnormal, !![
-    0,
-    0,
-    1,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
+    0, 0, 1, 0,
+    (0) x 2,
+    (0) x 8,
   ]->[$_], "physical disk $_ has correct abnormal state" for (0..13);
 
   my $virtual = $c->virtual_disks;
@@ -145,36 +99,14 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
   my $physical = $c->physical_disks;
   is scalar @$physical, 14, '14 physical disks';
   is int($physical->[$_]->capacity), [
-    1819000000000,
-    1819000000000,
-    1819000000000,
-    1819000000000,
-    372611000000,
-    372611000000,
-    1819000000000,
-    1819000000000,
-    1819000000000,
-    1819000000000,
-    1819000000000,
-    1819000000000,
-    1819000000000,
-    1819000000000,
+    (1819000000000) x 4,
+    (372611000000)  x 2,
+    (1819000000000) x 8,
   ]->[$_], "physical disk $_ has correct capacity" for (0..13);
   is !!$physical->[$_]->state->is_abnormal, !![
-    0,
-    0,
-    1,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
+    0, 0, 1, 0,
+    (0) x 2,
+    (0) x 8,
   ]->[$_], "physical disk $_ has correct abnormal state" for (0..13);
   is $physical->[2]->state->progress, 3, "physical disk 2 is in rebuild with correct progress";
 
