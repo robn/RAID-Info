@@ -227,6 +227,48 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
   ]->[$_], "virtual disk $_ has correct abnormal state" for (0..7);
 }
 
+# seventh test set
+{
+  $ENV{RI_CLI64_DATA_ID} = '7';
+  my $c = RAID::Info::Controller::Areca->new;
+  is $c->name, "areca/0", "controller has correct name";
+
+  my $physical = $c->physical_disks;
+  is scalar @$physical, 74, '74 physical disks';
+  is int($physical->[$_]->capacity), [
+    (4000800000000) x 74,
+  ]->[$_], "physical disk $_ has correct capacity" for (0..73);
+  is !!$physical->[$_]->state->is_abnormal, !![
+    (0) x 74,
+  ]->[$_], "physical disk $_ has correct abnormal state" for (0..73);
+
+  my $virtual = $c->virtual_disks;
+  is scalar @$virtual, 6, '6 virtual disks';
+  is int($virtual->[$_]->capacity), [
+    (32000000000000) x 6,
+  ]->[$_], "virtual disk $_ has correct capacity" for (0..5);
+  is $virtual->[$_]->level, [
+    ('raid6') x 6,
+  ]->[$_], "virtual disk $_ has correct raid level" for (0..5);
+  is $virtual->[$_]->raid_name, [
+    'Raid Set # 000',
+    'Raid Set # 001',
+    'Raid Set # 004',
+    'Raid Set # 005',
+    'Raid Set # 006',
+    'Raid Set # 007',
+  ]->[$_], "virtual disk $_ has correct raid name" for (0..5);
+  is !!$virtual->[$_]->state->is_abnormal, !![
+    1,
+    1,
+    0,
+    1,
+    0,
+    0,
+  ]->[$_], "virtual disk $_ has correct abnormal state" for (0..5);
+}
+
+
 # detect test
 {
   $ENV{RI_CLI64_DATA_ID} = '1';
