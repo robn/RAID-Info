@@ -22,6 +22,9 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
 
   my $virtual = $c->virtual_disks;
   is scalar @$virtual, 4, '4 virtual disks';
+  is ref($virtual->[$_]->state), [
+    ('RAID::Info::VirtualDisk::State::Normal') x 4
+  ]->[$_], "virtual disk $_ has correct state" for (0..3);
   is int($virtual->[$_]->capacity), [
     399950000000,
     399940000000,
@@ -55,6 +58,12 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
 
   my $virtual = $c->virtual_disks;
   is scalar @$virtual, 4, '4 virtual disks';
+  is ref($virtual->[$_]->state), [
+    'RAID::Info::VirtualDisk::State::Rebuilding',
+    'RAID::Info::VirtualDisk::State::Rebuilding',
+    'RAID::Info::VirtualDisk::State::Normal',
+    'RAID::Info::VirtualDisk::State::Normal',
+  ]->[$_], "virtual disk $_ has correct state" for (0..3);
   is int($virtual->[$_]->capacity), [
     399950000000,
     399940000000,
@@ -90,6 +99,12 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
 
   my $virtual = $c->virtual_disks;
   is scalar @$virtual, 4, '4 virtual disks';
+  is ref($virtual->[$_]->state), [
+    'RAID::Info::VirtualDisk::State::Rebuilding',
+    'RAID::Info::VirtualDisk::State::Normal',
+    'RAID::Info::VirtualDisk::State::Normal',
+    'RAID::Info::VirtualDisk::State::Normal',
+  ]->[$_], "virtual disk $_ has correct state" for (0..3);
   is int($virtual->[$_]->capacity), [
     3000400000000,
     3000400000000,

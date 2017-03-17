@@ -16,6 +16,9 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
 
   my $physical = $c->physical_disks;
   is scalar @$physical, 11, '11 physical disks';
+  is ref($physical->[$_]->state), [
+    ('RAID::Info::PhysicalDisk::State::Online') x 11
+  ]->[$_], "physical disk $_ has correct state" for (0..10);
   is int($physical->[$_]->capacity), [
     1907729000000,
     763097000000,

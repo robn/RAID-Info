@@ -17,6 +17,9 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
 
   my $physical = $c->physical_disks;
   is scalar @$physical, 24, '24 physical disks';
+  is ref($physical->[$_]->state), [
+    ('RAID::Info::PhysicalDisk::State::Online') x 24
+  ]->[$_], "physical disk $_ has correct state" for (0..23);
   is int($physical->[$_]->capacity), [
     (4000800000000) x 24
   ]->[$_], "physical disk $_ has correct capacity" for (0..23);
@@ -26,6 +29,12 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
 
   my $virtual = $c->virtual_disks;
   is scalar @$virtual, 2, '2 virtual disks';
+  is ref($virtual->[$_]->state), [
+    ('RAID::Info::VirtualDisk::State::Normal') x 2
+  ]->[$_], "virtual disk $_ has correct state" for (0..1);
+  is ref($virtual->[$_]->state), [
+    ('RAID::Info::VirtualDisk::State::Normal') x 2
+  ]->[$_], "virtual disk $_ has correct state" for (0..1);
   is int($virtual->[$_]->capacity), [
     40000000000000,
     40000000000000,
@@ -52,6 +61,9 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
 
   my $physical = $c->physical_disks;
   is scalar @$physical, 24, '24 physical disks';
+  is ref($physical->[$_]->state), [
+    ('RAID::Info::PhysicalDisk::State::Online') x 24
+  ]->[$_], "physical disk $_ has correct state" for (0..23);
   is int($physical->[$_]->capacity), [
     (4000800000000) x 24,
   ]->[$_], "physical disk $_ has correct capacity" for (0..23);
@@ -61,6 +73,10 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
 
   my $virtual = $c->virtual_disks;
   is scalar @$virtual, 2, '2 virtual disks';
+  is ref($virtual->[$_]->state), [
+    'RAID::Info::VirtualDisk::State::Normal',
+    'RAID::Info::VirtualDisk::State::Rebuilding',
+  ]->[$_], "virtual disk $_ has correct state" for (0..1);
   is int($virtual->[$_]->capacity), [
     40000000000000,
     40000000000000,
@@ -87,7 +103,10 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
   is $c->name, "areca/0", "controller has correct name";
 
   my $physical = $c->physical_disks;
-  is scalar @$physical, 12, '24 physical disks';
+  is scalar @$physical, 12, '12 physical disks';
+  is ref($physical->[$_]->state), [
+    ('RAID::Info::PhysicalDisk::State::Online') x 12
+  ]->[$_], "physical disk $_ has correct state" for (0..11);
   is int($physical->[$_]->capacity), [
     (2000400000000) x 12,
   ]->[$_], "physical disk $_ has correct capacity" for (0..11);
@@ -97,6 +116,9 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
 
   my $virtual = $c->virtual_disks;
   is scalar @$virtual, 2, '2 virtual disks';
+  is ref($virtual->[$_]->state), [
+    ('RAID::Info::VirtualDisk::State::Normal') x 2
+  ]->[$_], "virtual disk $_ has correct state" for (0..1);
   is int($virtual->[$_]->capacity), [
     1000000000000,
     19000000000000,
@@ -122,7 +144,10 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
   is $c->name, "areca/0", "controller has correct name";
 
   my $physical = $c->physical_disks;
-  is scalar @$physical, 12, '24 physical disks';
+  is scalar @$physical, 12, '12 physical disks';
+  is ref($physical->[$_]->state), [
+    ('RAID::Info::PhysicalDisk::State::Online') x 12
+  ]->[$_], "physical disk $_ has correct state" for (0..11);
   is int($physical->[$_]->capacity), [
     (2000400000000) x 12,
   ]->[$_], "physical disk $_ has correct capacity" for (0..11);
@@ -132,6 +157,9 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
 
   my $virtual = $c->virtual_disks;
   is scalar @$virtual, 1, '1 virtual disk';
+  is ref($virtual->[$_]->state), [
+    'RAID::Info::VirtualDisk::State::Normal',
+  ]->[$_], "virtual disk $_ has correct state" for (0);
   is int($virtual->[$_]->capacity), [
     20000000000000,
   ]->[$_], "virtual disk $_ has correct capacity" for (0);
@@ -154,6 +182,10 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
 
   my $physical = $c->physical_disks;
   is scalar @$physical, 24, '24 physical disks';
+  is ref($physical->[$_]->state), [
+    ('RAID::Info::PhysicalDisk::State::Online')      x 12,
+    ('RAID::Info::PhysicalDisk::State::Unallocated') x 12,
+  ]->[$_], "physical disk $_ has correct state" for (0..23);
   is int($physical->[$_]->capacity), [
     (2000400000000) x 12,
     (8001600000000) x 12,
@@ -164,6 +196,9 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
 
   my $virtual = $c->virtual_disks;
   is scalar @$virtual, 1, '1 virtual disk';
+  is ref($virtual->[$_]->state), [
+    'RAID::Info::VirtualDisk::State::Normal',
+  ]->[$_], "virtual disk $_ has correct state" for (0);
   is int($virtual->[$_]->capacity), [
     20000000000000,
   ]->[$_], "virtual disk $_ has correct capacity" for (0);
@@ -186,6 +221,13 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
 
   my $physical = $c->physical_disks;
   is scalar @$physical, 80, '80 physical disks';
+  is ref($physical->[$_]->state), [
+    ('RAID::Info::PhysicalDisk::State::Online') x 7,
+    'RAID::Info::PhysicalDisk::State::Failed', # 7
+    ('RAID::Info::PhysicalDisk::State::Online') x 48,
+    'RAID::Info::PhysicalDisk::State::Failed', # 56
+    ('RAID::Info::PhysicalDisk::State::Online') x 23,
+  ]->[$_], "physical disk $_ has correct state" for (0..79);
   is int($physical->[$_]->capacity), [
     (4000800000000) x 80,
   ]->[$_], "physical disk $_ has correct capacity" for (0..79);
@@ -199,6 +241,16 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
 
   my $virtual = $c->virtual_disks;
   is scalar @$virtual, 8, '8 virtual disks';
+  is ref($virtual->[$_]->state), [
+    'RAID::Info::VirtualDisk::State::Degraded',
+    'RAID::Info::VirtualDisk::State::Normal',
+    'RAID::Info::VirtualDisk::State::Normal',
+    'RAID::Info::VirtualDisk::State::Degraded',
+    'RAID::Info::VirtualDisk::State::Normal',
+    'RAID::Info::VirtualDisk::State::Normal',
+    'RAID::Info::VirtualDisk::State::Normal',
+    'RAID::Info::VirtualDisk::State::Normal',
+  ]->[$_], "virtual disk $_ has correct state" for (0..7);
   is int($virtual->[$_]->capacity), [
     (32000000000000) x 8,
   ]->[$_], "virtual disk $_ has correct capacity" for (0..7);
@@ -235,6 +287,13 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
 
   my $physical = $c->physical_disks;
   is scalar @$physical, 74, '74 physical disks';
+  is ref($physical->[$_]->state), [
+    ('RAID::Info::PhysicalDisk::State::Online') x 8,
+    'RAID::Info::PhysicalDisk::State::Unallocated', # 8
+    ('RAID::Info::PhysicalDisk::State::Online') x 29,
+    ('RAID::Info::PhysicalDisk::State::Unallocated') x 16,
+    ('RAID::Info::PhysicalDisk::State::Online') x 20,
+  ]->[$_], "physical disk $_ has correct state" for (0..73);
   is int($physical->[$_]->capacity), [
     (4000800000000) x 74,
   ]->[$_], "physical disk $_ has correct capacity" for (0..73);
@@ -244,6 +303,14 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
 
   my $virtual = $c->virtual_disks;
   is scalar @$virtual, 6, '6 virtual disks';
+  is ref($virtual->[$_]->state), [
+    'RAID::Info::VirtualDisk::State::Degraded',
+    'RAID::Info::VirtualDisk::State::Rebuilding',
+    'RAID::Info::VirtualDisk::State::Normal',
+    'RAID::Info::VirtualDisk::State::Degraded',
+    'RAID::Info::VirtualDisk::State::Normal',
+    'RAID::Info::VirtualDisk::State::Normal',
+  ]->[$_], "virtual disk $_ has correct state" for (0..5);
   is int($virtual->[$_]->capacity), [
     (32000000000000) x 6,
   ]->[$_], "virtual disk $_ has correct capacity" for (0..5);
