@@ -1,0 +1,104 @@
+  # Enc# Slot#   ModelName                        Capacity  Usage
+===============================================================================
+  1  01  Slot#1  N.A.                                0.0GB  N.A.      
+  2  01  Slot#2  N.A.                                0.0GB  N.A.      
+  3  01  Slot#3  N.A.                                0.0GB  N.A.      
+  4  01  Slot#4  N.A.                                0.0GB  N.A.      
+  5  01  Slot#5  N.A.                                0.0GB  N.A.      
+  6  01  Slot#6  N.A.                                0.0GB  N.A.      
+  7  01  Slot#7  N.A.                                0.0GB  N.A.      
+  8  01  Slot#8  N.A.                                0.0GB  N.A.      
+  9  03  Slot#01 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 000  
+ 10  03  Slot#02 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 000  
+ 11  03  Slot#03 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 000  
+ 12  03  Slot#04 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 000  
+ 13  03  Slot#05 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 000  
+ 14  03  Slot#06 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 000  
+ 15  03  Slot#07 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 000  
+ 16  03  Slot#08 WDC WD4000FYYZ-01UL1B3           4000.8GB  Raid Set # 001  
+ 17  03  Slot#09 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 000  
+ 18  03  Slot#10 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 000  
+ 19  03  Slot#11 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 001  
+ 20  03  Slot#12 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 001  
+ 21  03  Slot#13 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 001  
+ 22  03  Slot#14 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 000  
+ 23  03  Slot#15 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 001  
+ 24  03  Slot#16 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 001  
+ 25  03  Slot#17 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 001  
+ 26  03  Slot#18 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 001  
+ 27  03  Slot#19 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 001  
+ 28  03  Slot#20 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 001  
+ 29  04  Slot#41 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 004  
+ 30  04  Slot#42 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 004  
+ 31  04  Slot#43 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 004  
+ 32  04  Slot#44 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 004  
+ 33  04  Slot#45 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 004  
+ 34  04  Slot#46 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 004  
+ 35  04  Slot#47 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 004  
+ 36  04  Slot#48 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 004  
+ 37  04  Slot#49 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 004  
+ 38  04  Slot#50 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 004  
+ 39  04  Slot#51 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 005  
+ 40  04  Slot#52 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 005  
+ 41  04  Slot#53 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 002  
+ 42  04  Slot#54 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 005  
+ 43  04  Slot#55 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 005  
+ 44  04  Slot#56 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 005  
+ 45  04  Slot#57 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 005  
+ 46  04  Slot#58 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 005  
+ 47  04  Slot#59 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 005  
+ 48  04  Slot#60 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 005  
+ 49  05  Slot#21 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 002  
+ 50  05  Slot#22 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 002  
+ 51  05  Slot#23 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 002  
+ 52  05  Slot#24 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 005  
+ 53  05  Slot#25 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 002  
+ 54  05  Slot#26 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 002  
+ 55  05  Slot#27 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 002  
+ 56  05  Slot#28 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 002  
+ 57  05  Slot#29 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 002  
+ 58  05  Slot#30 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 002  
+ 59  05  Slot#31 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 003  
+ 60  05  Slot#32 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 003  
+ 61  05  Slot#33 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 003  
+ 62  05  Slot#34 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 003  
+ 63  05  Slot#35 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 003  
+ 64  05  Slot#36 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 003  
+ 65  05  Slot#37 WDC WD4000FYYZ-01UL1B3           4000.8GB  Raid Set # 003  
+ 66  05  Slot#38 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 003  
+ 67  05  Slot#39 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 003  
+ 68  05  Slot#40 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 003  
+ 69  06  Slot#61 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 006  
+ 70  06  Slot#62 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 006  
+ 71  06  Slot#63 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 006  
+ 72  06  Slot#64 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 006  
+ 73  06  Slot#65 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 006  
+ 74  06  Slot#66 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 006  
+ 75  06  Slot#67 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 006  
+ 76  06  Slot#68 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 006  
+ 77  06  Slot#69 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 006  
+ 78  06  Slot#70 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 006  
+ 79  06  Slot#71 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 007  
+ 80  06  Slot#72 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 007  
+ 81  06  Slot#73 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 007  
+ 82  06  Slot#74 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 007  
+ 83  06  Slot#75 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 007  
+ 84  06  Slot#76 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 007  
+ 85  06  Slot#77 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 007  
+ 86  06  Slot#78 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 007  
+ 87  06  Slot#79 WDC WD4000FYYZ-01UL1B2           4000.8GB  Raid Set # 007  
+ 88  06  Slot#80 WDC WD4000FYYZ-01UL1B3           4000.8GB  Raid Set # 007  
+ 89  07  Slot 01 N.A.                                0.0GB  N.A.      
+ 90  07  Slot 02 N.A.                                0.0GB  N.A.      
+ 91  07  Slot 03 N.A.                                0.0GB  N.A.      
+ 92  07  Slot 04 N.A.                                0.0GB  N.A.      
+ 93  07  Slot 05 N.A.                                0.0GB  N.A.      
+ 94  07  Slot 06 N.A.                                0.0GB  N.A.      
+ 95  07  Slot 07 N.A.                                0.0GB  N.A.      
+ 96  07  Slot 08 N.A.                                0.0GB  N.A.      
+ 97  07  Slot 09 N.A.                                0.0GB  N.A.      
+ 98  07  Slot 10 N.A.                                0.0GB  N.A.      
+ 99  07  Slot 11 N.A.                                0.0GB  N.A.      
+100  07  Slot 12 N.A.                                0.0GB  N.A.      
+===============================================================================
+GuiErrMsg<0x00>: Success.
