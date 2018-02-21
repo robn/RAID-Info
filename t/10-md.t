@@ -25,6 +25,9 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
   is ref($virtual->[$_]->state), [
     ('RAID::Info::VirtualDisk::State::Normal') x 4
   ]->[$_], "virtual disk $_ has correct state" for (0..3);
+  is $virtual->[$_]->state->as_string, [
+    ('normal') x 4,
+  ]->[$_], "virtual disk $_ has correct state string" for (0..3);
   is int($virtual->[$_]->capacity), [
     399950000000,
     399940000000,
@@ -64,6 +67,11 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
     'RAID::Info::VirtualDisk::State::Normal',
     'RAID::Info::VirtualDisk::State::Normal',
   ]->[$_], "virtual disk $_ has correct state" for (0..3);
+  is $virtual->[$_]->state->as_string, [
+    'rebuilding (0%)',
+    'rebuilding (35%)',
+    ('normal') x 2,
+  ]->[$_], "virtual disk $_ has correct state string" for (0..3);
   is int($virtual->[$_]->capacity), [
     399950000000,
     399940000000,

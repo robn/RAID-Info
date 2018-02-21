@@ -19,6 +19,9 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
   is ref($physical->[$_]->state), [
     ('RAID::Info::PhysicalDisk::State::Online') x 12
   ]->[$_], "physical disk $_ has correct state" for (0..11);
+  is $physical->[$_]->state->as_string, [
+    ('online') x 12,
+  ]->[$_], "physical disk $_ has correct state string" for (0..11);
   is int($physical->[$_]->capacity), [
     476940000000,
     476940000000,

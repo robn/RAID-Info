@@ -20,7 +20,7 @@ package RAID::Info::PhysicalDisk::State {
 
 use Moo::Role;
 
-requires qw(is_abnormal);
+requires qw(is_abnormal as_string);
 }
 
 
@@ -30,6 +30,7 @@ use Moo;
 with 'RAID::Info::PhysicalDisk::State';
 
 sub is_abnormal { 0 };
+sub as_string { "online" };
 }
 
 package RAID::Info::PhysicalDisk::State::Unallocated {
@@ -38,6 +39,7 @@ use Moo;
 with 'RAID::Info::PhysicalDisk::State';
 
 sub is_abnormal { 0 };
+sub as_string { "unallocated" };
 }
 
 
@@ -47,6 +49,7 @@ use Moo;
 with 'RAID::Info::PhysicalDisk::State';
 
 sub is_abnormal { 1 };
+sub as_string { "failed" };
 }
 
 
@@ -59,6 +62,7 @@ with 'RAID::Info::PhysicalDisk::State';
 with 'RAID::Info::Disk::RebuildProgress';
 
 sub is_abnormal { 1 };
+sub as_string { "rebuilding (" . shift->progress . "%)" };
 }
 
 1;

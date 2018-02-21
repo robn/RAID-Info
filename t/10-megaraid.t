@@ -20,6 +20,9 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
   is ref($physical->[$_]->state), [
     ('RAID::Info::PhysicalDisk::State::Online') x 14
   ]->[$_], "physical disk $_ has correct state" for (0..13);
+  is $physical->[$_]->state->as_string, [
+    ('online') x 14
+  ]->[$_], "physical disk $_ has correct state string" for (0..13);
   is int($physical->[$_]->capacity), [
     (1819000000000) x 4,
     (372611000000) x 2,
@@ -34,6 +37,9 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
   is ref($virtual->[$_]->state), [
     ('RAID::Info::VirtualDisk::State::Normal') x 4
   ]->[$_], "virtual disk $_ has correct state" for (0..3);
+  is $virtual->[$_]->state->as_string, [
+    ('normal') x 4,
+  ]->[$_], "virtual disk $_ has correct state string" for (0..3);
   is int($virtual->[$_]->capacity), [
     466000000000,
     1363000000000,
@@ -68,6 +74,11 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
     'RAID::Info::PhysicalDisk::State::Failed',
     ('RAID::Info::PhysicalDisk::State::Online') x 11,
   ]->[$_], "physical disk $_ has correct state" for (0..13);
+  is $physical->[$_]->state->as_string, [
+    ('online') x 2,
+    'failed',
+    ('online') x 11,
+  ]->[$_], "physical disk $_ has correct state string" for (0..13);
   is int($physical->[$_]->capacity), [
     (1819000000000) x 4,
     (372611000000)  x 2,
@@ -87,6 +98,11 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
     'RAID::Info::VirtualDisk::State::Degraded',
     'RAID::Info::VirtualDisk::State::Normal',
   ]->[$_], "virtual disk $_ has correct state" for (0..3);
+  is $virtual->[$_]->state->as_string, [
+    ('normal') x 2,
+    'degraded',
+    'normal',
+  ]->[$_], "virtual disk $_ has correct state string" for (0..3);
   is int($virtual->[$_]->capacity), [
     415000000000,
     1413000000000,
@@ -120,6 +136,11 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
     'RAID::Info::PhysicalDisk::State::Rebuilding',
     ('RAID::Info::PhysicalDisk::State::Online') x 11,
   ]->[$_], "physical disk $_ has correct state" for (0..13);
+  is $physical->[$_]->state->as_string, [
+    ('online') x 2,
+    'rebuilding (3%)',
+    ('online') x 11,
+  ]->[$_], "physical disk $_ has correct state string" for (0..13);
   is int($physical->[$_]->capacity), [
     (1819000000000) x 4,
     (372611000000)  x 2,
@@ -140,6 +161,11 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
     'RAID::Info::VirtualDisk::State::Degraded',
     'RAID::Info::VirtualDisk::State::Normal',
   ]->[$_], "virtual disk $_ has correct state" for (0..3);
+  is $virtual->[$_]->state->as_string, [
+    ('normal') x 2,
+    'degraded',
+    'normal',
+  ]->[$_], "virtual disk $_ has correct state string" for (0..3);
   is int($virtual->[$_]->capacity), [
     415000000000,
     1413000000000,

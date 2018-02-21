@@ -20,6 +20,9 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
   is ref($physical->[$_]->state), [
     ('RAID::Info::PhysicalDisk::State::Online') x 24
   ]->[$_], "physical disk $_ has correct state" for (0..23);
+  is $physical->[$_]->state->as_string, [
+    ('online') x 24
+  ]->[$_], "physical disk $_ has correct state string" for (0..23);
   is int($physical->[$_]->capacity), [
     (4000800000000) x 24
   ]->[$_], "physical disk $_ has correct capacity" for (0..23);
@@ -32,9 +35,9 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
   is ref($virtual->[$_]->state), [
     ('RAID::Info::VirtualDisk::State::Normal') x 2
   ]->[$_], "virtual disk $_ has correct state" for (0..1);
-  is ref($virtual->[$_]->state), [
-    ('RAID::Info::VirtualDisk::State::Normal') x 2
-  ]->[$_], "virtual disk $_ has correct state" for (0..1);
+  is $virtual->[$_]->state->as_string, [
+    ('normal') x 2,
+  ]->[$_], "virtual disk $_ has correct state string" for (0..1);
   is int($virtual->[$_]->capacity), [
     40000000000000,
     40000000000000,
@@ -64,6 +67,9 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
   is ref($physical->[$_]->state), [
     ('RAID::Info::PhysicalDisk::State::Online') x 24
   ]->[$_], "physical disk $_ has correct state" for (0..23);
+  is $physical->[$_]->state->as_string, [
+    ('online') x 24
+  ]->[$_], "physical disk $_ has correct state string" for (0..23);
   is int($physical->[$_]->capacity), [
     (4000800000000) x 24,
   ]->[$_], "physical disk $_ has correct capacity" for (0..23);
@@ -77,6 +83,10 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
     'RAID::Info::VirtualDisk::State::Normal',
     'RAID::Info::VirtualDisk::State::Rebuilding',
   ]->[$_], "virtual disk $_ has correct state" for (0..1);
+  is $virtual->[$_]->state->as_string, [
+    'normal',
+    'rebuilding (35.3%)',
+  ]->[$_], "virtual disk $_ has correct state string" for (0..1);
   is int($virtual->[$_]->capacity), [
     40000000000000,
     40000000000000,
@@ -107,6 +117,9 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
   is ref($physical->[$_]->state), [
     ('RAID::Info::PhysicalDisk::State::Online') x 12
   ]->[$_], "physical disk $_ has correct state" for (0..11);
+  is $physical->[$_]->state->as_string, [
+    ('online') x 12
+  ]->[$_], "physical disk $_ has correct state string" for (0..11);
   is int($physical->[$_]->capacity), [
     (2000400000000) x 12,
   ]->[$_], "physical disk $_ has correct capacity" for (0..11);
@@ -148,6 +161,9 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
   is ref($physical->[$_]->state), [
     ('RAID::Info::PhysicalDisk::State::Online') x 12
   ]->[$_], "physical disk $_ has correct state" for (0..11);
+  is $physical->[$_]->state->as_string, [
+    ('online') x 12
+  ]->[$_], "physical disk $_ has correct state string" for (0..11);
   is int($physical->[$_]->capacity), [
     (2000400000000) x 12,
   ]->[$_], "physical disk $_ has correct capacity" for (0..11);
@@ -186,6 +202,10 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
     ('RAID::Info::PhysicalDisk::State::Online')      x 12,
     ('RAID::Info::PhysicalDisk::State::Unallocated') x 12,
   ]->[$_], "physical disk $_ has correct state" for (0..23);
+  is $physical->[$_]->state->as_string, [
+    ('online')      x 12,
+    ('unallocated') x 12,
+  ]->[$_], "physical disk $_ has correct state string" for (0..23);
   is int($physical->[$_]->capacity), [
     (2000400000000) x 12,
     (8001600000000) x 12,
@@ -228,6 +248,13 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
     'RAID::Info::PhysicalDisk::State::Failed', # 56
     ('RAID::Info::PhysicalDisk::State::Online') x 23,
   ]->[$_], "physical disk $_ has correct state" for (0..79);
+  is $physical->[$_]->state->as_string, [
+    ('online') x 7,
+    'failed', # 7
+    ('online') x 48,
+    'failed', # 56
+    ('online') x 23,
+  ]->[$_], "physical disk $_ has correct state string" for (0..79);
   is int($physical->[$_]->capacity), [
     (4000800000000) x 80,
   ]->[$_], "physical disk $_ has correct capacity" for (0..79);
@@ -294,6 +321,13 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
     ('RAID::Info::PhysicalDisk::State::Unallocated') x 16,
     ('RAID::Info::PhysicalDisk::State::Online') x 20,
   ]->[$_], "physical disk $_ has correct state" for (0..73);
+  is $physical->[$_]->state->as_string, [
+    ('online') x 8,
+    'unallocated', # 8
+    ('online') x 29,
+    ('unallocated') x 16,
+    ('online') x 20,
+  ]->[$_], "physical disk $_ has correct state string" for (0..73);
   is int($physical->[$_]->capacity), [
     (4000800000000) x 74,
   ]->[$_], "physical disk $_ has correct capacity" for (0..73);
@@ -346,6 +380,9 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
   is ref($physical->[$_]->state), [
     ('RAID::Info::PhysicalDisk::State::Online') x 80
   ]->[$_], "physical disk $_ has correct state" for (0..79);
+  is $physical->[$_]->state->as_string, [
+    ('online') x 24
+  ]->[$_], "physical disk $_ has correct state string" for (0..23);
   is int($physical->[$_]->capacity), [
     (4000800000000) x 80,
   ]->[$_], "physical disk $_ has correct capacity" for (0..79);
