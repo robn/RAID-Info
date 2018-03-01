@@ -26,7 +26,15 @@ local $RAID::Info::Controller::MD::_PROC_MDSTAT =
   my @controllers = RAID::Info->detect;
   is scalar @controllers, 7, '7 controllers';
 
-  # XXX one of each
+  is ref($controllers[$_]), [qw(
+    RAID::Info::Controller::Adaptec
+    RAID::Info::Controller::Areca
+    RAID::Info::Controller::MD
+    RAID::Info::Controller::MegaRAID
+    RAID::Info::Controller::SAS2IR
+    RAID::Info::Controller::SAS3IR
+    RAID::Info::Controller::SASMPT
+  )]->[$_], "correctly detected controller $_" for (0..6);
 }
 
 done_testing;
