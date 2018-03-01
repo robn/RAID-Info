@@ -1,0 +1,41 @@
+#!/usr/bin/env perl
+
+use 5.010;
+use warnings;
+use strict;
+
+use RAID::Info;
+use Number::Bytes::Human qw(format_bytes);
+
+my @controllers = RAID::Info->detect;
+
+for my $c (@controllers) {
+  say "controller id: ", $c->name;
+  
+  my @phys = @{$c->physical_disks};
+  my @virt = @{$c->virtual_disks};
+
+  say "  physical disks: ", scalar @phys;
+  say "    $_" for map {
+    join(', ',
+      $_->id,
+      $_->slot,
+      $_->model,
+      format_bytes($_->capacity),
+      $_->state->as_string,
+    )
+  } @phys;
+
+  say "  virtual disks: ", scalar @virt;
+  say "    $_" for map {
+    join(', ',
+      $_->id,
+      $_->name,
+      $_->level,
+      format_bytes($_->capacity),
+      $_->state->as_string,
+    )
+  } @virt;
+
+  say "";
+}
