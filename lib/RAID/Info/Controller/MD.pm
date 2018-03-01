@@ -10,6 +10,9 @@ with 'RAID::Info::Controller';
 
 use IPC::System::Simple qw(capturex);
 
+# hook for test suite
+our $_PROC_MDSTAT = '/proc/mdstat';
+
 has _mdstat_raw => ( is => 'rw', isa => Str );
 has _detail_raw => ( is => 'rw', isa => ArrayRef[Str] );
 
@@ -18,7 +21,7 @@ sub _load_data_from_controller {
   return if defined $self->_detail_raw;
 
   unless ($self->_mdstat_raw) {
-    my $mdstat_raw = do { local (@ARGV, $/) = ('/proc/mdstat'); <> };
+    my $mdstat_raw = do { local (@ARGV, $/) = ($_PROC_MDSTAT); <> };
     $self->_mdstat_raw($mdstat_raw);
   }
 
@@ -79,7 +82,7 @@ sub _build_virtual_disks {
 sub detect {
   my ($class, %args) = @_;
 
-  my $mdstat_raw = $args{_mdstat_raw} // do { local (@ARGV, $/) = ('/proc/mdstat'); <> };
+  my $mdstat_raw = $args{_mdstat_raw} // do { local (@ARGV, $/) = ($_PROC_MDSTAT); <> };
   my $absent = $mdstat_raw ? $mdstat_raw =~ m/^Personalities\s+:\s*$/m : 1;
 
   return $absent ? () : ($class->new);
