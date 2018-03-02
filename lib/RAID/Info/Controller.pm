@@ -12,9 +12,10 @@ use RAID::Info::VirtualDisk;
 
 has name => ( is => 'lazy', isa => Str );
 
-has physical_disks => ( is => 'lazy', isa => ArrayRef[class_type('RAID::Info::PhysicalDisk')] );
-has virtual_disks  => ( is => 'lazy', isa => ArrayRef[class_type('RAID::Info::VirtualDisk')] );
+has virtual_disks => ( is => 'lazy', isa => ArrayRef[class_type('RAID::Info::VirtualDisk')] );
 
-requires qw(_build_name _build_physical_disks _build_virtual_disks detect);
+requires qw(_build_name _build_virtual_disks detect);
+
+with 'RAID::Info::Role::HasPhysicalDisks';
 
 1;
