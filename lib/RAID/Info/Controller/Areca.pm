@@ -45,26 +45,16 @@ sub _build_physical_disks {
   };
 
   my @disks = map {
-    if (my ($id, $enc, $slot, $model, $capacity, $usage) =
-          m{^\s+(\d+)\s+(\d+)\s+(?i:slot)[\s#]*(\d+)\s+(.+?)\s+([\d\.]+.B)\s+(.+?)\s*$}) {
-      if ($usage eq 'N.A.') {
-        ()
-      }
-      else {
-        my $state = $virtual_names{$usage} ? 'Online' : (exists $state_map->{$usage} ? $usage : 'Free');
-        RAID::Info::PhysicalDisk->new(
-          id       => $id,
-          slot     => $slot,
-          model    => $model,
-          capacity => $capacity,
-          state    => eval { $state_map->{$state}->() } // $state,
-        )
-      }
-    }
-    else {
-      ()
-    }
-  } split '\n', $self->_disk_raw;
+    my ($id, $enc, $slot, $model, $capacity, $usage) = @$_;
+    my $state = $virtual_names{$usage} ? 'Online' : (exists $state_map->{$usage} ? $usage : 'Free');
+    RAID::Info::PhysicalDisk->new(
+      id       => $id,
+      slot     => $slot,
+      model    => $model,
+      capacity => $capacity,
+      state    => eval { $state_map->{$state}->() } // $state,
+    )
+  } @{$self->_split_disk_raw};
 
   return \@disks;
 }
@@ -82,24 +72,54 @@ sub _build_virtual_disks {
   };
 
   my @virtual = map {
-    if (my ($id, $name, $raid_name, $level, $capacity, $lun, $state, $progress) =
-          m{^\s+(\d+)\s+(\S+)\s+(.+?)\s+(\S+)\s+([\d\.]+.B)\s+([\d/]+)\s+([^\(]+)(?:\(([\d\.]+)\%\))?\s*}) {
-      RAID::Info::Controller::Areca::VirtualDisk->new(
-        id        => $id,
-        name      => $name,
-        raid_name => $raid_name,
-        level     => lc $level,
-        capacity  => $capacity,
-        state     => eval { $state_map->{$state}->($progress) } // $state,
-      )
-    }
-    else {
-      ()
-    }
-  } split '\n', $self->_vsf_raw;
+    my ($id, $name, $raid_name, $level, $capacity, $lun, $state, $progress) = @$_;
+    RAID::Info::Controller::Areca::VirtualDisk->new(
+      id        => $id,
+      name      => $name,
+      raid_name => $raid_name,
+      level     => lc $level,
+      capacity  => $capacity,
+      state     => eval { $state_map->{$state}->($progress) } // $state,
+    )
+  } @{$self->_split_vsf_raw};
 
   return \@virtual;
 }
+
+has _split_disk_raw => ( is => 'lazy' );
+sub _build__split_disk_raw {
+  my ($self) = @_;
+
+  [
+    map {
+      if (my @row =
+            m{^\s+(\d+)\s+(\d+)\s+(?i:slot)[\s#]*(\d+)\s+(.+?)\s+([\d\.]+.B)\s+(.+?)\s*$}) {
+        $row[5] eq 'N.A.' ? () : \@row
+      }
+      else {
+        ()
+      }
+    } split '\n', $self->_disk_raw
+  ]
+}
+
+has _split_vsf_raw  => ( is => 'lazy' );
+sub _build__split_vsf_raw {
+  my ($self) = @_;
+
+  [
+    map {
+      if (my @row =
+            m{^\s+(\d+)\s+(\S+)\s+(.+?)\s+(\S+)\s+([\d\.]+.B)\s+([\d/]+)\s+([^\(]+)(?:\(([\d\.]+)\%\))?\s*}) {
+        \@row
+      }
+      else {
+        ()
+      }
+    } split '\n', $self->_vsf_raw
+  ]
+}
+
 
 sub detect {
   my ($class) = @_;
