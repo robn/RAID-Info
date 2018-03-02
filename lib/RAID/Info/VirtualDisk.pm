@@ -50,7 +50,7 @@ use namespace::autoclean;
 
 use Moo;
 with 'RAID::Info::VirtualDisk::State';
-with 'RAID::Info::Disk::RebuildProgress';
+with 'RAID::Info::Role::HasRebuildProgress';
 
 sub is_abnormal { 1 };
 sub as_string { "rebuilding (" . shift->progress . "%)" };
