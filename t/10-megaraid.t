@@ -3,6 +3,7 @@
 use warnings;
 use strict;
 use Test::More;
+use Test::Deep;
 
 use RAID::Info::Controller::MegaRAID;
 
@@ -59,6 +60,12 @@ use Test::RAID::Info::Mock;
     0,
     0,
   ]->[$_], "virtual disk $_ has correct abnormal state" for (0..3);
+  cmp_deeply [ map { $_->slot } @{$virtual->[$_]->physical_disks} ], [
+    [0, 1],
+    [0, 1],
+    [2..11],
+    [12, 13],
+  ]->[$_], "virtual disk $_ has correct physical disks" for (0..3);
 }
 
 
@@ -122,6 +129,12 @@ use Test::RAID::Info::Mock;
     1,
     0,
   ]->[$_], "virtual disk $_ has correct abnormal state" for (0..3);
+  cmp_deeply [ map { $_->slot } @{$virtual->[$_]->physical_disks} ], [
+    [0, 1],
+    [0, 1],
+    [2..11],
+    [12, 13],
+  ]->[$_], "virtual disk $_ has correct physical disks" for (0..3);
 }
 
 # third test set
@@ -185,6 +198,12 @@ use Test::RAID::Info::Mock;
     1,
     0,
   ]->[$_], "virtual disk $_ has correct abnormal state" for (0..3);
+  cmp_deeply [ map { $_->slot } @{$virtual->[$_]->physical_disks} ], [
+    [0, 1],
+    [0, 1],
+    [2..11],
+    [12, 13],
+  ]->[$_], "virtual disk $_ has correct physical disks" for (0..3);
 }
 
 # detect test

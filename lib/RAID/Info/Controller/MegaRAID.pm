@@ -91,16 +91,28 @@ sub _build_virtual_disks {
     my ($idline, @lines) = split /\n+/;
     my ($id) = $idline =~ m/^(\d+)/;
     if (defined $id) {
-      my %vars = map { m/:\s/ ? split '\s*:\s+', $_, 2 : () } @lines;
+      my @slots;
+      my %vars = map {
+        my ($k, $v) = m/:\s/ ? split '\s*:\s+', $_, 2 : ();
+        if (defined $k && defined $v) {
+          push @slots, $v if $k eq 'Slot Number';
+          ($k, $v);
+        }
+        else {
+          ()
+        }
+      } @lines;
       my $name  = $vars{Name} // '';
       my $level = $vars{'RAID Level'};
       my $state = $vars{'State'};
-      RAID::Info::VirtualDisk->new(
-        id       => $id,
-        name     => $name,
-        level    => $level_map->{$level} // $level,
-        capacity => $vars{'Size'},
-        state    => eval { $state_map->{$state}->() } // $state,
+      my @phys = @{{ map { $_->{slot} => $_ } @{$self->physical_disks} }}{@slots};
+      RAID::Info::Controller::MegaRAID::VirtualDisk->new(
+        id             => $id,
+        name           => $name,
+        level          => $level_map->{$level} // $level,
+        capacity       => $vars{'Size'},
+        state          => eval { $state_map->{$state}->() } // $state,
+        physical_disks => \@phys,
       )
     }
     else {
@@ -120,6 +132,23 @@ sub detect {
   my @ids = $adpallinfo_raw =~ m/^Adapter\s+#(\d+).+/smg;
 
   return map { $class->new(id => $_) } @ids;
+}
+
+
+package RAID::Info::Controller::MegaRAID::VirtualDisk {
+
+use namespace::autoclean;
+
+use Moo;
+
+extends 'RAID::Info::VirtualDisk';
+with 'RAID::Info::Role::HasPhysicalDisks';
+
+sub _build_physical_disks {
+  # no op; we prove the list of disks in the constructor
+  []
+}
+
 }
 
 1;

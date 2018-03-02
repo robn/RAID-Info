@@ -34,6 +34,7 @@ for my $c (@controllers) {
       $_->level,
       format_bytes($_->capacity),
       $_->state->as_string,
+      $_->can('physical_disks') ? '['.join(" ", map { $_->slot } @{$_->physical_disks}).']' : (),
     )
   } @virt;
 
