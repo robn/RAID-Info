@@ -31,6 +31,7 @@ for my $c (@controllers) {
     join(', ',
       $_->id,
       $_->name,
+      $_->can('raid_name') ? $_->raid_name : (),
       $_->level,
       format_bytes($_->capacity),
       $_->state->as_string,
