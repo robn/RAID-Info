@@ -9,6 +9,7 @@ use Types::Standard qw(Str Int);
 with 'RAID::Info::Controller';
 
 use IPC::System::Simple qw(capturex EXIT_ANY);
+use Try::Tiny;
 
 has id => ( is => 'ro', isa => Int, required => 1 );
 
@@ -113,7 +114,9 @@ sub _build_virtual_disks {
 sub detect {
   my ($class) = @_;
 
-  my $adpallinfo_raw = capturex(EXIT_ANY, qw(megacli -adpallinfo -aall));
+  my $adpallinfo_raw = try { capturex(EXIT_ANY, qw(megacli -adpallinfo -aall)) };
+  return unless $adpallinfo_raw;
+
   my @ids = $adpallinfo_raw =~ m/^Adapter\s+#(\d+).+/smg;
 
   return map { $class->new(id => $_) } @ids;

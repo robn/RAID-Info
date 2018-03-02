@@ -9,6 +9,7 @@ use Types::Standard qw(slurpy ClassName Dict Optional Str ArrayRef);
 with 'RAID::Info::Controller';
 
 use IPC::System::Simple qw(capturex);
+use Try::Tiny;
 
 # hook for test suite
 our $_PROC_MDSTAT = '/proc/mdstat';
@@ -82,7 +83,11 @@ sub _build_virtual_disks {
 sub detect {
   my ($class, %args) = @_;
 
-  my $mdstat_raw = $args{_mdstat_raw} // do { local (@ARGV, $/) = ($_PROC_MDSTAT); <> };
+  my $mdstat_raw = $args{_mdstat_raw} // try {
+    -r $_PROC_MDSTAT ? do { local (@ARGV, $/) = ($_PROC_MDSTAT); <> } : ''
+  };
+  return unless $mdstat_raw;
+
   my $absent = $mdstat_raw ? $mdstat_raw =~ m/^Personalities\s+:\s*$/m : 1;
 
   return $absent ? () : ($class->new);

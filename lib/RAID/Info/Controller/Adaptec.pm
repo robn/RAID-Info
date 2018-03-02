@@ -9,6 +9,7 @@ use Types::Standard qw(Str Int);
 with 'RAID::Info::Controller';
 
 use IPC::System::Simple qw(capturex EXIT_ANY);
+use Try::Tiny;
 
 has id => ( is => 'ro', isa => Int, required => 1 );
 
@@ -92,7 +93,9 @@ sub _build_virtual_disks {
 sub detect {
   my ($class) = @_;
 
-  my $version_raw = capturex(EXIT_ANY, qw(arcconf getversion));
+  my $version_raw = try { capturex(EXIT_ANY, qw(arcconf getversion)) };
+  return unless $version_raw;
+
   my @ids = $version_raw =~ m/^Controller\s+#(\d+).+/smg;
 
   return map { $class->new(id => $_) } @ids;

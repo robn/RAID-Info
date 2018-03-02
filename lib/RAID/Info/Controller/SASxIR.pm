@@ -58,6 +58,8 @@ sub detect {
   my ($class) = @_;
 
   my $list_raw = $class->_get_controller_list_raw;
+  return unless $list_raw;
+
   my @ids = $list_raw =~ m/^\s+(\d+)\s+.+/mg;
 
   return map { $class->new(id => $_) } @ids;

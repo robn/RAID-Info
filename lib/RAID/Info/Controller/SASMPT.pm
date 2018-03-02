@@ -9,6 +9,7 @@ use Types::Standard qw(Str);
 with 'RAID::Info::Controller';
 
 use IPC::Open2;
+use Try::Tiny;
 
 has _lsiutil_raw => ( is => 'rw', isa => Str );
 
@@ -96,8 +97,11 @@ sub detect {
   my ($class) = @_;
 
   my $lsiutil_raw = do {
-    open2(my $out, my $in, 'lsiutil')
-      or return ();
+    my ($out, $in) = try {
+      open2(my $out, my $in, 'lsiutil');
+      ($out, $in);
+    };
+    return unless $out && $in;
 
     print $in "1\n21\n1\n2\n";
     close $in;

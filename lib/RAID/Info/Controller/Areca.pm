@@ -9,6 +9,7 @@ use Types::Standard qw(Str);
 with 'RAID::Info::Controller';
 
 use IPC::System::Simple qw(capturex EXIT_ANY);
+use Try::Tiny;
 
 has _hw_raw   => ( is => 'rw', isa => Str );
 has _disk_raw => ( is => 'rw', isa => Str );
@@ -103,7 +104,9 @@ sub _build_virtual_disks {
 sub detect {
   my ($class) = @_;
 
-  my $main_raw = capturex(EXIT_ANY, qw(cli64 main));
+  my $main_raw = try { capturex(EXIT_ANY, qw(cli64 main)) };
+  return unless $main_raw;
+
   my @ids = $main_raw =~ m/^.{3}\s(\d+)\s+/smg;
 
   die "no support for multiple Areca controllers; please contact the RAID-Info authors"

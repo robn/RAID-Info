@@ -8,6 +8,7 @@ use Moo;
 with 'RAID::Info::Controller::SASxIR';
 
 use IPC::System::Simple qw(capturex EXIT_ANY);
+use Try::Tiny;
 
 sub _load_data_from_controller {
   my ($self) = @_;
@@ -22,8 +23,9 @@ sub _build_name {
 }
 
 sub _get_controller_list_raw {
-  return scalar capturex(EXIT_ANY, qw(sas3ircu list));
-  # XXX sas3ircu list
+  my $raw = try { capturex(EXIT_ANY, qw(sas3ircu list)) };
+  return unless $raw;
+  return $raw;
 }
 
 1;
