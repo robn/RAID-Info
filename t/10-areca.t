@@ -3,6 +3,7 @@
 use warnings;
 use strict;
 use Test::More;
+use Test::Deep;
 
 use RAID::Info::Controller::Areca;
 
@@ -56,6 +57,10 @@ use Test::RAID::Info::Mock;
     0,
     0,
   ]->[$_], "virtual disk $_ has correct abnormal state" for (0..1);
+  cmp_deeply [ map { $_->slot } @{$virtual->[$_]->physical_disks} ], [
+    ['00'..'11'],
+    ['12'..'23'],
+  ]->[$_], "virtual disk $_ has correct physical disks" for (0..1);
 }
 
 # second test set
@@ -107,6 +112,10 @@ use Test::RAID::Info::Mock;
     1,
   ]->[$_], "virtual disk $_ has correct abnormal state" for (0..1);
   is $virtual->[1]->state->progress, 35.3, "virtual disk 1 is in rebuild with correct progress";
+  cmp_deeply [ map { $_->slot } @{$virtual->[$_]->physical_disks} ], [
+    ['01'..'12'],
+    ['13'..'24'],
+  ]->[$_], "virtual disk $_ has correct physical disks" for (0..1);
 }
 
 # third test set
@@ -152,6 +161,10 @@ use Test::RAID::Info::Mock;
     0,
     0,
   ]->[$_], "virtual disk $_ has correct abnormal state" for (0..1);
+  cmp_deeply [ map { $_->slot } @{$virtual->[$_]->physical_disks} ], [
+    ['001'..'012'],
+    ['001'..'012'],
+  ]->[$_], "virtual disk $_ has correct physical disks" for (0..1);
 }
 
 # fourth test set
@@ -193,6 +206,9 @@ use Test::RAID::Info::Mock;
   is !!$virtual->[$_]->state->is_abnormal, !![
     0,
   ]->[$_], "virtual disk $_ has correct abnormal state" for (0);
+  cmp_deeply [ map { $_->slot } @{$virtual->[$_]->physical_disks} ], [
+    ['01'..'12'],
+  ]->[$_], "virtual disk $_ has correct physical disks" for (0);
 }
 
 # fifth test set
@@ -237,6 +253,9 @@ use Test::RAID::Info::Mock;
   is !!$virtual->[$_]->state->is_abnormal, !![
     0,
   ]->[$_], "virtual disk $_ has correct abnormal state" for (0);
+  cmp_deeply [ map { $_->slot } @{$virtual->[$_]->physical_disks} ], [
+    ['01'..'12'],
+  ]->[$_], "virtual disk $_ has correct physical disks" for (0);
 }
 
 # sixth test set
@@ -311,6 +330,16 @@ use Test::RAID::Info::Mock;
     0,
     0,
   ]->[$_], "virtual disk $_ has correct abnormal state" for (0..7);
+  cmp_deeply [ map { $_->slot } @{$virtual->[$_]->physical_disks} ], [
+    ['01'..'07','09','10'],
+    ['11'..'20'],
+    ['21'..'30'],
+    ['31'..'36','38','39','40'],
+    ['41'..'50'],
+    ['51'..'60'],
+    ['61'..'70'],
+    ['71'..'80'],
+  ]->[$_], "virtual disk $_ has correct physical disks" for (0..7);
 }
 
 # seventh test set
@@ -375,6 +404,16 @@ use Test::RAID::Info::Mock;
     0,
     0,
   ]->[$_], "virtual disk $_ has correct abnormal state" for (0..5);
+  cmp_deeply [ map { $_->slot } @{$virtual->[$_]->physical_disks} ], [
+    ['01'..'07','10'],
+    ['08','11','12','13','15'..'20'],
+    #['21'..'23','25'..'27','29','30'],
+    #['31','33'..'37','39','40'],
+    ['41'..'50'],
+    ['51','52','54'..'60'],
+    ['61'..'70'],
+    ['71'..'80'],
+  ]->[$_], "virtual disk $_ has correct physical disks" for (0..5);
 }
 
 # eighth test set
@@ -428,6 +467,16 @@ use Test::RAID::Info::Mock;
     (1) x 4,
     0, 1, 0, 0,
   ]->[$_], "virtual disk $_ has correct abnormal state" for (0..7);
+  cmp_deeply [ map { $_->slot } @{$virtual->[$_]->physical_disks} ], [
+    ['01'..'07','09','10','14'],
+    ['08','11'..'13','15'..'20'],
+    ['53','21','22','23','25'..'30'],
+    ['31'..'40'],
+    ['41'..'50'],
+    ['51','52','54'..'60','24'],
+    ['61'..'70'],
+    ['71'..'80'],
+  ]->[$_], "virtual disk $_ has correct physical disks" for (0..7);
 }
 
 

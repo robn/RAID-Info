@@ -36,23 +36,24 @@ sub _build_physical_disks {
 
   $self->_load_data_from_controller;
 
-  my %virtual_names = map { $_->raid_name => 1 } @{$self->virtual_disks};
-
   state $state_map = {
     Online => sub { RAID::Info::PhysicalDisk::State::Online->new },
     Free   => sub { RAID::Info::PhysicalDisk::State::Unallocated->new },
     Failed => sub { RAID::Info::PhysicalDisk::State::Failed->new },
   };
 
+  my %virtual_names = map { $_->[2] => 1 } @{$self->_split_vsf_raw};
+
   my @disks = map {
     my ($id, $enc, $slot, $model, $capacity, $usage) = @$_;
     my $state = $virtual_names{$usage} ? 'Online' : (exists $state_map->{$usage} ? $usage : 'Free');
-    RAID::Info::PhysicalDisk->new(
-      id       => $id,
-      slot     => $slot,
-      model    => $model,
-      capacity => $capacity,
-      state    => eval { $state_map->{$state}->() } // $state,
+    RAID::Info::Controller::Areca::PhysicalDisk->new(
+      id        => $id,
+      slot      => $slot,
+      model     => $model,
+      capacity  => $capacity,
+      state     => eval { $state_map->{$state}->() } // $state,
+      raid_name => $state eq 'Online' ? $usage : '',
     )
   } @{$self->_split_disk_raw};
 
@@ -71,15 +72,19 @@ sub _build_virtual_disks {
     'Need Rebuild' => sub { RAID::Info::VirtualDisk::State::Rebuilding->new(progress => 0) },
   };
 
+  my %phys;
+  push @{$phys{$_->raid_name}}, $_ for @{$self->physical_disks};
+
   my @virtual = map {
     my ($id, $name, $raid_name, $level, $capacity, $lun, $state, $progress) = @$_;
     RAID::Info::Controller::Areca::VirtualDisk->new(
-      id        => $id,
-      name      => $name,
-      raid_name => $raid_name,
-      level     => lc $level,
-      capacity  => $capacity,
-      state     => eval { $state_map->{$state}->($progress) } // $state,
+      id             => $id,
+      name           => $name,
+      raid_name      => $raid_name,
+      level          => lc $level,
+      capacity       => $capacity,
+      state          => eval { $state_map->{$state}->($progress) } // $state,
+      physical_disks => $phys{$raid_name} // [],
     )
   } @{$self->_split_vsf_raw};
 
@@ -135,6 +140,26 @@ sub detect {
   return map { $class->new } @ids;
 }
 
+package RAID::Info::Controller::Areca::PhysicalDisk {
+
+use namespace::autoclean;
+
+use Moo;
+use Types::Standard qw(Str);
+
+extends 'RAID::Info::PhysicalDisk';
+
+has raid_name => ( is => 'ro', isa => Str, required => 1 );
+
+with 'RAID::Info::Role::HasPhysicalDisks';
+
+sub _build_physical_disks {
+  # no op; we prove the list of disks in the constructor
+  []
+}
+
+}
+
 package RAID::Info::Controller::Areca::VirtualDisk {
 
 use namespace::autoclean;
@@ -145,6 +170,13 @@ use Types::Standard qw(Str);
 extends 'RAID::Info::VirtualDisk';
 
 has raid_name => ( is => 'ro', isa => Str, required => 1 );
+
+with 'RAID::Info::Role::HasPhysicalDisks';
+
+sub _build_physical_disks {
+  # no op; we prove the list of disks in the constructor
+  []
+}
 
 }
 
