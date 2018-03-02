@@ -115,7 +115,7 @@ sub detect {
   return map { $class->new } @ids;
 }
 
-package RAID::Info::Controller::Areca::VirtualDisk;
+package RAID::Info::Controller::Areca::VirtualDisk {
 
 use namespace::autoclean;
 
@@ -125,5 +125,7 @@ use Types::Standard qw(Str);
 extends 'RAID::Info::VirtualDisk';
 
 has raid_name => ( is => 'ro', isa => Str, required => 1 );
+
+}
 
 1;
