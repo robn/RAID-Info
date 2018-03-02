@@ -7,11 +7,13 @@ use Test::More;
 use RAID::Info::Controller::Areca;
 
 use FindBin;
-$ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
+use lib "$FindBin::Bin/lib";
+use Test::RAID::Info::Mock;
 
 # first test set
 {
-  $ENV{RI_CLI64_DATA_ID} = '1';
+  Test::RAID::Info::Mock->import(cli64 => 1);
+
   my $c = RAID::Info::Controller::Areca->new;
   is $c->name, "areca/0", "controller has correct name";
 
@@ -58,7 +60,8 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
 
 # second test set
 {
-  $ENV{RI_CLI64_DATA_ID} = '2';
+  Test::RAID::Info::Mock->import(cli64 => 2);
+
   my $c = RAID::Info::Controller::Areca->new;
   is $c->name, "areca/0", "controller has correct name";
 
@@ -108,7 +111,8 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
 
 # third test set
 {
-  $ENV{RI_CLI64_DATA_ID} = '3';
+  Test::RAID::Info::Mock->import(cli64 => 3);
+
   my $c = RAID::Info::Controller::Areca->new;
   is $c->name, "areca/0", "controller has correct name";
 
@@ -152,7 +156,8 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
 
 # fourth test set
 {
-  $ENV{RI_CLI64_DATA_ID} = '4';
+  Test::RAID::Info::Mock->import(cli64 => 4);
+
   my $c = RAID::Info::Controller::Areca->new;
   is $c->name, "areca/0", "controller has correct name";
 
@@ -192,7 +197,8 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
 
 # fifth test set
 {
-  $ENV{RI_CLI64_DATA_ID} = '5';
+  Test::RAID::Info::Mock->import(cli64 => 5);
+
   my $c = RAID::Info::Controller::Areca->new;
   is $c->name, "areca/0", "controller has correct name";
 
@@ -235,7 +241,8 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
 
 # sixth test set
 {
-  $ENV{RI_CLI64_DATA_ID} = '6';
+  Test::RAID::Info::Mock->import(cli64 => 6);
+
   my $c = RAID::Info::Controller::Areca->new;
   is $c->name, "areca/0", "controller has correct name";
 
@@ -308,7 +315,8 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
 
 # seventh test set
 {
-  $ENV{RI_CLI64_DATA_ID} = '7';
+  Test::RAID::Info::Mock->import(cli64 => 7);
+
   my $c = RAID::Info::Controller::Areca->new;
   is $c->name, "areca/0", "controller has correct name";
 
@@ -371,7 +379,8 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
 
 # eighth test set
 {
-  $ENV{RI_CLI64_DATA_ID} = '8';
+  Test::RAID::Info::Mock->import(cli64 => 8);
+
   my $c = RAID::Info::Controller::Areca->new;
   is $c->name, "areca/0", "controller has correct name";
 
@@ -424,7 +433,8 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
 
 # detect test
 {
-  $ENV{RI_CLI64_DATA_ID} = '1';
+  Test::RAID::Info::Mock->import(cli64 => 1);
+
   my @controllers = RAID::Info::Controller::Areca->detect;
   is scalar @controllers, 1, '1 controller';
 

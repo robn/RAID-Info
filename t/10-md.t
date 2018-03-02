@@ -7,14 +7,14 @@ use Test::More;
 use RAID::Info::Controller::MD;
 
 use FindBin;
-$ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
+use lib "$FindBin::Bin/lib";
+use Test::RAID::Info::Mock;
 
 # first test set
 {
-  $ENV{RI_MDADM_DATA_ID} = '1';
-  my $c = RAID::Info::Controller::MD->new(
-    _mdstat_raw => do { local (@ARGV, $/) = ('t/data/mdstat-1.txt'); <> },
-  );
+  Test::RAID::Info::Mock->import(mdadm => 1);
+
+  my $c = RAID::Info::Controller::MD->new;
   is $c->name, "md/0", "controller has correct name";
 
   my $physical = $c->physical_disks;
@@ -50,10 +50,9 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
 
 # second test set
 {
-  $ENV{RI_MDADM_DATA_ID} = '2';
-  my $c = RAID::Info::Controller::MD->new(
-    _mdstat_raw => do { local (@ARGV, $/) = ('t/data/mdstat-2.txt'); <> },
-  );
+  Test::RAID::Info::Mock->import(mdadm => 2);
+
+  my $c = RAID::Info::Controller::MD->new;
   is $c->name, "md/0", "controller has correct name";
 
   my $physical = $c->physical_disks;
@@ -96,7 +95,8 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
 
 # third test set
 {
-  $ENV{RI_MDADM_DATA_ID} = '3';
+  Test::RAID::Info::Mock->import(mdadm => 3);
+
   my $c = RAID::Info::Controller::MD->new(
     _mdstat_raw => do { local (@ARGV, $/) = ('t/data/mdstat-3.txt'); <> },
   );
@@ -136,6 +136,8 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
 
 # detect test
 {
+  Test::RAID::Info::Mock->import(mdadm => 1);
+
   my @controllers = RAID::Info::Controller::MD->detect(
     _mdstat_raw => do { local (@ARGV, $/) = ('t/data/mdstat-1.txt'); <> },
   );

@@ -7,11 +7,13 @@ use Test::More;
 use RAID::Info::Controller::MegaRAID;
 
 use FindBin;
-$ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
+use lib "$FindBin::Bin/lib";
+use Test::RAID::Info::Mock;
 
 # first test set
 {
-  $ENV{RI_MEGACLI_DATA_ID} = "1";
+  Test::RAID::Info::Mock->import(megacli => 1);
+
   my $c = RAID::Info::Controller::MegaRAID->new(id => 0);
   is $c->name, "megaraid/0", "controller has correct name";
 
@@ -63,7 +65,8 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
 
 # second test set
 {
-  $ENV{RI_MEGACLI_DATA_ID} = "2";
+  Test::RAID::Info::Mock->import(megacli => 2);
+
   my $c = RAID::Info::Controller::MegaRAID->new(id => 0);
   is $c->name, "megaraid/0", "controller has correct name";
 
@@ -125,7 +128,8 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
 
 # third test set
 {
-  $ENV{RI_MEGACLI_DATA_ID} = "3";
+  Test::RAID::Info::Mock->import(megacli => 3);
+
   my $c = RAID::Info::Controller::MegaRAID->new(id => 0);
   is $c->name, "megaraid/0", "controller has correct name";
 
@@ -188,7 +192,8 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
 
 # detect test
 {
-  $ENV{RI_MEGACLI_DATA_ID} = "1";
+  Test::RAID::Info::Mock->import(megacli => 1);
+
   my @controllers = RAID::Info::Controller::MegaRAID->detect;
   is scalar @controllers, 1, '1 controller';
 

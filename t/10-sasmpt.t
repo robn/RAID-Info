@@ -7,11 +7,13 @@ use Test::More;
 use RAID::Info::Controller::SASMPT;
 
 use FindBin;
-$ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
+use lib "$FindBin::Bin/lib";
+use Test::RAID::Info::Mock;
 
 # disk test
 {
-  $ENV{RI_LSIUTIL_DATA_ID} = '1';
+  Test::RAID::Info::Mock->import(lsiutil => 1);
+
   my $c = RAID::Info::Controller::SASMPT->new;
   is $c->name, "sasmpt/0", "controller has correct name";
 
@@ -53,7 +55,8 @@ $ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
 
 # detect test
 {
-  $ENV{RI_LSIUTIL_DATA_ID} = '2';
+  Test::RAID::Info::Mock->import(lsiutil => 2);
+
   my @controllers = RAID::Info::Controller::SASMPT->detect;
   is scalar @controllers, 1, '1 controller';
 

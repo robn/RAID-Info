@@ -8,7 +8,8 @@ use Test::Deep;
 use RAID::Info::Controller::Adaptec;
 
 use FindBin;
-$ENV{PATH} = "$FindBin::Bin/bin:$ENV{PATH}";
+use lib "$FindBin::Bin/lib";
+use Test::RAID::Info::Mock;
 
 # disk test
 {
