@@ -26,9 +26,8 @@ use Test::RAID::Info::Mock;
     ('online') x 14
   ]->[$_], "physical disk $_ has correct state string" for (0..13);
   is int($physical->[$_]->capacity), [
-    (1819000000000) x 4,
+    (1819000000000) x 12,
     (372611000000) x 2,
-    (1819000000000) x 8,
   ]->[$_], "physical disk $_ has correct capacity" for (0..13);
   is !!$physical->[$_]->state->is_abnormal, !![
     (0) x 14,
@@ -73,24 +72,23 @@ use Test::RAID::Info::Mock;
   my $physical = $c->physical_disks;
   is scalar @$physical, 14, '14 physical disks';
   is ref($physical->[$_]->state), [
-    ('RAID::Info::PhysicalDisk::State::Online') x 2,
+    ('RAID::Info::PhysicalDisk::State::Online') x 10,
     'RAID::Info::PhysicalDisk::State::Failed',
-    ('RAID::Info::PhysicalDisk::State::Online') x 11,
+    ('RAID::Info::PhysicalDisk::State::Online') x 3,
   ]->[$_], "physical disk $_ has correct state" for (0..13);
   is $physical->[$_]->state->as_string, [
-    ('online') x 2,
+    ('online') x 10,
     'failed',
-    ('online') x 11,
+    ('online') x 3,
   ]->[$_], "physical disk $_ has correct state string" for (0..13);
   is int($physical->[$_]->capacity), [
-    (1819000000000) x 4,
+    (1819000000000) x 12,
     (372611000000)  x 2,
-    (1819000000000) x 8,
   ]->[$_], "physical disk $_ has correct capacity" for (0..13);
   is !!$physical->[$_]->state->is_abnormal, !![
-    0, 0, 1, 0,
-    (0) x 2,
-    (0) x 8,
+    (0) x 10,
+    1,
+    (0) x 3,
   ]->[$_], "physical disk $_ has correct abnormal state" for (0..13);
 
   my $virtual = $c->virtual_disks;
@@ -136,26 +134,25 @@ use Test::RAID::Info::Mock;
   my $physical = $c->physical_disks;
   is scalar @$physical, 14, '14 physical disks';
   is ref($physical->[$_]->state), [
-    ('RAID::Info::PhysicalDisk::State::Online') x 2,
+    ('RAID::Info::PhysicalDisk::State::Online') x 10,
     'RAID::Info::PhysicalDisk::State::Rebuilding',
-    ('RAID::Info::PhysicalDisk::State::Online') x 11,
+    ('RAID::Info::PhysicalDisk::State::Online') x 3,
   ]->[$_], "physical disk $_ has correct state" for (0..13);
   is $physical->[$_]->state->as_string, [
-    ('online') x 2,
+    ('online') x 10,
     'rebuilding (3%)',
-    ('online') x 11,
+    ('online') x 3,
   ]->[$_], "physical disk $_ has correct state string" for (0..13);
   is int($physical->[$_]->capacity), [
-    (1819000000000) x 4,
+    (1819000000000) x 12,
     (372611000000)  x 2,
-    (1819000000000) x 8,
   ]->[$_], "physical disk $_ has correct capacity" for (0..13);
   is !!$physical->[$_]->state->is_abnormal, !![
-    0, 0, 1, 0,
-    (0) x 2,
-    (0) x 8,
+    (0) x 10,
+    1,
+    (0) x 3,
   ]->[$_], "physical disk $_ has correct abnormal state" for (0..13);
-  is $physical->[2]->state->progress, 3, "physical disk 2 is in rebuild with correct progress";
+  is $physical->[10]->state->progress, 3, "physical disk 10 is in rebuild with correct progress";
 
   my $virtual = $c->virtual_disks;
   is scalar @$virtual, 4, '4 virtual disks';

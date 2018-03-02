@@ -66,7 +66,7 @@ sub _build_physical_disks {
     }
   } split /\n+PD: \d+ Information\n+/, $self->_ldpdinfo_raw;
 
-  return [ map { $disks{$_} } sort keys %disks ];
+  return [ map { $disks{$_} } sort { $a <=> $b } keys %disks ];
 }
 
 sub _build_virtual_disks {
