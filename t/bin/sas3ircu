@@ -6,7 +6,7 @@ use strict;
 use FindBin;
 my $DATA = "$FindBin::Bin/../data";
 
-my $file = join '-', 'sas3ircu', $ARGV[-1];
+my $file = join '-', 'sas3ircu', $ARGV[-1], $ENV{RI_SAS3IRCU_DATA_ID};
 open my $fh, '<', "$DATA/$file.txt";
 print while <$fh>;
 

@@ -21,9 +21,11 @@ $ENV{PATH} = "$PackageRoot/t/bin:$ENV{PATH}";
 sub import {
   my ($class, %args) = @_;
 
-  $ENV{RI_CLI64_DATA_ID}   = $args{cli64}   // '1';
-  $ENV{RI_LSIUTIL_DATA_ID} = $args{lsiutil} // '1';
-  $ENV{RI_MEGACLI_DATA_ID} = $args{megacli} // '1';
+  $ENV{RI_CLI64_DATA_ID}    = $args{cli64}    // '1';
+  $ENV{RI_LSIUTIL_DATA_ID}  = $args{lsiutil}  // '1';
+  $ENV{RI_MEGACLI_DATA_ID}  = $args{megacli}  // '1';
+  $ENV{RI_SAS2IRCU_DATA_ID} = $args{sas2ircu} // '1';
+  $ENV{RI_SAS3IRCU_DATA_ID} = $args{sas3ircu} // '1';
 
   # MD uses a program and a procfile. We can't preload the controller object
   # with procfile data because we're not in control of its construction, so we
