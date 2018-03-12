@@ -34,6 +34,12 @@ sub import {
   use RAID::Info::Controller::MD;
   $RAID::Info::Controller::MD::_PROC_MDSTAT =
     "$package_root/t/data/mdstat-$ENV{RI_MDADM_DATA_ID}.txt";
+
+  # Similarly, LinuxAHCI pulls stuff out from under /sys, so we change its path
+  $ENV{RI_LINUXAHCI_DATA_ID} = $args{linuxahci} // '1';
+  use RAID::Info::Controller::LinuxAHCI;
+  $RAID::Info::Controller::LinuxAHCI::_SYS_AHCI =
+    "$package_root/t/data/linuxahci/$ENV{RI_LINUXAHCI_DATA_ID}";
 }
 
 1;

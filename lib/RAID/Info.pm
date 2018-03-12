@@ -8,6 +8,7 @@ use warnings;
 my @drivers = qw(
   Adaptec
   Areca
+  LinuxAHCI
   MD
   MegaRAID
   SAS2IR
