@@ -479,6 +479,61 @@ use Test::RAID::Info::Mock;
   ]->[$_], "virtual disk $_ has correct physical disks" for (0..7);
 }
 
+# ninth test set
+{
+  Test::RAID::Info::Mock->import(cli64 => 9);
+
+  my $c = RAID::Info::Controller::Areca->new;
+  is $c->name, "areca/0", "controller has correct name";
+
+  my $physical = $c->physical_disks;
+  is scalar @$physical, 24, '24 physical disks';
+  is ref($physical->[$_]->state), [
+    ('RAID::Info::PhysicalDisk::State::Online') x 24
+  ]->[$_], "physical disk $_ has correct state" for (0..23);
+  is $physical->[$_]->state->as_string, [
+    ('online') x 24
+  ]->[$_], "physical disk $_ has correct state string" for (0..23);
+  is int($physical->[$_]->capacity), [
+    (8001600000000) x 24,
+  ]->[$_], "physical disk $_ has correct capacity" for (0..23);
+  is !!$physical->[$_]->state->is_abnormal, !![
+    (0) x 24,
+  ]->[$_], "physical disk $_ has correct abnormal state" for (0..23);
+
+  my $virtual = $c->virtual_disks;
+  is scalar @$virtual, 3, '3 virtual disks';
+  is ref($virtual->[$_]->state), [
+    'RAID::Info::VirtualDisk::State::Rebuilding',
+    'RAID::Info::VirtualDisk::State::Normal',
+    'RAID::Info::VirtualDisk::State::Normal',
+  ]->[$_], "virtual disk $_ has correct state" for (0..2);
+  is $virtual->[$_]->state->as_string, [
+    'rebuilding (17.7%)',
+    'normal',
+    'normal',
+  ]->[$_], "virtual disk $_ has correct state string" for (0..2);
+  is int($virtual->[$_]->capacity), [
+    (48000000000000) x 3,
+  ]->[$_], "virtual disk $_ has correct capacity" for (0..2);
+  is $virtual->[$_]->level, [
+    ('raid6') x 3,
+  ]->[$_], "virtual disk $_ has correct raid level" for (0..2);
+  is $virtual->[$_]->raid_name, [
+    'wi1r1',
+    'wi1r2',
+    'wi1r3',
+  ]->[$_], "virtual disk $_ has correct raid name" for (0..2);
+  is !!$virtual->[$_]->state->is_abnormal, !![
+    1, 0, 0,
+  ]->[$_], "virtual disk $_ has correct abnormal state" for (0..2);
+  cmp_deeply [ map { $_->slot } @{$virtual->[$_]->physical_disks} ], [
+    ['00'..'07'],
+    ['08'..'15'],
+    ['16'..'23'],
+  ]->[$_], "virtual disk $_ has correct physical disks" for (0..2);
+}
+
 
 # detect test
 {

@@ -1,0 +1,7 @@
+  # Name             Raid Name       Level   Capacity Ch/Id/Lun  State         
+===============================================================================
+  1 wi1d1spool       wi1r1           Raid6   48000.0GB 00/00/00   Rebuilding(17.7%)
+  2 wi1d2spool       wi1r2           Raid6   48000.0GB 00/00/01   Normal
+  3 wi1d3spool       wi1r3           Raid6   48000.0GB 00/00/02   Normal
+===============================================================================
+GuiErrMsg<0x00>: Success.

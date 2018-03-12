@@ -1,0 +1,36 @@
+  # Enc# Slot#   ModelName                        Capacity  Usage
+===============================================================================
+  1  01  Slot#1  N.A.                                0.0GB  N.A.      
+  2  01  Slot#2  N.A.                                0.0GB  N.A.      
+  3  01  Slot#3  N.A.                                0.0GB  N.A.      
+  4  01  Slot#4  N.A.                                0.0GB  N.A.      
+  5  01  Slot#5  N.A.                                0.0GB  N.A.      
+  6  01  Slot#6  N.A.                                0.0GB  N.A.      
+  7  01  Slot#7  N.A.                                0.0GB  N.A.      
+  8  01  Slot#8  N.A.                                0.0GB  N.A.      
+  9  02  Slot00  SEAGATE ST8000NM0075             8001.6GB  wi1r1           
+ 10  02  Slot01  SEAGATE ST8000NM0075             8001.6GB  wi1r1            <<
+ 11  02  Slot02  SEAGATE ST8000NM0075             8001.6GB  wi1r1           
+ 12  02  Slot03  SEAGATE ST8000NM0075             8001.6GB  wi1r1           
+ 13  02  Slot04  SEAGATE ST8000NM0075             8001.6GB  wi1r1           
+ 14  02  Slot05  SEAGATE ST8000NM0075             8001.6GB  wi1r1           
+ 15  02  Slot06  SEAGATE ST8000NM0075             8001.6GB  wi1r1           
+ 16  02  Slot07  SEAGATE ST8000NM0075             8001.6GB  wi1r1           
+ 17  02  Slot08  SEAGATE ST8000NM0075             8001.6GB  wi1r2           
+ 18  02  Slot09  SEAGATE ST8000NM0075             8001.6GB  wi1r2           
+ 19  02  Slot10  SEAGATE ST8000NM0075             8001.6GB  wi1r2           
+ 20  02  Slot11  SEAGATE ST8000NM0075             8001.6GB  wi1r2           
+ 21  02  Slot12  SEAGATE ST8000NM0075             8001.6GB  wi1r2           
+ 22  02  Slot13  SEAGATE ST8000NM0075             8001.6GB  wi1r2           
+ 23  02  Slot14  SEAGATE ST8000NM0075             8001.6GB  wi1r2           
+ 24  02  Slot15  SEAGATE ST8000NM0075             8001.6GB  wi1r2           
+ 25  02  Slot16  SEAGATE ST8000NM0075             8001.6GB  wi1r3           
+ 26  02  Slot17  SEAGATE ST8000NM0075             8001.6GB  wi1r3           
+ 27  02  Slot18  SEAGATE ST8000NM0075             8001.6GB  wi1r3           
+ 28  02  Slot19  SEAGATE ST8000NM0075             8001.6GB  wi1r3           
+ 29  02  Slot20  SEAGATE ST8000NM0075             8001.6GB  wi1r3           
+ 30  02  Slot21  SEAGATE ST8000NM0075             8001.6GB  wi1r3           
+ 31  02  Slot22  SEAGATE ST8000NM0075             8001.6GB  wi1r3           
+ 32  02  Slot23  SEAGATE ST8000NM0075             8001.6GB  wi1r3           
+===============================================================================
+GuiErrMsg<0x00>: Success.
