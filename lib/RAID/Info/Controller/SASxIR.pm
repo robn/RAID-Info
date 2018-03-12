@@ -21,6 +21,7 @@ sub _build_physical_disks {
 
   state $state_map = {
     RDY => sub { RAID::Info::PhysicalDisk::State::Online->new },
+    AVL => sub { RAID::Info::PhysicalDisk::State::Online->new },
   };
 
   my @disks = map {
@@ -28,8 +29,10 @@ sub _build_physical_disks {
     if ($device eq 'Hard disk') {
       my %vars = map { m/:\s/ ? split '\s*:\s+', $_, 2 : () } @lines;
       my $id = "$vars{'Enclosure #'}/$vars{'Slot #'}";
-      my $capacity = [$vars{'Size (in MB)/(in sectors)'} =~ m/^([\d\.]+)/]->[0];
       my ($state) = $vars{'State'} =~ m/\(([A-Z]+)\)$/;
+      my $capacity =
+        $state eq 'AVL' ? 0 # XXX AVL is usable, but not reported fully, this will do for now
+                        : [$vars{'Size (in MB)/(in sectors)'} =~ m/^([\d\.]+)/]->[0];
       RAID::Info::PhysicalDisk->new(
         id       => $id,
         slot     => $vars{'Slot #'},
