@@ -429,8 +429,8 @@ use Test::RAID::Info::Mock;
     ('RAID::Info::PhysicalDisk::State::Online') x 80
   ]->[$_], "physical disk $_ has correct state" for (0..79);
   is $physical->[$_]->state->as_string, [
-    ('online') x 24
-  ]->[$_], "physical disk $_ has correct state string" for (0..23);
+    ('online') x 80
+  ]->[$_], "physical disk $_ has correct state string" for (0..79);
   is int($physical->[$_]->capacity), [
     (4000800000000) x 80,
   ]->[$_], "physical disk $_ has correct capacity" for (0..79);
