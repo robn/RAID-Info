@@ -98,7 +98,7 @@ sub _build__split_disk_raw {
   [
     map {
       if (my @row =
-            m{^\s+(\d+)\s+(\d+)\s+(?i:slot)[\s#]*(\d+)\s+(.+?)\s+([\d\.]+.B)\s+(.+?)\s*$}) {
+            m{^\s+(\d+)\s+(\d+)\s+(?i:slot)[\s#]*(\d+)\s+(.+?)\s+([\d\.]+.B)\s+(.+?)\s*(\s+<<)?$}) {
         $row[5] eq 'N.A.' ? () : \@row
       }
       else {
