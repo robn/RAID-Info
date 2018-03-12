@@ -7,16 +7,16 @@ use strict;
 # set up environment for test
 
 use FindBin;
-my $BinPath = $FindBin::Bin;
+my $bin_path = $FindBin::Bin;
 
 # look for the package root
-my $PackageRoot =
-  -d "$BinPath/../t/data" && -d "$BinPath/data" ? "$BinPath/.." : # running under t/, probably tests
-  -d "$BinPath/../t/data" ? "$BinPath/.." : # running under bin/ probably
-  -d "$BinPath/t/data"   ? $BinPath : # running from the root
-  die "couldn't determine package root for $BinPath";
+my $package_root =
+  -d "$bin_path/../t/data" && -d "$bin_path/data" ? "$bin_path/.." : # running under t/, probably tests
+  -d "$bin_path/../t/data" ? "$bin_path/.." : # running under bin/ probably
+  -d "$bin_path/t/data"    ? $bin_path : # running from the root
+  die "couldn't determine package root for $bin_path";
 
-$ENV{PATH} = "$PackageRoot/t/bin:$ENV{PATH}";
+$ENV{PATH} = "$package_root/t/bin:$ENV{PATH}";
 
 sub import {
   my ($class, %args) = @_;
@@ -33,7 +33,7 @@ sub import {
   $ENV{RI_MDADM_DATA_ID} = $args{mdadm} // '1';
   use RAID::Info::Controller::MD;
   $RAID::Info::Controller::MD::_PROC_MDSTAT =
-    "$PackageRoot/t/data/mdstat-$ENV{RI_MDADM_DATA_ID}.txt";
+    "$package_root/t/data/mdstat-$ENV{RI_MDADM_DATA_ID}.txt";
 }
 
 1;
