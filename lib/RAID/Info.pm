@@ -9,6 +9,7 @@ my @drivers = qw(
   Adaptec
   Areca
   LinuxAHCI
+  LinuxPIIX
   MD
   MegaRAID
   SAS2IR

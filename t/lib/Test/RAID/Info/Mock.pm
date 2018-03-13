@@ -40,6 +40,12 @@ sub import {
   use RAID::Info::Controller::LinuxAHCI;
   $RAID::Info::Controller::LinuxAHCI::_SYS_PATH =
     "$package_root/t/data/linuxahci/$ENV{RI_LINUXAHCI_DATA_ID}";
+
+  # LinuxPIIX, same
+  $ENV{RI_LINUXPIIX_DATA_ID} = $args{linuxpiix} // '1';
+  use RAID::Info::Controller::LinuxPIIX;
+  $RAID::Info::Controller::LinuxPIIX::_SYS_PATH =
+    "$package_root/t/data/linuxpiix/$ENV{RI_LINUXPIIX_DATA_ID}";
 }
 
 1;
