@@ -36,7 +36,7 @@ sub _build_physical_disks {
       m{^/dev/(\S+)\s*(\w+)\s+([\w\s]+\w)\s+(\d)\s+(?:[\d\.]+\s+[MGT]B)\s+/\s+([\d\.]+\s+[MGT]B)}) {
       RAID::Info::PhysicalDisk->new(
         id       => $dev,
-        slot     => $slot,
+        slot     => $slot++,
         model    => $model,
         capacity => $capacity,
         state    => RAID::Info::PhysicalDisk::State::Online->new,
