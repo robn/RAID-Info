@@ -38,7 +38,7 @@ sub import {
   # Similarly, LinuxAHCI pulls stuff out from under /sys, so we change its path
   $ENV{RI_LINUXAHCI_DATA_ID} = $args{linuxahci} // '1';
   use RAID::Info::Controller::LinuxAHCI;
-  $RAID::Info::Controller::LinuxAHCI::_SYS_AHCI =
+  $RAID::Info::Controller::LinuxAHCI::_SYS_PATH =
     "$package_root/t/data/linuxahci/$ENV{RI_LINUXAHCI_DATA_ID}";
 }
 
