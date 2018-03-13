@@ -12,6 +12,7 @@ my @drivers = qw(
   LinuxPIIX
   MD
   MegaRAID
+  NVMe
   SAS2IR
   SAS3IR
   SASMPT
