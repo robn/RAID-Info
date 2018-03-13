@@ -13,6 +13,8 @@ use Test::RAID::Info::Mock;
 
 # set 1, vagrant
 {
+  Test::RAID::Info::Mock->import(linuxahci => 1);
+
   my $c = RAID::Info::Controller::LinuxAHCI->new;
   is $c->name, "linuxahci/0", "controller has correct name";
 
@@ -31,6 +33,32 @@ use Test::RAID::Info::Mock;
     0,
   ]->[$_], "physical disk $_ has correct abnormal state" for (0);
 
+
+  my $virtual = $c->virtual_disks;
+  is scalar @$virtual, 0, '0 virtual disks';
+}
+
+# set 2, two SSDs
+{
+  Test::RAID::Info::Mock->import(linuxahci => 2);
+
+  my $c = RAID::Info::Controller::LinuxAHCI->new;
+  is $c->name, "linuxahci/0", "controller has correct name";
+
+  my $physical = $c->physical_disks;
+  is scalar @$physical, 2, '2 physical disks';
+  is ref($physical->[$_]->state), [
+    ('RAID::Info::PhysicalDisk::State::Online') x 2,
+  ]->[$_], "physical disk $_ has correct state" for (0..1);
+  is $physical->[$_]->state->as_string, [
+    ('online') x 2,
+  ]->[$_], "physical disk $_ has correct state string" for (0..1);
+  is int($physical->[$_]->capacity), [
+    (480103981056) x 2,
+  ]->[$_], "physical disk $_ has correct capacity" for (0..1);
+  is !!$physical->[$_]->state->is_abnormal, !![
+    (0) x 2,
+  ]->[$_], "physical disk $_ has correct abnormal state" for (0..1);
 
   my $virtual = $c->virtual_disks;
   is scalar @$virtual, 0, '0 virtual disks';

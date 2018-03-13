@@ -21,7 +21,7 @@ sub _load_data_from_controller {
 
   my @_raw_data;
 
-  my @ahci_dirs = <"$_SYS_AHCI/*:*/ata*/host*/target*/?:*">;
+  my @ahci_dirs = <"$_SYS_AHCI/*:*/ata*/host*/target*/*:*">;
   for my $base_path (map { path($_) } @ahci_dirs) {
     my ($block_path) = $base_path->child("block")->children;
     next unless $block_path;
