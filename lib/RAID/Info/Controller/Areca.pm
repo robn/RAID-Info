@@ -77,6 +77,7 @@ sub _build_virtual_disks {
 
   my @virtual = map {
     my ($id, $name, $raid_name, $level, $capacity, $lun, $state, $progress) = @$_;
+    $level =~ s/\+//; # Raid1+0 -> Raid10
     RAID::Info::Controller::Areca::VirtualDisk->new(
       id             => $id,
       name           => $name,

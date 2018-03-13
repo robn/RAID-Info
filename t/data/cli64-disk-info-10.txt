@@ -1,0 +1,24 @@
+  # Enc# Slot#   ModelName                        Capacity  Usage
+===============================================================================
+  1  01  Slot#1  N.A.                                0.0GB  N.A.      
+  2  01  Slot#2  N.A.                                0.0GB  N.A.      
+  3  01  Slot#3  N.A.                                0.0GB  N.A.      
+  4  01  Slot#4  N.A.                                0.0GB  N.A.      
+  5  01  Slot#5  N.A.                                0.0GB  N.A.      
+  6  01  Slot#6  N.A.                                0.0GB  N.A.      
+  7  01  Slot#7  N.A.                                0.0GB  N.A.      
+  8  01  Slot#8  N.A.                                0.0GB  N.A.      
+  9  02  SLOT 001 WDC WD2003FYYS-02W0B0            2000.4GB  Raid Set # 000  
+ 10  02  SLOT 002 WDC WD2003FYYS-02W0B0            2000.4GB  Raid Set # 000  
+ 11  02  SLOT 003 WDC WD2003FYYS-02W0B0            2000.4GB  Raid Set # 001  
+ 12  02  SLOT 004 WDC WD2003FYYS-02W0B0            2000.4GB  Raid Set # 001  
+ 13  02  SLOT 005 WDC WD2003FYYS-02W0B0            2000.4GB  Raid Set # 001  
+ 14  02  SLOT 006 WDC WD2003FYYS-02W0B0            2000.4GB  Raid Set # 001  
+ 15  02  SLOT 007 WDC WD2003FYYS-02W0B0            2000.4GB  Raid Set # 001  
+ 16  02  SLOT 008 WDC WD2003FYYS-02W0B0            2000.4GB  Raid Set # 001  
+ 17  02  SLOT 009 WDC WD2003FYYS-02W0B0            2000.4GB  Raid Set # 001  
+ 18  02  SLOT 010 WDC WD2003FYYS-02W0B1            2000.4GB  Raid Set # 001  
+ 19  02  SLOT 011 WDC WD2003FYYS-02W0B0            2000.4GB  Raid Set # 001  
+ 20  02  SLOT 012 WDC WD2003FYYS-02W0B0            2000.4GB  Raid Set # 001  
+===============================================================================
+GuiErrMsg<0x00>: Success.

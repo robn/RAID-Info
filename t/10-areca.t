@@ -535,6 +535,62 @@ use Test::RAID::Info::Mock;
 }
 
 
+# tenth test set
+{
+  Test::RAID::Info::Mock->import(cli64 => 10);
+
+  my $c = RAID::Info::Controller::Areca->new;
+  is $c->name, "areca/0", "controller has correct name";
+
+  my $physical = $c->physical_disks;
+  is scalar @$physical, 12, '12 physical disks';
+  is ref($physical->[$_]->state), [
+    ('RAID::Info::PhysicalDisk::State::Online') x 12
+  ]->[$_], "physical disk $_ has correct state" for (0..11);
+  is $physical->[$_]->state->as_string, [
+    ('online') x 12
+  ]->[$_], "physical disk $_ has correct state string" for (0..11);
+  is int($physical->[$_]->capacity), [
+    (2000400000000) x 12,
+  ]->[$_], "physical disk $_ has correct capacity" for (0..11);
+  is !!$physical->[$_]->state->is_abnormal, !![
+    (0) x 12,
+  ]->[$_], "physical disk $_ has correct abnormal state" for (0..11);
+
+  my $virtual = $c->virtual_disks;
+  is scalar @$virtual, 3, '3 virtual disks';
+  is ref($virtual->[$_]->state), [
+    ('RAID::Info::VirtualDisk::State::Normal') x 3,
+  ]->[$_], "virtual disk $_ has correct state" for (0..2);
+  is $virtual->[$_]->state->as_string, [
+    ('normal') x 3,
+  ]->[$_], "virtual disk $_ has correct state string" for (0..2);
+  is int($virtual->[$_]->capacity), [
+    500000000000,
+    1500000000000,
+    16000000000000,
+  ]->[$_], "virtual disk $_ has correct capacity" for (0..2);
+  is $virtual->[$_]->level, [
+    'raid10',
+    'raid10',
+    'raid6',
+  ]->[$_], "virtual disk $_ has correct raid level" for (0..2);
+  is $virtual->[$_]->raid_name, [
+    'Raid Set # 000',
+    'Raid Set # 000',
+    'Raid Set # 001',
+  ]->[$_], "virtual disk $_ has correct raid name" for (0..2);
+  is !!$virtual->[$_]->state->is_abnormal, !![
+    (0) x 3,
+  ]->[$_], "virtual disk $_ has correct abnormal state" for (0..2);
+  cmp_deeply [ map { $_->slot } @{$virtual->[$_]->physical_disks} ], [
+    ['001','002'],
+    ['001','002'],
+    ['003'..'012'],
+  ]->[$_], "virtual disk $_ has correct physical disks" for (0..2);
+}
+
+
 # detect test
 {
   Test::RAID::Info::Mock->import(cli64 => 1);

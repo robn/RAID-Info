@@ -1,0 +1,7 @@
+  # Name             Raid Name       Level   Capacity Ch/Id/Lun  State         
+===============================================================================
+  1 si3os            Raid Set # 000  Raid1+0  500.0GB 00/00/00   Normal
+  2 si3search        Raid Set # 000  Raid1+0 1500.0GB 00/00/01   Normal
+  3 si3spool         Raid Set # 001  Raid6   16000.0GB 00/00/02   Normal
+===============================================================================
+GuiErrMsg<0x00>: Success.
