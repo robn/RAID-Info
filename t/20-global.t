@@ -13,7 +13,7 @@ use Test::RAID::Info::Mock;
 # detect all controllers
 {
   my @controllers = RAID::Info->detect;
-  is scalar @controllers, 9, '9 controllers';
+  is scalar @controllers, 10, '10 controllers';
 
   is ref($controllers[$_]), [qw(
     RAID::Info::Controller::Adaptec
@@ -22,10 +22,11 @@ use Test::RAID::Info::Mock;
     RAID::Info::Controller::LinuxPIIX
     RAID::Info::Controller::MD
     RAID::Info::Controller::MegaRAID
+    RAID::Info::Controller::NVMe
     RAID::Info::Controller::SAS2IR
     RAID::Info::Controller::SAS3IR
     RAID::Info::Controller::SASMPT
-  )]->[$_], "correctly detected controller $_" for (0..8);
+  )]->[$_], "correctly detected controller $_" for (0..9);
 }
 
 done_testing;

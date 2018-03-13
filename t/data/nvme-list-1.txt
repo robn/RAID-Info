@@ -1,0 +1,4 @@
+Node             SN                   Model                                    Namespace Usage                      Format           FW Rev
+---------------- -------------------- ---------------------------------------- --------- -------------------------- ---------------- --------
+/dev/nvme0n1     PHMD6085001Z1P6IGN   INTEL SSDPE2ME016T4                      1           1.60  TB /   1.60  TB    512   B +  0 B   8DV10171
+/dev/nvme1n1     PHMD606400AE1P6IGN   INTEL SSDPE2ME016T4                      1           1.60  TB /   1.60  TB    512   B +  0 B   8DV10171

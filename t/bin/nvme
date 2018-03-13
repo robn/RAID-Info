@@ -1,0 +1,13 @@
+#!/usr/bin/env perl
+
+use warnings;
+use strict;
+
+use FindBin;
+my $DATA = "$FindBin::Bin/../data";
+
+my $file = join '-', 'nvme', $ARGV[-1], $ENV{RI_NVME_DATA_ID};
+open my $fh, '<', "$DATA/$file.txt";
+print while <$fh>;
+
+exit 0;
