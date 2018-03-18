@@ -1,0 +1,26 @@
+/dev/md123:
+        Version : 1.2
+  Creation Time : Mon Nov 20 18:59:51 2017
+     Raid Level : raid1
+     Array Size : 7813895488 (7451.91 GiB 8001.43 GB)
+  Used Dev Size : 7813895488 (7451.91 GiB 8001.43 GB)
+   Raid Devices : 2
+  Total Devices : 2
+    Persistence : Superblock is persistent
+
+    Update Time : Sun Mar 18 05:13:53 2018
+          State : clean, degraded, recovering
+ Active Devices : 1
+Working Devices : 2
+ Failed Devices : 0
+  Spare Devices : 1
+
+ Rebuild Status : 72% complete
+
+           Name : wimap2:123  (local to host wimap2)
+           UUID : 0ae58ca5:01db0943:535d50c1:44753d5b
+         Events : 381
+
+    Number   Major   Minor   RaidDevice State
+       2       8       48        0      spare rebuilding   /dev/sdd
+       1       8       64        1      active sync   /dev/sde

@@ -1,0 +1,28 @@
+Personalities : [raid1] [linear] [multipath] [raid0] [raid6] [raid5] [raid4] [raid10]
+md122 : active raid1 sdc[2] sda[0]
+      7813895488 blocks super 1.2 [2/1] [U_]
+      [============>........]  recovery = 61.0% (4766586368/7813895488) finish=586.3min speed=86612K/sec
+
+md0 : active raid1 sdp1[1] sdq1[0]
+      16375808 blocks super 1.2 [2/2] [UU]
+
+md1 : active raid1 sdq5[1] sdp5[0]
+      481543488 blocks super 1.2 [2/2] [UU]
+
+md123 : active raid1 sdd[2] sde[1]
+      7813895488 blocks super 1.2 [2/1] [_U]
+      [==============>......]  recovery = 72.1% (5635365120/7813895488) finish=230.8min speed=157305K/sec
+
+md4 : active raid1 sdg[0] sdh[1]
+      7813895488 blocks super 1.2 [2/2] [UU]
+
+md7 : active raid1 sdl[1] sdj[0]
+      1171981888 blocks super 1.2 [2/2] [UU]
+
+md5 : active raid1 sdi[0] sdk[1]
+      1171981888 blocks super 1.2 [2/2] [UU]
+
+md6 : active raid1 sdf[1] sdb[0]
+      1171981888 blocks super 1.2 [2/2] [UU]
+
+unused devices: <none>
