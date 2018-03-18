@@ -97,9 +97,7 @@ use Test::RAID::Info::Mock;
 {
   Test::RAID::Info::Mock->import(mdadm => 3);
 
-  my $c = RAID::Info::Controller::MD->new(
-    _mdstat_raw => do { local (@ARGV, $/) = ('t/data/mdstat-3.txt'); <> },
-  );
+  my $c = RAID::Info::Controller::MD->new;
   is $c->name, "md/0", "controller has correct name";
 
   my $physical = $c->physical_disks;
