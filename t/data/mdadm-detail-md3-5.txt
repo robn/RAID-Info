@@ -1,0 +1,28 @@
+/dev/md3:
+        Version : 1.2
+  Creation Time : Wed Sep  7 10:48:35 2016
+     Raid Level : raid10
+     Array Size : 5860330496 (5588.85 GiB 6000.98 GB)
+  Used Dev Size : 3906887168 (3725.90 GiB 4000.65 GB)
+   Raid Devices : 3
+  Total Devices : 3
+    Persistence : Superblock is persistent
+
+    Update Time : Sun Apr  8 05:37:28 2018
+          State : clean 
+ Active Devices : 3
+Working Devices : 3
+ Failed Devices : 0
+  Spare Devices : 0
+
+         Layout : near=2
+     Chunk Size : 512K
+
+           Name : imap22:3  (local to host imap22)
+           UUID : 5b1f2c92:969fe63f:c3bd2537:bea6cff9
+         Events : 1498
+
+    Number   Major   Minor   RaidDevice State
+       0       8       48        0      active sync   /dev/sdd
+       1       8       96        1      active sync   /dev/sdg
+       2       8      144        2      active sync   /dev/sdj

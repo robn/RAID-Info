@@ -1,0 +1,14 @@
+Personalities : [raid1] [raid10] 
+md2 : active raid10 sdc[0] sdi[2](F) sdf[1]
+      5860330496 blocks super 1.2 512K chunks 2 near-copies [3/2] [UU_]
+      
+md3 : active raid10 sdd[0] sdj[2] sdg[1]
+      5860330496 blocks super 1.2 512K chunks 2 near-copies [3/3] [UUU]
+      
+md1 : active raid1 sdh[0] sdk[1]
+      781280960 blocks super 1.2 [2/2] [UU]
+      
+md0 : active raid1 sdb[0] sde[1]
+      781280960 blocks super 1.2 [2/2] [UU]
+      
+unused devices: <none>

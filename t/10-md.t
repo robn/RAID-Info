@@ -188,6 +188,82 @@ use Test::RAID::Info::Mock;
   is $virtual->[3]->state->progress, 72,  "virtual disk 3 is in rebuild with correct progress";
 }
 
+# fifth test set
+{
+  Test::RAID::Info::Mock->import(mdadm => 5);
+
+  my $c = RAID::Info::Controller::MD->new;
+  is $c->name, "md/0", "controller has correct name";
+
+  my $physical = $c->physical_disks;
+  is scalar @$physical, 0, '0 physical disks';
+
+  my $virtual = $c->virtual_disks;
+  is scalar @$virtual, 4, '4 virtual disks';
+  is ref($virtual->[$_]->state), [
+    'RAID::Info::VirtualDisk::State::Degraded',
+    'RAID::Info::VirtualDisk::State::Normal',
+    'RAID::Info::VirtualDisk::State::Normal',
+    'RAID::Info::VirtualDisk::State::Normal',
+  ]->[$_], "virtual disk $_ has correct state" for (0..3);
+  is int($virtual->[$_]->capacity), [
+    6000980000000,
+    6000980000000,
+    800030000000,
+    800030000000,
+  ]->[$_], "virtual disk $_ has correct capacity" for (0..3);
+  is $virtual->[$_]->level, [qw(
+    raid10
+    raid10
+    raid1
+    raid1
+  )]->[$_], "virtual disk $_ has correct raid level" for (0..3);
+  is !!$virtual->[$_]->state->is_abnormal, !![
+    1,
+    0,
+    0,
+    0,
+  ]->[$_], "virtual disk $_ has correct abnormal state" for (0..3);
+}
+
+# sixth test set
+{
+  Test::RAID::Info::Mock->import(mdadm => 6);
+
+  my $c = RAID::Info::Controller::MD->new;
+  is $c->name, "md/0", "controller has correct name";
+
+  my $physical = $c->physical_disks;
+  is scalar @$physical, 0, '0 physical disks';
+
+  my $virtual = $c->virtual_disks;
+  is scalar @$virtual, 4, '4 virtual disks';
+  is ref($virtual->[$_]->state), [
+    'RAID::Info::VirtualDisk::State::Degraded',
+    'RAID::Info::VirtualDisk::State::Normal',
+    'RAID::Info::VirtualDisk::State::Normal',
+    'RAID::Info::VirtualDisk::State::Normal',
+  ]->[$_], "virtual disk $_ has correct state" for (0..3);
+  is int($virtual->[$_]->capacity), [
+    6000980000000,
+    6000980000000,
+    800030000000,
+    800030000000,
+  ]->[$_], "virtual disk $_ has correct capacity" for (0..3);
+  is $virtual->[$_]->level, [qw(
+    raid10
+    raid10
+    raid1
+    raid1
+  )]->[$_], "virtual disk $_ has correct raid level" for (0..3);
+  is !!$virtual->[$_]->state->is_abnormal, !![
+    1,
+    0,
+    0,
+    0,
+  ]->[$_], "virtual disk $_ has correct abnormal state" for (0..3);
+}
+
 # detect test
 {
   Test::RAID::Info::Mock->import(mdadm => 1);
