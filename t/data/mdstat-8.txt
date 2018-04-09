@@ -1,0 +1,31 @@
+Personalities : [raid1] [linear] [multipath] [raid0] [raid6] [raid5] [raid4] [raid10] 
+md3 : active raid1 sde[1] sdc[0]
+      7813895488 blocks super 1.2 [2/2] [UU]
+      [>....................]  resync =  1.7% (134001216/7813895488) finish=632.1min speed=202481K/sec
+      
+md1 : active raid1 sdq5[1] sdp5[0]
+      481543488 blocks super 1.2 [2/2] [UU]
+      
+md0 : active raid1 sdq1[0] sdp1[1]
+      16375808 blocks super 1.2 [2/2] [UU]
+      
+md127 : active raid1 sda[0] sdb[1]
+      7813895488 blocks super 1.2 [2/2] [UU]
+      [===>.................]  resync = 15.9% (1249607552/7813895488) finish=534.6min speed=204612K/sec
+      
+md4 : active raid1 sdg[1] sdf[0]
+      7813895488 blocks super 1.2 [2/2] [UU]
+      
+md6 : active raid1 sdh[1] sdd[0]
+      1171981888 blocks super 1.2 [2/2] [UU]
+      [=======>.............]  resync = 36.1% (423789312/1171981888) finish=62.3min speed=200064K/sec
+      
+md7 : active raid1 sdl[1] sdk[0]
+      1171981888 blocks super 1.2 [2/2] [UU]
+      [=======>.............]  resync = 36.3% (426021120/1171981888) finish=61.1min speed=203204K/sec
+      
+md5 : active raid1 sdi[0] sdj[1]
+      1171981888 blocks super 1.2 [2/2] [UU]
+      [=======>.............]  resync = 36.1% (424188736/1171981888) finish=64.1min speed=194188K/sec
+      
+unused devices: <none>

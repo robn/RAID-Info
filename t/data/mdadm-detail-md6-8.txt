@@ -1,0 +1,26 @@
+/dev/md6:
+        Version : 1.2
+  Creation Time : Mon Nov 20 16:08:33 2017
+     Raid Level : raid1
+     Array Size : 1171981888 (1117.69 GiB 1200.11 GB)
+  Used Dev Size : 1171981888 (1117.69 GiB 1200.11 GB)
+   Raid Devices : 2
+  Total Devices : 2
+    Persistence : Superblock is persistent
+
+    Update Time : Sun Apr  8 22:26:29 2018
+          State : clean, resyncing 
+ Active Devices : 2
+Working Devices : 2
+ Failed Devices : 0
+  Spare Devices : 0
+
+  Resync Status : 36% complete
+
+           Name : wimap2:6  (local to host wimap2)
+           UUID : fc9a44b7:964ba852:d745cc9e:e4ee6535
+         Events : 661
+
+    Number   Major   Minor   RaidDevice State
+       0       8       48        0      active sync   /dev/sdd
+       1       8      112        1      active sync   /dev/sdh

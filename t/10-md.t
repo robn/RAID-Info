@@ -318,6 +318,65 @@ use Test::RAID::Info::Mock;
   ]->[$_], "virtual disk $_ has correct abnormal state" for (0..7);
 }
 
+# eighth test set
+{
+  Test::RAID::Info::Mock->import(mdadm => 8);
+
+  my $c = RAID::Info::Controller::MD->new;
+  is $c->name, "md/0", "controller has correct name";
+
+  my $physical = $c->physical_disks;
+  is scalar @$physical, 0, '0 physical disks';
+
+  my $virtual = $c->virtual_disks;
+  is scalar @$virtual, 8, '8 virtual disks';
+  is ref($virtual->[$_]->state), [
+    'RAID::Info::VirtualDisk::State::Rebuilding',
+    'RAID::Info::VirtualDisk::State::Normal',
+    'RAID::Info::VirtualDisk::State::Normal',
+    'RAID::Info::VirtualDisk::State::Rebuilding',
+    'RAID::Info::VirtualDisk::State::Normal',
+    'RAID::Info::VirtualDisk::State::Rebuilding',
+    'RAID::Info::VirtualDisk::State::Rebuilding',
+    'RAID::Info::VirtualDisk::State::Rebuilding',
+  ]->[$_], "virtual disk $_ has correct state" for (0..7);
+  is int($virtual->[$_]->capacity), [
+    8001430000000,
+    493100000000,
+    16770000000,
+    8001430000000,
+    8001430000000,
+    1200110000000,
+    1200110000000,
+    1200110000000,
+  ]->[$_], "virtual disk $_ has correct capacity" for (0..7);
+  is $virtual->[$_]->level, [qw(
+    raid1
+    raid1
+    raid1
+    raid1
+    raid1
+    raid1
+    raid1
+    raid1
+  )]->[$_], "virtual disk $_ has correct raid level" for (0..7);
+  is !!$virtual->[$_]->state->is_abnormal, !![
+    1,
+    0,
+    0,
+    1,
+    0,
+    1,
+    1,
+    1,
+  ]->[$_], "virtual disk $_ has correct abnormal state" for (0..7);
+  is $virtual->[0]->state->progress, 1,  "virtual disk 0 is in rebuild with correct progress";
+  is $virtual->[3]->state->progress, 16, "virtual disk 3 is in rebuild with correct progress";
+  is $virtual->[5]->state->progress, 36, "virtual disk 5 is in rebuild with correct progress";
+  is $virtual->[6]->state->progress, 36, "virtual disk 6 is in rebuild with correct progress";
+  is $virtual->[7]->state->progress, 36, "virtual disk 7 is in rebuild with correct progress";
+}
+
 # detect test
 {
   Test::RAID::Info::Mock->import(mdadm => 1);
