@@ -1,0 +1,15 @@
+/dev/md123:
+        Version : 1.2
+     Raid Level : raid0
+  Total Devices : 1
+    Persistence : Superblock is persistent
+
+          State : inactive
+
+           Name : wimap2:123  (local to host wimap2)
+           UUID : 0ae58ca5:01db0943:535d50c1:44753d5b
+         Events : 444
+
+    Number   Major   Minor   RaidDevice
+
+       -       8       64        -        /dev/sde

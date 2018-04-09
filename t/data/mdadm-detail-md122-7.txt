@@ -1,0 +1,15 @@
+/dev/md122:
+        Version : 1.2
+     Raid Level : raid0
+  Total Devices : 1
+    Persistence : Superblock is persistent
+
+          State : inactive
+
+           Name : wimap2:122  (local to host wimap2)
+           UUID : de15bc1d:fe8ff4d5:d77817dc:16799a4c
+         Events : 45173
+
+    Number   Major   Minor   RaidDevice
+
+       -       8        0        -        /dev/sda

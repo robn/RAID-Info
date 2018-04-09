@@ -59,6 +59,7 @@ sub _build_virtual_disks {
   state $state_map = {
     active                         => sub { RAID::Info::VirtualDisk::State::Normal->new },
     clean                          => sub { RAID::Info::VirtualDisk::State::Normal->new },
+    inactive                       => sub { RAID::Info::VirtualDisk::State::Degraded->new },
     'clean, degraded'              => sub { RAID::Info::VirtualDisk::State::Degraded->new },
     'active, degraded'             => sub { RAID::Info::VirtualDisk::State::Degraded->new },
     'active, resyncing'            => sub { RAID::Info::VirtualDisk::State::Rebuilding->new(progress => shift) },
@@ -75,7 +76,7 @@ sub _build_virtual_disks {
       id       => $_,
       name     => $_,
       level    => $detail->{'Raid Level'},
-      capacity => [$detail->{'Array Size'} =~ m/([\d\.]+ .B)/]->[0],
+      capacity => $detail->{'Array Size'} ? [$detail->{'Array Size'} =~ m/([\d\.]+ .B)/]->[0] : 0,
       state    => eval { $state_map->{$state}->($progress) } // $state,
     )
   } $self->_mdstat_raw =~ m/^(md\w+)\s*:/smg;
