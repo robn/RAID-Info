@@ -20,6 +20,9 @@ use Test::RAID::Info::Mock;
 
   my $physical = $c->physical_disks;
   is scalar @$physical, 24, '24 physical disks';
+  is $physical->[$_]->enclosure, [
+    ('02') x 24,
+  ]->[$_], "physical disk $_ has correct enclosure" for (0..23);
   is ref($physical->[$_]->state), [
     ('RAID::Info::PhysicalDisk::State::Online') x 24
   ]->[$_], "physical disk $_ has correct state" for (0..23);
@@ -72,6 +75,9 @@ use Test::RAID::Info::Mock;
 
   my $physical = $c->physical_disks;
   is scalar @$physical, 24, '24 physical disks';
+  is $physical->[$_]->enclosure, [
+    ('02') x 24,
+  ]->[$_], "physical disk $_ has correct enclosure" for (0..23);
   is ref($physical->[$_]->state), [
     ('RAID::Info::PhysicalDisk::State::Online') x 24
   ]->[$_], "physical disk $_ has correct state" for (0..23);
@@ -127,6 +133,9 @@ use Test::RAID::Info::Mock;
 
   my $physical = $c->physical_disks;
   is scalar @$physical, 12, '12 physical disks';
+  is $physical->[$_]->enclosure, [
+    ('03') x 12,
+  ]->[$_], "physical disk $_ has correct enclosure" for (0..11);
   is ref($physical->[$_]->state), [
     ('RAID::Info::PhysicalDisk::State::Online') x 12
   ]->[$_], "physical disk $_ has correct state" for (0..11);
@@ -176,6 +185,9 @@ use Test::RAID::Info::Mock;
 
   my $physical = $c->physical_disks;
   is scalar @$physical, 12, '12 physical disks';
+  is $physical->[$_]->enclosure, [
+    ('02') x 12,
+  ]->[$_], "physical disk $_ has correct enclosure" for (0..11);
   is ref($physical->[$_]->state), [
     ('RAID::Info::PhysicalDisk::State::Online') x 12
   ]->[$_], "physical disk $_ has correct state" for (0..11);
@@ -220,6 +232,9 @@ use Test::RAID::Info::Mock;
 
   my $physical = $c->physical_disks;
   is scalar @$physical, 24, '24 physical disks';
+  is $physical->[$_]->enclosure, [
+    ('02') x 24,
+  ]->[$_], "physical disk $_ has correct enclosure" for (0..23);
   is ref($physical->[$_]->state), [
     ('RAID::Info::PhysicalDisk::State::Online')      x 12,
     ('RAID::Info::PhysicalDisk::State::Unallocated') x 12,
@@ -267,6 +282,12 @@ use Test::RAID::Info::Mock;
 
   my $physical = $c->physical_disks;
   is scalar @$physical, 80, '80 physical disks';
+  is $physical->[$_]->enclosure, [
+    ('03') x 20,
+    ('04') x 20,
+    ('05') x 20,
+    ('06') x 20,
+  ]->[$_], "physical disk $_ has correct enclosure" for (0..79);
   is ref($physical->[$_]->state), [
     ('RAID::Info::PhysicalDisk::State::Online') x 7,
     'RAID::Info::PhysicalDisk::State::Failed', # 7
@@ -351,6 +372,12 @@ use Test::RAID::Info::Mock;
 
   my $physical = $c->physical_disks;
   is scalar @$physical, 74, '74 physical disks';
+  is $physical->[$_]->enclosure, [
+    ('03') x 19,
+    ('04') x 19,
+    ('05') x 16,
+    ('06') x 20,
+  ]->[$_], "physical disk $_ has correct enclosure" for (0..73);
   is ref($physical->[$_]->state), [
     ('RAID::Info::PhysicalDisk::State::Online') x 8,
     'RAID::Info::PhysicalDisk::State::Unallocated', # 8
@@ -425,6 +452,12 @@ use Test::RAID::Info::Mock;
 
   my $physical = $c->physical_disks;
   is scalar @$physical, 80, '80 physical disks';
+  is $physical->[$_]->enclosure, [
+    ('03') x 20,
+    ('04') x 20,
+    ('05') x 20,
+    ('06') x 20,
+  ]->[$_], "physical disk $_ has correct enclosure" for (0..79);
   is ref($physical->[$_]->state), [
     ('RAID::Info::PhysicalDisk::State::Online') x 80
   ]->[$_], "physical disk $_ has correct state" for (0..79);
@@ -488,6 +521,9 @@ use Test::RAID::Info::Mock;
 
   my $physical = $c->physical_disks;
   is scalar @$physical, 24, '24 physical disks';
+  is $physical->[$_]->enclosure, [
+    ('02') x 24,
+  ]->[$_], "physical disk $_ has correct enclosure" for (0..23);
   is ref($physical->[$_]->state), [
     ('RAID::Info::PhysicalDisk::State::Online') x 24
   ]->[$_], "physical disk $_ has correct state" for (0..23);
@@ -544,6 +580,9 @@ use Test::RAID::Info::Mock;
 
   my $physical = $c->physical_disks;
   is scalar @$physical, 12, '12 physical disks';
+  is $physical->[$_]->enclosure, [
+    ('02') x 12,
+  ]->[$_], "physical disk $_ has correct enclosure" for (0..11);
   is ref($physical->[$_]->state), [
     ('RAID::Info::PhysicalDisk::State::Online') x 12
   ]->[$_], "physical disk $_ has correct state" for (0..11);

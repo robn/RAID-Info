@@ -50,6 +50,7 @@ sub _build_physical_disks {
     RAID::Info::Controller::Areca::PhysicalDisk->new(
       id        => $id,
       slot      => $slot,
+      enclosure => $enc,
       model     => $model,
       capacity  => $capacity,
       state     => eval { $state_map->{$state}->() } // $state,
@@ -146,11 +147,12 @@ package RAID::Info::Controller::Areca::PhysicalDisk {
 use namespace::autoclean;
 
 use Moo;
-use Types::Standard qw(Str);
+use Types::Standard qw(Str Int);
 
 extends 'RAID::Info::PhysicalDisk';
 
 has raid_name => ( is => 'ro', isa => Str, required => 1 );
+has enclosure => ( is => 'ro', isa => Int, required => 1 );
 
 with 'RAID::Info::Role::HasPhysicalDisks';
 
