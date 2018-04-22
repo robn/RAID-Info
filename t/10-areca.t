@@ -20,6 +20,9 @@ use Test::RAID::Info::Mock;
 
   my $physical = $c->physical_disks;
   is scalar @$physical, 24, '24 physical disks';
+  is $physical->[$_]->slot, [
+    ('00'..'23'),
+  ]->[$_], "physical disk $_ has correct slot" for (0..23);
   is $physical->[$_]->enclosure, [
     ('02') x 24,
   ]->[$_], "physical disk $_ has correct enclosure" for (0..23);
@@ -75,6 +78,9 @@ use Test::RAID::Info::Mock;
 
   my $physical = $c->physical_disks;
   is scalar @$physical, 24, '24 physical disks';
+  is $physical->[$_]->slot, [
+    ('01'..'24'),
+  ]->[$_], "physical disk $_ has correct slot" for (0..23);
   is $physical->[$_]->enclosure, [
     ('02') x 24,
   ]->[$_], "physical disk $_ has correct enclosure" for (0..23);
@@ -133,6 +139,9 @@ use Test::RAID::Info::Mock;
 
   my $physical = $c->physical_disks;
   is scalar @$physical, 12, '12 physical disks';
+  is $physical->[$_]->slot, [
+    ('001'..'012'),
+  ]->[$_], "physical disk $_ has correct slot" for (0..11);
   is $physical->[$_]->enclosure, [
     ('03') x 12,
   ]->[$_], "physical disk $_ has correct enclosure" for (0..11);
@@ -185,6 +194,9 @@ use Test::RAID::Info::Mock;
 
   my $physical = $c->physical_disks;
   is scalar @$physical, 12, '12 physical disks';
+  is $physical->[$_]->slot, [
+    ('01'..'12'),
+  ]->[$_], "physical disk $_ has correct slot" for (0..11);
   is $physical->[$_]->enclosure, [
     ('02') x 12,
   ]->[$_], "physical disk $_ has correct enclosure" for (0..11);
@@ -232,6 +244,9 @@ use Test::RAID::Info::Mock;
 
   my $physical = $c->physical_disks;
   is scalar @$physical, 24, '24 physical disks';
+  is $physical->[$_]->slot, [
+    ('01'..'24'),
+  ]->[$_], "physical disk $_ has correct slot" for (0..23);
   is $physical->[$_]->enclosure, [
     ('02') x 24,
   ]->[$_], "physical disk $_ has correct enclosure" for (0..23);
@@ -282,6 +297,12 @@ use Test::RAID::Info::Mock;
 
   my $physical = $c->physical_disks;
   is scalar @$physical, 80, '80 physical disks';
+  is $physical->[$_]->slot, [
+    ('01'..'20'),
+    ('41'..'60'),
+    ('21'..'40'),
+    ('61'..'80'),
+  ]->[$_], "physical disk $_ has correct slot" for (0..79);
   is $physical->[$_]->enclosure, [
     ('03') x 20,
     ('04') x 20,
@@ -372,6 +393,12 @@ use Test::RAID::Info::Mock;
 
   my $physical = $c->physical_disks;
   is scalar @$physical, 74, '74 physical disks';
+  is $physical->[$_]->slot, [
+    ('01'..'13', '15'..'20'),
+    ('41'..'52', '54'..'60'),
+    ('21'..'23', '25'..'27', '29'..'31', '33'..'37', '39', '40'),
+    ('61'..'80'),
+  ]->[$_], "physical disk $_ has correct slot" for (0..73);
   is $physical->[$_]->enclosure, [
     ('03') x 19,
     ('04') x 19,
@@ -452,6 +479,12 @@ use Test::RAID::Info::Mock;
 
   my $physical = $c->physical_disks;
   is scalar @$physical, 80, '80 physical disks';
+  is $physical->[$_]->slot, [
+    ('01'..'20'),
+    ('41'..'60'),
+    ('21'..'40'),
+    ('61'..'80'),
+  ]->[$_], "physical disk $_ has correct slot" for (0..79);
   is $physical->[$_]->enclosure, [
     ('03') x 20,
     ('04') x 20,
@@ -521,6 +554,9 @@ use Test::RAID::Info::Mock;
 
   my $physical = $c->physical_disks;
   is scalar @$physical, 24, '24 physical disks';
+  is $physical->[$_]->slot, [
+    ('00'..'23'),
+  ]->[$_], "physical disk $_ has correct slot" for (0..23);
   is $physical->[$_]->enclosure, [
     ('02') x 24,
   ]->[$_], "physical disk $_ has correct enclosure" for (0..23);
@@ -580,6 +616,9 @@ use Test::RAID::Info::Mock;
 
   my $physical = $c->physical_disks;
   is scalar @$physical, 12, '12 physical disks';
+  is $physical->[$_]->slot, [
+    ('001'..'012'),
+  ]->[$_], "physical disk $_ has correct slot" for (0..11);
   is $physical->[$_]->enclosure, [
     ('02') x 12,
   ]->[$_], "physical disk $_ has correct enclosure" for (0..11);

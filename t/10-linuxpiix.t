@@ -20,6 +20,9 @@ use Test::RAID::Info::Mock;
 
   my $physical = $c->physical_disks;
   is scalar @$physical, 3, '3 physical disks';
+  is $physical->[$_]->slot, [
+    (1..3),
+  ]->[$_], "physical disk $_ has correct slot" for (0..2);
   is ref($physical->[$_]->state), [
     ('RAID::Info::PhysicalDisk::State::Online') x 3,
   ]->[$_], "physical disk $_ has correct state" for (0..2);
