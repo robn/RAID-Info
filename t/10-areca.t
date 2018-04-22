@@ -21,10 +21,10 @@ use Test::RAID::Info::Mock;
   my $physical = $c->physical_disks;
   is scalar @$physical, 24, '24 physical disks';
   is $physical->[$_]->slot, [
-    ('00'..'23'),
+    0..23,
   ]->[$_], "physical disk $_ has correct slot" for (0..23);
   is $physical->[$_]->enclosure, [
-    ('02') x 24,
+    (2) x 24,
   ]->[$_], "physical disk $_ has correct enclosure" for (0..23);
   is ref($physical->[$_]->state), [
     ('RAID::Info::PhysicalDisk::State::Online') x 24
@@ -64,8 +64,8 @@ use Test::RAID::Info::Mock;
     0,
   ]->[$_], "virtual disk $_ has correct abnormal state" for (0..1);
   cmp_deeply [ map { $_->slot } @{$virtual->[$_]->physical_disks} ], [
-    ['00'..'11'],
-    ['12'..'23'],
+    [ 0..11],
+    [12..23],
   ]->[$_], "virtual disk $_ has correct physical disks" for (0..1);
 }
 
@@ -79,10 +79,10 @@ use Test::RAID::Info::Mock;
   my $physical = $c->physical_disks;
   is scalar @$physical, 24, '24 physical disks';
   is $physical->[$_]->slot, [
-    ('01'..'24'),
+    1..24,
   ]->[$_], "physical disk $_ has correct slot" for (0..23);
   is $physical->[$_]->enclosure, [
-    ('02') x 24,
+    (2) x 24,
   ]->[$_], "physical disk $_ has correct enclosure" for (0..23);
   is ref($physical->[$_]->state), [
     ('RAID::Info::PhysicalDisk::State::Online') x 24
@@ -125,8 +125,8 @@ use Test::RAID::Info::Mock;
   ]->[$_], "virtual disk $_ has correct abnormal state" for (0..1);
   is $virtual->[1]->state->progress, 35.3, "virtual disk 1 is in rebuild with correct progress";
   cmp_deeply [ map { $_->slot } @{$virtual->[$_]->physical_disks} ], [
-    ['01'..'12'],
-    ['13'..'24'],
+    [ 1..12],
+    [13..24],
   ]->[$_], "virtual disk $_ has correct physical disks" for (0..1);
 }
 
@@ -140,10 +140,10 @@ use Test::RAID::Info::Mock;
   my $physical = $c->physical_disks;
   is scalar @$physical, 12, '12 physical disks';
   is $physical->[$_]->slot, [
-    ('001'..'012'),
+    1..12,
   ]->[$_], "physical disk $_ has correct slot" for (0..11);
   is $physical->[$_]->enclosure, [
-    ('03') x 12,
+    (3) x 12,
   ]->[$_], "physical disk $_ has correct enclosure" for (0..11);
   is ref($physical->[$_]->state), [
     ('RAID::Info::PhysicalDisk::State::Online') x 12
@@ -180,8 +180,8 @@ use Test::RAID::Info::Mock;
     0,
   ]->[$_], "virtual disk $_ has correct abnormal state" for (0..1);
   cmp_deeply [ map { $_->slot } @{$virtual->[$_]->physical_disks} ], [
-    ['001'..'012'],
-    ['001'..'012'],
+    [1..12],
+    [1..12],
   ]->[$_], "virtual disk $_ has correct physical disks" for (0..1);
 }
 
@@ -195,10 +195,10 @@ use Test::RAID::Info::Mock;
   my $physical = $c->physical_disks;
   is scalar @$physical, 12, '12 physical disks';
   is $physical->[$_]->slot, [
-    ('01'..'12'),
+    1..12,
   ]->[$_], "physical disk $_ has correct slot" for (0..11);
   is $physical->[$_]->enclosure, [
-    ('02') x 12,
+    (2) x 12,
   ]->[$_], "physical disk $_ has correct enclosure" for (0..11);
   is ref($physical->[$_]->state), [
     ('RAID::Info::PhysicalDisk::State::Online') x 12
@@ -231,7 +231,7 @@ use Test::RAID::Info::Mock;
     0,
   ]->[$_], "virtual disk $_ has correct abnormal state" for (0);
   cmp_deeply [ map { $_->slot } @{$virtual->[$_]->physical_disks} ], [
-    ['01'..'12'],
+    [1..12],
   ]->[$_], "virtual disk $_ has correct physical disks" for (0);
 }
 
@@ -245,10 +245,10 @@ use Test::RAID::Info::Mock;
   my $physical = $c->physical_disks;
   is scalar @$physical, 24, '24 physical disks';
   is $physical->[$_]->slot, [
-    ('01'..'24'),
+    1..24,
   ]->[$_], "physical disk $_ has correct slot" for (0..23);
   is $physical->[$_]->enclosure, [
-    ('02') x 24,
+    (2) x 24,
   ]->[$_], "physical disk $_ has correct enclosure" for (0..23);
   is ref($physical->[$_]->state), [
     ('RAID::Info::PhysicalDisk::State::Online')      x 12,
@@ -284,7 +284,7 @@ use Test::RAID::Info::Mock;
     0,
   ]->[$_], "virtual disk $_ has correct abnormal state" for (0);
   cmp_deeply [ map { $_->slot } @{$virtual->[$_]->physical_disks} ], [
-    ['01'..'12'],
+    [1..12],
   ]->[$_], "virtual disk $_ has correct physical disks" for (0);
 }
 
@@ -298,16 +298,16 @@ use Test::RAID::Info::Mock;
   my $physical = $c->physical_disks;
   is scalar @$physical, 80, '80 physical disks';
   is $physical->[$_]->slot, [
-    ('01'..'20'),
-    ('41'..'60'),
-    ('21'..'40'),
-    ('61'..'80'),
+    ( 1..20),
+    (41..60),
+    (21..40),
+    (61..80),
   ]->[$_], "physical disk $_ has correct slot" for (0..79);
   is $physical->[$_]->enclosure, [
-    ('03') x 20,
-    ('04') x 20,
-    ('05') x 20,
-    ('06') x 20,
+    (3) x 20,
+    (4) x 20,
+    (5) x 20,
+    (6) x 20,
   ]->[$_], "physical disk $_ has correct enclosure" for (0..79);
   is ref($physical->[$_]->state), [
     ('RAID::Info::PhysicalDisk::State::Online') x 7,
@@ -373,14 +373,14 @@ use Test::RAID::Info::Mock;
     0,
   ]->[$_], "virtual disk $_ has correct abnormal state" for (0..7);
   cmp_deeply [ map { $_->slot } @{$virtual->[$_]->physical_disks} ], [
-    ['01'..'07','09','10'],
-    ['11'..'20'],
-    ['21'..'30'],
-    ['31'..'36','38','39','40'],
-    ['41'..'50'],
-    ['51'..'60'],
-    ['61'..'70'],
-    ['71'..'80'],
+    [ 1.. 7, 9,10],
+    [11..20],
+    [21..30],
+    [31..36,38,39,40],
+    [41..50],
+    [51..60],
+    [61..70],
+    [71..80],
   ]->[$_], "virtual disk $_ has correct physical disks" for (0..7);
 }
 
@@ -394,16 +394,16 @@ use Test::RAID::Info::Mock;
   my $physical = $c->physical_disks;
   is scalar @$physical, 74, '74 physical disks';
   is $physical->[$_]->slot, [
-    ('01'..'13', '15'..'20'),
-    ('41'..'52', '54'..'60'),
-    ('21'..'23', '25'..'27', '29'..'31', '33'..'37', '39', '40'),
-    ('61'..'80'),
+    ( 1..13, 15..20),
+    (41..52, 54..60),
+    (21..23, 25..27, 29..31, 33..37, 39, 40),
+    (61..80),
   ]->[$_], "physical disk $_ has correct slot" for (0..73);
   is $physical->[$_]->enclosure, [
-    ('03') x 19,
-    ('04') x 19,
-    ('05') x 16,
-    ('06') x 20,
+    (3) x 19,
+    (4) x 19,
+    (5) x 16,
+    (6) x 20,
   ]->[$_], "physical disk $_ has correct enclosure" for (0..73);
   is ref($physical->[$_]->state), [
     ('RAID::Info::PhysicalDisk::State::Online') x 8,
@@ -459,14 +459,12 @@ use Test::RAID::Info::Mock;
     0,
   ]->[$_], "virtual disk $_ has correct abnormal state" for (0..5);
   cmp_deeply [ map { $_->slot } @{$virtual->[$_]->physical_disks} ], [
-    ['01'..'07','10'],
-    ['08','11','12','13','15'..'20'],
-    #['21'..'23','25'..'27','29','30'],
-    #['31','33'..'37','39','40'],
-    ['41'..'50'],
-    ['51','52','54'..'60'],
-    ['61'..'70'],
-    ['71'..'80'],
+    [1..7,10],
+    [8,11,12,13,15..20],
+    [41..50],
+    [51,52,54..60],
+    [61..70],
+    [71..80],
   ]->[$_], "virtual disk $_ has correct physical disks" for (0..5);
 }
 
@@ -480,16 +478,16 @@ use Test::RAID::Info::Mock;
   my $physical = $c->physical_disks;
   is scalar @$physical, 80, '80 physical disks';
   is $physical->[$_]->slot, [
-    ('01'..'20'),
-    ('41'..'60'),
-    ('21'..'40'),
-    ('61'..'80'),
+    ( 1..20),
+    (41..60),
+    (21..40),
+    (61..80),
   ]->[$_], "physical disk $_ has correct slot" for (0..79);
   is $physical->[$_]->enclosure, [
-    ('03') x 20,
-    ('04') x 20,
-    ('05') x 20,
-    ('06') x 20,
+    (3) x 20,
+    (4) x 20,
+    (5) x 20,
+    (6) x 20,
   ]->[$_], "physical disk $_ has correct enclosure" for (0..79);
   is ref($physical->[$_]->state), [
     ('RAID::Info::PhysicalDisk::State::Online') x 80
@@ -534,14 +532,14 @@ use Test::RAID::Info::Mock;
     0, 1, 0, 0,
   ]->[$_], "virtual disk $_ has correct abnormal state" for (0..7);
   cmp_deeply [ map { $_->slot } @{$virtual->[$_]->physical_disks} ], [
-    ['01'..'07','09','10','14'],
-    ['08','11'..'13','15'..'20'],
-    ['53','21','22','23','25'..'30'],
-    ['31'..'40'],
-    ['41'..'50'],
-    ['51','52','54'..'60','24'],
-    ['61'..'70'],
-    ['71'..'80'],
+    [1..7,9,10,14],
+    [8,11..13,15..20],
+    [53,21,22,23,25..30],
+    [31..40],
+    [41..50],
+    [51,52,54..60,24],
+    [61..70],
+    [71..80],
   ]->[$_], "virtual disk $_ has correct physical disks" for (0..7);
 }
 
@@ -555,10 +553,10 @@ use Test::RAID::Info::Mock;
   my $physical = $c->physical_disks;
   is scalar @$physical, 24, '24 physical disks';
   is $physical->[$_]->slot, [
-    ('00'..'23'),
+    (0..23),
   ]->[$_], "physical disk $_ has correct slot" for (0..23);
   is $physical->[$_]->enclosure, [
-    ('02') x 24,
+    (2) x 24,
   ]->[$_], "physical disk $_ has correct enclosure" for (0..23);
   is ref($physical->[$_]->state), [
     ('RAID::Info::PhysicalDisk::State::Online') x 24
@@ -600,9 +598,9 @@ use Test::RAID::Info::Mock;
     1, 0, 0,
   ]->[$_], "virtual disk $_ has correct abnormal state" for (0..2);
   cmp_deeply [ map { $_->slot } @{$virtual->[$_]->physical_disks} ], [
-    ['00'..'07'],
-    ['08'..'15'],
-    ['16'..'23'],
+    [ 0.. 7],
+    [ 8..15],
+    [16..23],
   ]->[$_], "virtual disk $_ has correct physical disks" for (0..2);
 }
 
@@ -617,10 +615,10 @@ use Test::RAID::Info::Mock;
   my $physical = $c->physical_disks;
   is scalar @$physical, 12, '12 physical disks';
   is $physical->[$_]->slot, [
-    ('001'..'012'),
+    (1..12),
   ]->[$_], "physical disk $_ has correct slot" for (0..11);
   is $physical->[$_]->enclosure, [
-    ('02') x 12,
+    (2) x 12,
   ]->[$_], "physical disk $_ has correct enclosure" for (0..11);
   is ref($physical->[$_]->state), [
     ('RAID::Info::PhysicalDisk::State::Online') x 12
@@ -662,9 +660,9 @@ use Test::RAID::Info::Mock;
     (0) x 3,
   ]->[$_], "virtual disk $_ has correct abnormal state" for (0..2);
   cmp_deeply [ map { $_->slot } @{$virtual->[$_]->physical_disks} ], [
-    ['001','002'],
-    ['001','002'],
-    ['003'..'012'],
+    [1,2],
+    [1,2],
+    [3..12],
   ]->[$_], "virtual disk $_ has correct physical disks" for (0..2);
 }
 

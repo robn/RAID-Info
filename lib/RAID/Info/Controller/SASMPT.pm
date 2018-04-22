@@ -47,7 +47,7 @@ sub _build_physical_disks {
       my ($capacity, $model) = m/PhysDisk Size (\d+ MB), Inquiry Data:\s*(.+?)\s*$/m;
       RAID::Info::PhysicalDisk->new(
         id       => $id,
-        slot     => $id,
+        slot     => 0+$id,
         model    => $model,
         capacity => $capacity,
         state    => eval { $state_map->{$state}->() } // $state,

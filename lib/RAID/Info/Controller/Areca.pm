@@ -49,8 +49,8 @@ sub _build_physical_disks {
     my $state = $virtual_names{$usage} ? 'Online' : (exists $state_map->{$usage} ? $usage : 'Free');
     RAID::Info::Controller::Areca::PhysicalDisk->new(
       id        => $id,
-      slot      => $slot,
-      enclosure => $enc,
+      slot      => 0+$slot,
+      enclosure => 0+$enc,
       model     => $model,
       capacity  => $capacity,
       state     => eval { $state_map->{$state}->() } // $state,

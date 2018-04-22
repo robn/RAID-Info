@@ -55,7 +55,7 @@ sub _build_physical_disks {
       }
       ($id => RAID::Info::PhysicalDisk->new(
         id       => $id,
-        slot     => $vars{'Slot Number'},
+        slot     => 0+$vars{'Slot Number'},
         model    => $vars{'Inquiry Data'} =~ s/\s+/ /gr,
         capacity => $capacity,
         state    => eval { $state_map->{$state}->($progress) } // $state,

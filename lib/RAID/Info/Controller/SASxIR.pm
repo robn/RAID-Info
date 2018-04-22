@@ -35,7 +35,7 @@ sub _build_physical_disks {
                         : [$vars{'Size (in MB)/(in sectors)'} =~ m/^([\d\.]+)/]->[0];
       RAID::Info::PhysicalDisk->new(
         id       => $id,
-        slot     => $vars{'Slot #'},
+        slot     => 0+$vars{'Slot #'},
         model    => $vars{'Model Number'} =~ s/\s+/ /gr,
         capacity => "$capacity MB",
         state    => eval { $state_map->{$state}->() } // $state,
