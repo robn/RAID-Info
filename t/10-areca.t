@@ -666,6 +666,65 @@ use Test::RAID::Info::Mock;
   ]->[$_], "virtual disk $_ has correct physical disks" for (0..2);
 }
 
+# eleventh test set
+{
+  Test::RAID::Info::Mock->import(cli64 => 11);
+
+  my $c = RAID::Info::Controller::Areca->new;
+  is $c->name, "areca/0", "controller has correct name";
+
+  my $physical = $c->physical_disks;
+  is scalar @$physical, 24, '24 physical disks';
+  is $physical->[$_]->slot, [
+    (1..24),
+  ]->[$_], "physical disk $_ has correct slot" for (0..23);
+  is $physical->[$_]->enclosure, [
+    (2) x 24,
+  ]->[$_], "physical disk $_ has correct enclosure" for (0..23);
+  is ref($physical->[$_]->state), [
+    ('RAID::Info::PhysicalDisk::State::Online') x 24
+  ]->[$_], "physical disk $_ has correct state" for (0..23);
+  is $physical->[$_]->state->as_string, [
+    ('online') x 24
+  ]->[$_], "physical disk $_ has correct state string" for (0..23);
+  is int($physical->[$_]->capacity), [
+    (2000400000000) x 24,
+  ]->[$_], "physical disk $_ has correct capacity" for (0..23);
+  is !!$physical->[$_]->state->is_abnormal, !![
+    (0) x 24,
+  ]->[$_], "physical disk $_ has correct abnormal state" for (0..23);
+
+  my $virtual = $c->virtual_disks;
+  is scalar @$virtual, 2, '2 virtual disks';
+  is ref($virtual->[$_]->state), [
+    'RAID::Info::VirtualDisk::State::Normal',
+    'RAID::Info::VirtualDisk::State::Rebuilding',
+  ]->[$_], "virtual disk $_ has correct state" for (0..1);
+  is $virtual->[$_]->state->as_string, [
+    'normal',
+    'rebuilding (0.8%)',
+  ]->[$_], "virtual disk $_ has correct state string" for (0..1);
+  is int($virtual->[$_]->capacity), [
+    20000000000000,
+    20000000000000,
+  ]->[$_], "virtual disk $_ has correct capacity" for (0..1);
+  is $virtual->[$_]->level, [
+    'raid6',
+    'raid6',
+  ]->[$_], "virtual disk $_ has correct raid level" for (0..1);
+  is $virtual->[$_]->raid_name, [
+    'i33d1spool',
+    'i33d2spool',
+  ]->[$_], "virtual disk $_ has correct raid name" for (0..1);
+  is !!$virtual->[$_]->state->is_abnormal, !![
+    0, 1,
+  ]->[$_], "virtual disk $_ has correct abnormal state" for (0..1);
+  cmp_deeply [ map { $_->slot } @{$virtual->[$_]->physical_disks} ], [
+    [ 1..12],
+    [13..24],
+  ]->[$_], "virtual disk $_ has correct physical disks" for (0..1);
+}
+
 
 # detect test
 {

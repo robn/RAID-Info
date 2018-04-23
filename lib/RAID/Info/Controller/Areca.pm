@@ -70,6 +70,7 @@ sub _build_virtual_disks {
     Normal         => sub { RAID::Info::VirtualDisk::State::Normal->new },
     Degraded       => sub { RAID::Info::VirtualDisk::State::Degraded->new },
     Rebuilding     => sub { RAID::Info::VirtualDisk::State::Rebuilding->new(progress => shift) },
+    Initializing   => sub { RAID::Info::VirtualDisk::State::Rebuilding->new(progress => shift) },
     'Need Rebuild' => sub { RAID::Info::VirtualDisk::State::Rebuilding->new(progress => 0) },
   };
 

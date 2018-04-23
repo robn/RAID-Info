@@ -1,0 +1,7 @@
+The Hardware Monitor Information
+=====================================================
+[Controller H/W Monitor]
+[Enclosure#1 : ARECA   SAS RAID AdapterV1.0]
+[Enclosure#2 : LSI     SAS2X36         0e12]
+=====================================================
+GuiErrMsg<0x00>: Success.
