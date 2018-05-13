@@ -1,0 +1,26 @@
+/dev/md127:
+        Version : 1.2
+  Creation Time : Sun Apr  8 20:36:36 2018
+     Raid Level : raid1
+     Array Size : 7813895488 (7451.91 GiB 8001.43 GB)
+  Used Dev Size : 7813895488 (7451.91 GiB 8001.43 GB)
+   Raid Devices : 2
+  Total Devices : 2
+    Persistence : Superblock is persistent
+
+    Update Time : Sat May 12 09:22:42 2018
+          State : active, checking 
+ Active Devices : 2
+Working Devices : 2
+ Failed Devices : 0
+  Spare Devices : 0
+
+   Check Status : 65% complete
+
+           Name : wimap2:2  (local to host wimap2)
+           UUID : 22d61d61:a47fd52b:aed770c4:9e7d14f1
+         Events : 55939
+
+    Number   Major   Minor   RaidDevice State
+       0       8        0        0      active sync   /dev/sda
+       1       8       16        1      active sync   /dev/sdb

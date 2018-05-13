@@ -63,6 +63,7 @@ sub _build_virtual_disks {
     'clean, degraded'              => sub { RAID::Info::VirtualDisk::State::Degraded->new },
     'active, degraded'             => sub { RAID::Info::VirtualDisk::State::Degraded->new },
     'active, resyncing'            => sub { RAID::Info::VirtualDisk::State::Rebuilding->new(progress => shift) },
+    'active, checking'             => sub { RAID::Info::VirtualDisk::State::Rebuilding->new(progress => shift) },
     'clean, resyncing'             => sub { RAID::Info::VirtualDisk::State::Rebuilding->new(progress => shift) },
     'active, degraded, recovering' => sub { RAID::Info::VirtualDisk::State::Rebuilding->new(progress => shift) },
     'clean, degraded, recovering'  => sub { RAID::Info::VirtualDisk::State::Rebuilding->new(progress => shift) },

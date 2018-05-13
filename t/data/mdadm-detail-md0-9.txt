@@ -1,0 +1,24 @@
+/dev/md0:
+        Version : 1.2
+  Creation Time : Sun Nov 19 23:55:08 2017
+     Raid Level : raid1
+     Array Size : 16375808 (15.62 GiB 16.77 GB)
+  Used Dev Size : 16375808 (15.62 GiB 16.77 GB)
+   Raid Devices : 2
+  Total Devices : 2
+    Persistence : Superblock is persistent
+
+    Update Time : Sat May 12 09:22:40 2018
+          State : clean 
+ Active Devices : 2
+Working Devices : 2
+ Failed Devices : 0
+  Spare Devices : 0
+
+           Name : wimap2:0  (local to host wimap2)
+           UUID : 464213c2:5c1f28ba:1cc2fd71:91f79606
+         Events : 211
+
+    Number   Major   Minor   RaidDevice State
+       0      65        1        0      active sync   /dev/sdq1
+       1       8      241        1      active sync   /dev/sdp1
