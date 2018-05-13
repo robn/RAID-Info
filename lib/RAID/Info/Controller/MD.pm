@@ -72,7 +72,8 @@ sub _build_virtual_disks {
   my @virtual = map {
     my $detail = $details{$_};
     my $state = $detail->{State};
-    my ($progress) = ($detail->{'Resync Status'} // $detail->{'Rebuild Status'} // '') =~ m/^(\d+)\%/;
+    my ($progress_key) = grep { m/ Status$/ } keys %$detail;
+    my ($progress) = $progress_key ? ($detail->{$progress_key} // '') =~ m/^(\d+)\%/ : (0);
     RAID::Info::VirtualDisk->new(
       id       => $_,
       name     => $_,
