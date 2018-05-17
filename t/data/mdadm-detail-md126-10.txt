@@ -1,0 +1,24 @@
+/dev/md126:
+        Version : 1.2
+  Creation Time : Sun Apr  8 22:15:46 2018
+     Raid Level : raid1
+     Array Size : 7813895488 (7451.91 GiB 8001.43 GB)
+  Used Dev Size : 7813895488 (7451.91 GiB 8001.43 GB)
+   Raid Devices : 2
+  Total Devices : 2
+    Persistence : Superblock is persistent
+
+    Update Time : Thu May 17 07:08:15 2018
+          State : clean 
+ Active Devices : 2
+Working Devices : 2
+ Failed Devices : 0
+  Spare Devices : 0
+
+           Name : wimap2:3  (local to host wimap2)
+           UUID : d5dfb3ec:1aa2657a:f2f4dfdf:1fdb0eaf
+         Events : 98897
+
+    Number   Major   Minor   RaidDevice State
+       0       8       48        0      active sync   /dev/sdd
+       1       8       64        1      active sync   /dev/sde
