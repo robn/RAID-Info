@@ -215,6 +215,74 @@ use Test::RAID::Info::Mock;
   ]->[$_], "virtual disk $_ has correct physical disks" for (0..3);
 }
 
+# fourth test set
+{
+  Test::RAID::Info::Mock->import(megacli => 4);
+
+  my $c = RAID::Info::Controller::MegaRAID->new(id => 0);
+  is $c->name, "megaraid/0", "controller has correct name";
+
+  my $physical = $c->physical_disks;
+  is scalar @$physical, 14, '14 physical disks';
+  is $physical->[$_]->slot, [
+    (0..13),
+  ]->[$_], "physical disk $_ has correct slot" for (0..13);
+  is ref($physical->[$_]->state), [
+    'RAID::Info::PhysicalDisk::State::Online',
+    'RAID::Info::PhysicalDisk::State::Failed',
+    ('RAID::Info::PhysicalDisk::State::Online') x 12,
+  ]->[$_], "physical disk $_ has correct state" for (0..13);
+  is $physical->[$_]->state->as_string, [
+    'online',
+    'failed',
+    ('online') x 12,
+  ]->[$_], "physical disk $_ has correct state string" for (0..13);
+  is int($physical->[$_]->capacity), [
+    (1819000000000) x 12,
+    (372611000000) x 2,
+  ]->[$_], "physical disk $_ has correct capacity" for (0..13);
+  is !!$physical->[$_]->state->is_abnormal, !![
+    0,
+    1,
+    (0) x 12,
+  ]->[$_], "physical disk $_ has correct abnormal state" for (0..13);
+
+  my $virtual = $c->virtual_disks;
+  is scalar @$virtual, 4, '4 virtual disks';
+  is ref($virtual->[$_]->state), [
+    ('RAID::Info::VirtualDisk::State::Degraded') x 2,
+    ('RAID::Info::VirtualDisk::State::Normal') x 2
+  ]->[$_], "virtual disk $_ has correct state" for (0..3);
+  is $virtual->[$_]->state->as_string, [
+    ('degraded') x 2,
+    ('normal') x 2,
+  ]->[$_], "virtual disk $_ has correct state string" for (0..3);
+  is int($virtual->[$_]->capacity), [
+    415000000000,
+    1413000000000,
+    14550000000000,
+    372000000000,
+  ]->[$_], "virtual disk $_ has correct capacity" for (0..3);
+  is $virtual->[$_]->level, [qw(
+    raid1
+    raid1
+    raid6
+    raid1
+  )]->[$_], "virtual disk $_ has correct raid level" for (0..3);
+  is !!$virtual->[$_]->state->is_abnormal, !![
+    1,
+    1,
+    0,
+    0,
+  ]->[$_], "virtual disk $_ has correct abnormal state" for (0..3);
+  cmp_deeply [ map { $_->slot } @{$virtual->[$_]->physical_disks} ], [
+    [0, 1],
+    [0, 1],
+    [2..11],
+    [12, 13],
+  ]->[$_], "virtual disk $_ has correct physical disks" for (0..3);
+}
+
 # detect test
 {
   Test::RAID::Info::Mock->import(megacli => 1);

@@ -76,6 +76,7 @@ sub _build_virtual_disks {
 
   state $state_map = {
     Optimal              => sub { RAID::Info::VirtualDisk::State::Normal->new },
+    Degraded             => sub { RAID::Info::VirtualDisk::State::Degraded->new },
     'Partially Degraded' => sub { RAID::Info::VirtualDisk::State::Degraded->new },
   };
 
