@@ -487,6 +487,39 @@ use Test::RAID::Info::Mock;
   is $virtual->[4]->state->progress, 82, "virtual disk 4 has correct progress";
 }
 
+{
+  Test::RAID::Info::Mock->import(mdadm => 11);
+
+  my $c = RAID::Info::Controller::MD->new;
+  is $c->name, "md/0", "controller has correct name";
+
+  my $physical = $c->physical_disks;
+  is scalar @$physical, 0, '0 physical disks';
+
+  my $virtual = $c->virtual_disks;
+  is scalar @$virtual, 3, '3 virtual disks';
+  is ref($virtual->[$_]->state), [
+    'RAID::Info::VirtualDisk::State::Rebuilding',
+    'RAID::Info::VirtualDisk::State::Rebuilding',
+    'RAID::Info::VirtualDisk::State::Rebuilding',
+  ]->[$_], "virtual disk $_ has correct state" for (0..2);
+  is int($virtual->[$_]->capacity), [
+    104790000000,
+    1076380000000,
+    16770000000,
+  ]->[$_], "virtual disk $_ has correct capacity" for (0..2);
+  is $virtual->[$_]->level, [qw(
+    raid1
+    raid1
+    raid1
+  )]->[$_], "virtual disk $_ has correct raid level" for (0..2);
+  is !!$virtual->[$_]->state->is_abnormal, !![
+    1,
+    1,
+    1,
+  ]->[$_], "virtual disk $_ has correct abnormal state" for (0..2);
+}
+
 # detect test
 {
   Test::RAID::Info::Mock->import(mdadm => 1);

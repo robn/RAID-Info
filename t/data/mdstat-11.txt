@@ -1,0 +1,14 @@
+Personalities : [linear] [multipath] [raid0] [raid1] [raid6] [raid5] [raid4] [raid10]
+md1 : active raid1 sdb5[2] sda5[1]
+      102334464 blocks super 1.2 [2/1] [_U]
+      [====>................]  recovery = 24.8% (25468160/102334464) finish=6.2min speed=206304K/sec
+
+md127 : active raid1 sdb6[2] sda6[0]
+      1051148864 blocks super 1.2 [2/1] [U_]
+        resync=DELAYED
+
+md0 : active raid1 sdb1[2] sda1[0]
+      16375808 blocks super 1.2 [2/1] [U_]
+        resync=DELAYED
+
+unused devices: <none>
