@@ -97,6 +97,8 @@ sub detect {
   my ($class) = @_;
 
   my $lsiutil_raw = do {
+    local $SIG{PIPE} = 'IGNORE';
+
     my ($out, $in) = try {
       open2(my $out, my $in, 'lsiutil');
       ($out, $in);
