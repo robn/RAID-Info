@@ -70,6 +70,8 @@ sub _build_virtual_disks {
     'clean, degraded, recovering'  => sub { RAID::Info::VirtualDisk::State::Rebuilding->new(progress => shift) },
     'active, resyncing (DELAYED)'  => sub { RAID::Info::VirtualDisk::State::Rebuilding->new(progress => 0) },
     'clean, degraded, resyncing (DELAYED)'  => sub { RAID::Info::VirtualDisk::State::Rebuilding->new(progress => 0) },
+    'active, resyncing (PENDING)'  => sub { RAID::Info::VirtualDisk::State::Rebuilding->new(progress => 0) },
+    'clean, degraded, resyncing (PENDING)'  => sub { RAID::Info::VirtualDisk::State::Rebuilding->new(progress => 0) },
   };
 
   my @virtual = map {
