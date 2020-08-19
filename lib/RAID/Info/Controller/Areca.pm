@@ -72,6 +72,7 @@ sub _build_virtual_disks {
     Rebuilding     => sub { RAID::Info::VirtualDisk::State::Rebuilding->new(progress => shift) },
     Initializing   => sub { RAID::Info::VirtualDisk::State::Rebuilding->new(progress => shift) },
     'Need Rebuild' => sub { RAID::Info::VirtualDisk::State::Rebuilding->new(progress => 0) },
+    Checking       => sub { RAID::Info::VirtualDisk::State::Checking->new(progress => shift) },
   };
 
   my %phys;

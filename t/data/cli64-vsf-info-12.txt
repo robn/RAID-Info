@@ -1,0 +1,6 @@
+  # Name             Raid Name       Level   Capacity Ch/Id/Lun  State         
+===============================================================================
+  1 wi10d1           wi10d1          Raid6   64000.0GB 00/00/00   Checking(0.0%)
+  2 wi10d1search     wi10d1search    Raid1+0 8000.0GB 00/00/01   Normal
+===============================================================================
+GuiErrMsg<0x00>: Success.

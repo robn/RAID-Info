@@ -56,4 +56,16 @@ sub is_abnormal { 1 };
 sub as_string { "rebuilding (" . shift->progress . "%)" };
 }
 
+package RAID::Info::VirtualDisk::State::Checking {
+
+use namespace::autoclean;
+
+use Moo;
+with 'RAID::Info::VirtualDisk::State';
+with 'RAID::Info::Role::HasRebuildProgress';
+
+sub is_abnormal { 0 };
+sub as_string { "checking (" . shift->progress . "%)" };
+}
+
 1;
